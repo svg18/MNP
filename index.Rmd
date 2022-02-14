@@ -14,7 +14,7 @@ biblio-style: apalike
 link-citations: yes
 css: styles.css
 github-repo: svg18/MNP
-url: 'https\://github.com/svg18/Libro-ModelosNoParametricos'
+url: 'https://github.com/svg18/MNP'
 description: "Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México"
 always_allow_html: true
 ---
