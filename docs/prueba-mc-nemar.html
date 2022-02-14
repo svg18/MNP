@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 13 Ejercicios | Modelos no paramétricos</title>
+  <title>Capítulo 5 Prueba Mc Nemar | Modelos no paramétricos</title>
   <meta name="description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta property="og:title" content="Capítulo 5 Prueba Mc Nemar | Modelos no paramétricos" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://github.com/svg18/MNP" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="svg18/MNP" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta name="twitter:title" content="Capítulo 5 Prueba Mc Nemar | Modelos no paramétricos" />
   
   <meta name="twitter:description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="prueba-para-más-de-dos-muestras.html"/>
-<link rel="next" href="introducción-3.html"/>
+<link rel="prev" href="prueba-de-signos.html"/>
+<link rel="next" href="prueba-de-cox-stuart.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -458,196 +458,200 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ejercicios-1" class="section level1" number="13">
-<h1><span class="header-section-number">Capítulo 13</span> Ejercicios</h1>
-<p><strong>1.</strong> Siete estudiantes aprendieron álgebra utilizando el método actual y seis estudiantes aprendieron álgebra según un nuevo método.</p>
+<div id="prueba-mc-nemar" class="section level1" number="5">
+<h1><span class="header-section-number">Capítulo 5</span> Prueba Mc Nemar</h1>
+<p>El objetivo de esta prueba es ver el efecto que tuvo cierto “tratamiento” sobre un sujeto cuya “condición” se observa antes y después del mismo.
+Por ejemplo se puede usar para analizar el efecto que un debate tiene en la decisión de una asamblea. Para esto se puede hacer una encuesta para registrar la opinión de los miembros de la misma en categorías <strong>a favor</strong> o <strong>en contra</strong> de una propuesta y después de realizado el debate se les vuelve a preguntar su opinión sobre el tema.
+Nos interesa estudiar a los individuos que cambiaron de opinión, es decir, los que antes estaban <strong>a favor</strong> y ahora están <strong>en contra</strong> y los que estaban <strong>en contra</strong> y ahora están <strong>a favor</strong>.</p>
+<p>La manera de estudiar esto es identificando a los individuos encuestados con parejas ordenadas de la forma (0,0),(0,1),(1,0) o (1,1) dónde la primera entrada representa la <strong>postura</strong> del individuo
+antes del debate y la segunda representa su postura después. (“0,”por ejemplo, puede representar <strong>en contra</strong> y “1” <strong>a favor</strong>).
+Luego se ingresan estos datos en una tabla de contingencia de la siguiente forma:</p>
 <p><span class="math display">\[
-\begin{array}{|c| c c c c c c c c|} 
-\hline 
-\textbf{Método} &amp;\textbf{Puntajes} &amp;&amp;&amp;&amp;&amp; &amp; &amp; \\ 
- \hline
-\mbox{Actual} &amp; 68 &amp; 72 &amp; 79 &amp; 69 &amp; 84 &amp; 80 &amp; 78 &amp;\\ 
- \hline
-\mbox{Nuevo} &amp; 64 &amp; 60 &amp; 68 &amp; 73 &amp; 72 &amp; 70&amp; &amp; \\ 
+\begin{array}{ c| c| c }
+ &amp; \textbf{ahora en contra}  &amp; \textbf{ahora a favor}\\
 \hline
-\end{array}
+\textbf{antes en contra} &amp; Número\ de\ (0,0) &amp; Número\ de\ (0,1) \\
+\hline
+\textbf{antes a favor} &amp; Número\ de\ (1,0) &amp; Número\ de\ (1,1) \\
+\end{array} 
 \]</span></p>
-<p>¿Con una <span class="math inline">\(\alpha\)</span> del 5% podría decir que la efectividad (medida con los punatjes) de ambos métodos es similar?</p>
-<p><strong>2.</strong> En un laboratorio con entorno controlado, 10 hombres y 10 mujeres fueron evaluados para determinar la temperatura ambiente que encontraron más cómoda. los resultados fueron los siguientes:</p>
+<div id="datos-3" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Datos</h2>
+<p>Los datos consisten en observaciones bivariadas aleatorias:</p>
+<p><span class="math display">\[(X_{1},Y_{1}),(X_{2},Y_{2}),(X_{3},Y_{3}),\cdots,(X_{n&#39;},Y_{n&#39;})\]</span></p>
+<p>Dentro de cada par de datos en la muestra se tiene <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> que sólo tomarán los valor <span class="math inline">\(0\)</span> y <span class="math inline">\(1\)</span>.</p>
+<p>En general los datos se resumen en una tabla de contingencia de la forma:</p>
 <p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\textbf{Hombres} &amp; \textbf{Mujeres} \\  
- \hline
-74&amp;75\\
- \hline
-72&amp;77\\
- \hline
-77&amp;78\\
- \hline
-76&amp;79\\
- \hline
-76&amp;77\\
- \hline
-73&amp;73\\
- \hline
-75&amp;78\\
- \hline
-73&amp;79\\
- \hline
-74&amp;78\\
- \hline
-75&amp;80\\
-  \hline
+\begin{array}{ c| c| c }
+ &amp; \textbf{después 0}  &amp; \textbf{después 1}\\
 \hline
-\end{array}
+\textbf{antes 0} &amp; \textbf{a}=Número\ de\ (0,0) &amp;\textbf{b}=Número\ de\ (0,1) \\
+\hline
+\textbf{antes 1} &amp; \textbf{c}=Número\ de\ (1,0) &amp;\textbf{d}=Número\ de\ (1,1) \\
+\end{array} 
 \]</span></p>
-<p>Suponiendo que estas temperaturas son una muestra aleatoria de la población, ¿la temperatura promedio es la misma para hombres y mujeres?.</p>
-<p><strong>3.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
+</div>
+<div id="supuestos-3" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Supuestos</h2>
+<ol style="list-style-type: decimal">
+<li><p>Cada pareja (<span class="math inline">\(X_{i},Y_{i}\)</span>) son mutuamente independientes.</p></li>
+<li><p>La escala de medida es nominal con 2 categorías para toda <span class="math inline">\(X_{i}\)</span> y <span class="math inline">\(Y_{i}\)</span>.</p></li>
+<li><p>La probabilidad de que se observe (0,1) es <span class="math inline">\(\geq\)</span> que la de (1,0) o la de (1,0) es <span class="math inline">\(\geq\)</span> (0,1) para todos los elementos de la muestra.</p></li>
+</ol>
+</div>
+<div id="estadístico-de-prueba-3" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Estadístico de Prueba</h2>
+<p><span class="math display">\[T_{1}=\frac{(b-c)^2}{(b+c)} \ \thickapprox \ \chi^{2}_{(1)}\]</span>
+Es decir, la distribución de <span class="math inline">\(T_{1}\)</span> es aproximadamente <span class="math inline">\(\chi^{2}_{(1)}\)</span>.</p>
+<p>Por otro lado, si <span class="math inline">\(b+c\leq20\)</span>, es preferible utilizar el siguiente estadístico:</p>
+<p><span class="math display">\[T_{2}=b\sim Bin(b+c,p)\]</span></p>
+<p>Es decir, la distribución de <span class="math inline">\(T_{2}\)</span> es exactamente <span class="math inline">\(Bin(b+c,p)\)</span></p>
+<p>Dependiendo del planteamiento de nuestro problema a resolver se formulan las hipótesis:</p>
+</div>
+<div id="hipótesis-3" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Hipótesis</h2>
+<div id="caso-a-prueba-de-dos-colas-3" class="section level3 unnumbered">
+<h3>Caso A (Prueba de dos colas)</h3>
+<p><span class="math display">\[\textbf{H}_0: \mathbf{P}[X_{i}=0,Y_{i}=1]= \mathbf{P}[X_{i}=1,Y_{i}=0]\]</span>
+<span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: \mathbf{P}[X_{i}=0,Y_{i}=1]\neq \mathbf{P}[X_{i}=1,Y_{i}=0]\]</span></p>
+<p>Es decir, se quiere ver si la probabilidad de que el individuo pase de 0 a 1 es la misma que la probabilidad de que pase de 1 a 0. En otras palabras, se quiere comprobar si el efecto del tratamiento fue neutro o si hay alguna tendencia tras el mismo.</p>
+<div id="regla-de-decisión-9" class="section level4 unnumbered">
+<h4>Regla de decisión</h4>
+<p>Rechazamos <span class="math inline">\(H_0\)</span> a un nivel de significancia <span class="math inline">\(\alpha\)</span> si</p>
+<p><span class="math display">\[T_{2} \leq t \ \ \   o \ \ \ T_{2}&gt;n-t\]</span></p>
+<p>Elegimos <span class="math inline">\(\alpha\)</span>, el tamaño de la prueba y debemos encontrar <span class="math inline">\(t\)</span> tal que</p>
+<p><span class="math display">\[\mathbf{P}[Y \leq t]=\alpha/2\]</span></p>
+<p>Donde <span class="math inline">\(Y \sim Bin (b+c,1/2)\)</span>.</p>
+<p>Por otro lado, si <span class="math inline">\(b+c&gt;20\)</span></p>
+<p>Rechazamos <span class="math inline">\(H_0\)</span> a un nivel de significancia <span class="math inline">\(\alpha\)</span> si</p>
+<p><span class="math display">\[T_{1} &gt; t_{1-\alpha}\]</span></p>
+<p>Elegimos <span class="math inline">\(\alpha\)</span>, el tamaño de la prueba y debemos encontrar <span class="math inline">\(t_{1-\alpha}\)</span> tal que</p>
+<p>Donde <span class="math inline">\(t_{1-\alpha}\)</span> se encuentra en la tabla correspondiente ya que <span class="math inline">\(T_{1} \sim \chi^{2}_{(1)}\)</span>.</p>
+<p>y calculamos el <span class="math inline">\(p-value\)</span> de la siguiente manera:</p>
+<p><span class="math display">\[p-value=2*min\{\mathbf{P}[Y\leq T_{2}],\mathbf{P}[Y\geq T_{2}]\}\]</span></p>
+<p>Ahora aplicaremos lo anterior en un ejemplo ilustrativo:</p>
+</div>
+</div>
+</div>
+<div id="ejemplo-3" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Ejemplo</h2>
+<p>May y Johnson (1997) publicaron el resultado de un estudio en el cual los investigadores querían determinar el efecto de la hipnosis en reducir el dolor asociado con la venopunción en pacientes juveniles de cáncer. Los datos se observan en la siguiente tabla:</p>
 <p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
+\begin{array}{ c| c c| c }
+                     &amp; Después\ de\ la\ hipnosis &amp;            &amp; \\
 \hline
+Antes\ de\ la hipnosis &amp; \textbf{Sin Dolor}     &amp; \textbf{Con Dolor}&amp; Total\\
 \hline
-\end{array}
+\textbf{Sin Dolor} &amp; \textbf{a}=18                     &amp; \textbf{b}=4  &amp; 22   \\
+\hline
+\textbf{Con Dolor} &amp; \textbf{c}=12                     &amp; \textbf{d}=5 &amp; 17\\
+\hline
+Total     &amp; 30              &amp; 9               &amp; 39 \\
+\end{array} 
 \]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las marcas? De haber diferencia, que marcas parecen ser las diferentes? Use <span class="math inline">\(\alpha=10\%\)</span></p>
-<p><strong>4.</strong> Tres maestros desean comparar las claificaciones que pusieron en el semestre pasado para ver si alguno tiende a dar calificaciones diferentes que los otros.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||} 
-\hline 
-\mbox{Calificación} &amp; A &amp; B&amp;C \\  
- \hline
-10&amp;4&amp;10&amp;6\\
- \hline
-9&amp;14&amp;6&amp;7\\
- \hline
-8&amp;17&amp;9&amp;8\\
- \hline
-7&amp;6&amp;7&amp;6\\
- \hline
-6&amp;2&amp;6&amp;1\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Con los datos observados se puede corroborar la sospecha de que alguno de los maestros da calificaciones diferentes a los otros? Use <span class="math inline">\(\alpha=5\%\)</span></p>
-<p><strong>5.</strong> El Hospital “Los Ángeles” realizó un estudio en 4 Dietas a un grupo de 20 individuos; cada Dieta se aplicó aleatoriamente a cada individio. Se registró la pérdida de peso en <span class="math inline">\(kg\)</span>.
-Realiza la prueba correspondiente para poder concluir si, ¿Hay diferencia significativa entre la efectividad de las Dietas?</p>
-<p><span class="math display">\[
-\begin{array}{c c c c} 
-\textbf{Dieta 1} &amp; \textbf{Dieta 2} &amp; \textbf{Dieta 3} &amp; \textbf{Dieta 4}\\
-6.1&amp;5&amp;7.6&amp;6.2\\
-4.3&amp;5.6&amp;6.8&amp;8\\
-4.5&amp;7.3&amp;3.9&amp;7.4\\
-2.4&amp;5.7&amp;7.9&amp;4.6\\
-9.1&amp;2.1&amp;5.9&amp;7\\
-\end{array}
-\]</span></p>
-<p><strong>6.</strong> Un banco de sangre mantuvo un registro de la frecuencia cardíaca de varios donadores de sangre.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Hombres}&amp; \mbox{Mujeres} \\  
- \hline
-58&amp;66\\
- \hline
-76&amp;74\\
- \hline
-82&amp;69\\
- \hline
-74&amp;76\\
- \hline
-79&amp;72\\
- \hline
-65&amp;73\\
- \hline
-74&amp;75\\
- \hline
-86&amp;67\\
- \hline
-&amp;68\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p>¿Es la variación entre los hombres significativamente mayor que la variación entre las mujeres? nivel de significancia <span class="math inline">\(5\%\)</span></p>
-<p><strong>7.</strong> Se desea probar que las variaciones de las temperaturas altas en Des Moines son mayores que las variaciones de las temperaturas altas en Spokane, para ello se tomó una muestra de las temperaturas altas diarias durante el verano. Use nivel de significancia <span class="math inline">\(10\%\)</span></p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Des Moines}&amp; \mbox{Spokane} \\ 
- \hline
-83&amp;78\\
- \hline
-91&amp;82\\
- \hline
-94&amp;81\\
- \hline
-89&amp;77\\
- \hline
-89&amp;79\\
- \hline
-96&amp;81\\
- \hline
-91&amp;80\\
- \hline
-92&amp;81\\
- \hline
-82&amp;79\\
- \hline
-93&amp;80\\
- \hline
-90&amp;\\
- \hline
-93&amp;\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p><strong>8.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las varianzas de las duraciones por marca? Use <span class="math inline">\(\alpha=10\%\)</span></p>
+<p><strong>Paso 1</strong> Escribimos la prueba a utilizar</p>
+<p>La prueba a utilizar <strong>Prueba de Mc Nemar Caso A de dos colas</strong></p>
+<p><strong>Paso 2</strong> Formulamos nuestras hipótesis en contexto al problema planteado</p>
+<p><span class="math display">\[\textbf{H}_0: \mathbf{P}[X_{i}=0,Y_{i}=1]= \mathbf{P}[X_{i}=1,Y_{i}=0]\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: \mathbf{P}[X_{i}=0,Y_{i}=1]\neq \mathbf{P}[X_{i}=1,Y_{i}=0]\]</span></p>
+<p>es decir,</p>
+<p><span class="math display">\[\textbf{H}_0: \ \mbox{Se mantiene el sentir dolor después de la hipnosis.}\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a:\ \mbox{Hay un cambio considerable al no sentir dolor después de la hipnosis.}\]</span></p>
+<p><strong>Paso 3</strong> Estadístico de prueba</p>
+<p>Recordando que <span class="math inline">\(b+c=4+12\)</span> entonces <span class="math inline">\(b+c=16\leq20\)</span> entonces utilizaremos el estadístico:</p>
+<p><span class="math display">\[T_{2}=b=4\]</span>
+<span class="math display">\[T_{2}\sim Bin(16,1/2)\]</span></p>
+<p><strong>Paso 4</strong> Procedimiento completo</p>
+<p><strong>Supuestos</strong></p>
+<ol style="list-style-type: decimal">
+<li>Muestra aleatoria de tamaño n=16.</li>
+</ol>
+<ul>
+<li><p>Tomaremos <span class="math inline">\(\alpha\)</span>= 5% =0.05 el nivel de significancia.</p></li>
+<li><p><span class="math inline">\(n=6\)</span> tamaño de la muestra</p></li>
+<li><p><span class="math inline">\(p\)</span>=1/2</p></li>
+</ul>
+<p><strong>Paso 5</strong> Regla de decisión</p>
+<p>Rechazamos <span class="math inline">\(H_0\)</span> a un nivel de significancia <span class="math inline">\(\alpha\)</span> si <span class="math inline">\(T_{2} \leq t\)</span> o <span class="math inline">\(T_{2}&gt;n-t\)</span></p>
+<p>Debemos encontrar <span class="math inline">\(t\)</span> tal que</p>
+<p><span class="math display">\[\mathbf{P}[Y \leq t]=\alpha/2=0.025\]</span></p>
+<p><span class="math display">\[T_{2}=4 \leq 5=t  \ \ \ \ \   o  \ \ \ \ \      5&gt;16-4  \]</span>
+<span class="math display">\[T_{2}=4 \nleq 5=t   \ \ \ \ \   y   \ \ \ \ \      5\ngtr12\]</span></p>
+<p><span class="math inline">\(\therefore\)</span> Rechazamos <span class="math inline">\(H_0\)</span></p>
+<p><strong>Paso 6</strong> Conclusión</p>
+<p>Existe evidencia suficiente para decir que hay un cambio considerable a no sentir dolor después de recibir hipnosis.</p>
+</div>
+<div id="ejemplo-en-r-studio-3" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> Ejemplo en R-Studio</h2>
+<p>Ahora haremos la réplica en R.</p>
+<p>Veamos que <span class="math inline">\(b+c=4+12=16\leq 20\)</span> por lo tanto el estadístico de prueba será</p>
+<p><span class="math inline">\(T_2=b=4\)</span>
+<span class="math inline">\(T_2\sim Bin(16,1/2)\)</span></p>
+<p>Tomaremos <span class="math inline">\(\alpha=5\%\)</span></p>
+<pre><code>              Despues hipnosis
+Antes hipnosis Sin dolor dolor
+     Sin dolor        18     4
+     dolor            12     5</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="prueba-mc-nemar.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Datos</span></span>
+<span id="cb22-2"><a href="prueba-mc-nemar.html#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="prueba-mc-nemar.html#cb22-3" aria-hidden="true" tabindex="-1"></a>T_2<span class="ot">=</span><span class="dv">4</span>                    <span class="co">#Es la posición b</span></span>
+<span id="cb22-4"><a href="prueba-mc-nemar.html#cb22-4" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">16</span>                     <span class="co">#Tamaño de la muestra</span></span>
+<span id="cb22-5"><a href="prueba-mc-nemar.html#cb22-5" aria-hidden="true" tabindex="-1"></a>alpha<span class="ot">=</span><span class="fl">0.05</span>               <span class="co">#Nivel de significancia</span></span>
+<span id="cb22-6"><a href="prueba-mc-nemar.html#cb22-6" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fl">0.5</span>                    <span class="co">#Para la prueba Mc nemar p es 1/2</span></span></code></pre></div>
+<p>Según el planteamiento de las hipótesis, este es un Caso A (dos colas), por lo que siguiendo la regla de decisión tenemos que rechazaremos <span class="math inline">\(H_0\)</span> si <span class="math inline">\(T_2 \leq t\)</span> o <span class="math inline">\(T_2&gt;n-t\)</span> donde <span class="math inline">\(t\)</span> será en cuantil que acumule 5% en la distribución binomial</p>
+<p>Podemos graficar la función de distribución:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Calculamos <span class="math inline">\(t\)</span> y el <span class="math inline">\(p-value\)</span>:</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="prueba-mc-nemar.html#cb23-1" aria-hidden="true" tabindex="-1"></a>t<span class="ot">=</span><span class="fu">qbinom</span>(.<span class="dv">05</span>,n,p)       <span class="co">#Valor con el que vamos a comparar el estadístico</span></span>
+<span id="cb23-2"><a href="prueba-mc-nemar.html#cb23-2" aria-hidden="true" tabindex="-1"></a>t</span></code></pre></div>
+<pre><code>[1] 5</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="prueba-mc-nemar.html#cb25-1" aria-hidden="true" tabindex="-1"></a>pvalue<span class="ot">=</span><span class="dv">2</span><span class="sc">*</span><span class="fu">min</span>(<span class="fu">c</span>(<span class="fu">pbinom</span>(T_2,n,p), <span class="fu">pbinom</span>(T_2,n,p,<span class="at">lower.tail =</span> F)))   <span class="co">#P-value</span></span>
+<span id="cb25-2"><a href="prueba-mc-nemar.html#cb25-2" aria-hidden="true" tabindex="-1"></a>pvalue</span></code></pre></div>
+<pre><code>[1] 0.07681274</code></pre>
+<p>Tenemos que como <span class="math inline">\(T_2=4\leq 5 =t\)</span>, entonces se rechaza <span class="math inline">\(H_0\)</span> como ya rechazamos en la cola inferior no es necesario probar la cola superior, pero si NO hubieramos rechazado con la primer ecuación debemos probar si <span class="math inline">\(T_2&gt;n-t\)</span>.</p>
+<p>Por lo tanto se concluye que hay información suficiente para decir que hay un cambio considerable al no sentir dolor después de la hipnosis.</p>
+<p>Finalmente utilizaremos la función en R:</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="prueba-mc-nemar.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="dv">4</span>,n,p,<span class="st">&quot;t&quot;</span>)</span></code></pre></div>
+<pre><code>
+    Exact binomial test
+
+data:  4 and n
+number of successes = 4, number of trials = 16, p-value = 0.07681
+alternative hypothesis: true probability of success is not equal to 0.5
+95 percent confidence interval:
+ 0.07266204 0.52377082
+sample estimates:
+probability of success 
+                  0.25 </code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="prueba-mc-nemar.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co">#En el caso de tener una n mayor a 20 utilizamos la siguiente</span></span>
+<span id="cb29-2"><a href="prueba-mc-nemar.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co">#prueba</span></span></code></pre></div>
+<p>Con corrección por continuidad:</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="prueba-mc-nemar.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcnemar.test</span>(data, <span class="at">correct =</span> <span class="cn">TRUE</span>) <span class="co">#CON CORRECCION POR CONTINUIDAD</span></span></code></pre></div>
+<pre><code>
+    McNemar&#39;s Chi-squared test with continuity correction
+
+data:  data
+McNemar&#39;s chi-squared = 3.0625, df = 1, p-value = 0.08012</code></pre>
+<p>Sin correción por continuidad:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="prueba-mc-nemar.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mcnemar.test</span>(data, <span class="at">correct =</span> <span class="cn">FALSE</span>) <span class="co">#SIN CORRECCION POR CONTINUIDAD</span></span></code></pre></div>
+<pre><code>
+    McNemar&#39;s Chi-squared test
+
+data:  data
+McNemar&#39;s chi-squared = 4, df = 1, p-value = 0.0455</code></pre>
 
 </div>
-
-
-
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="prueba-para-más-de-dos-muestras.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introducción-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="prueba-de-signos.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="prueba-de-cox-stuart.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

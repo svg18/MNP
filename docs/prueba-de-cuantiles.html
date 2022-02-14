@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 13 Ejercicios | Modelos no paramétricos</title>
+  <title>Capítulo 3 Prueba de Cuantiles | Modelos no paramétricos</title>
   <meta name="description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta property="og:title" content="Capítulo 3 Prueba de Cuantiles | Modelos no paramétricos" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://github.com/svg18/MNP" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="svg18/MNP" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta name="twitter:title" content="Capítulo 3 Prueba de Cuantiles | Modelos no paramétricos" />
   
   <meta name="twitter:description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="prueba-para-más-de-dos-muestras.html"/>
-<link rel="next" href="introducción-3.html"/>
+<link rel="prev" href="prueba-de-proporciones.html"/>
+<link rel="next" href="prueba-de-signos.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -458,196 +458,193 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ejercicios-1" class="section level1" number="13">
-<h1><span class="header-section-number">Capítulo 13</span> Ejercicios</h1>
-<p><strong>1.</strong> Siete estudiantes aprendieron álgebra utilizando el método actual y seis estudiantes aprendieron álgebra según un nuevo método.</p>
+<div id="prueba-de-cuantiles" class="section level1" number="3">
+<h1><span class="header-section-number">Capítulo 3</span> Prueba de Cuantiles</h1>
+<p>Lo que nos interesa en ésta prueba binomial es hacer inferencia sobre los cuantiles de una variable aleatoria. Por ejemplo, muchos examinamos una muestra aleatoria de valores de alguna variable x para ver si la mediana de x es igual a 17 (por ejemplo).</p>
+<p>La escala de medición suele ser al menos ordinal para ésta prueba de hipótesis, aunque la prueba binomial solo require la escala nominal que es más débil para su medición. Esto se debe a que los cuantiles tienen poco significado con las mediciones de escala nominal.</p>
+<p><strong>Recordatorio</strong></p>
+<p>El cuantil de valor <span class="math inline">\(p\)</span> de una variable aleatoria <span class="math inline">\(X\)</span>
+es un número <span class="math inline">\(x\)</span> tal que:</p>
+<p><span class="math display">\[ \mathbf{P}[X &lt; x]\leq p\]</span></p>
+<ul>
+<li>En el caso de una variable aleatoria continua se da la igualdad.</li>
+</ul>
+<div id="datos-1" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Datos</h2>
+<p>Los datos consisten en una muestra</p>
+<p><span class="math display">\[X_{1},X_{2},X_{3},\cdots,X_{n}  \  \ \mbox{ una muestra aleatoria de tamaño} \ n \  \mbox{de la población}\]</span></p>
+</div>
+<div id="supuestos-1" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Supuestos</h2>
+<ol style="list-style-type: decimal">
+<li><p>Los datos a los que se les aplica esta prueba son una muestra aleatoria independiente e idénticamente distribuida.</p></li>
+<li><p>La escala de medida de las <span class="math inline">\(X_{i}s\)</span> es al menos ordinal.</p></li>
+</ol>
+</div>
+<div id="estadístico-de-prueba-1" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Estadístico de Prueba</h2>
+<p><span class="math display">\[T_{1}\]</span>
+El número de observaciones en la muestra que son <strong>menores o iguales</strong> al valor <span class="math inline">\(x^*\)</span> sobre el que se va a hacer la hipótesis.</p>
+<p><span class="math display">\[T_{2}\]</span>
+El número de observaciones en la muestra que son <strong>estrictamente menores</strong> a <span class="math inline">\(x^*\)</span>.</p>
+<p>Cuando <span class="math inline">\(n\leq 20\)</span> la distribución nula de éstos estadísticos es <span class="math inline">\(Bin(n,p=p^*)\)</span> con <span class="math inline">\(n\)</span> el tamaño de la muestra y <span class="math inline">\(p^*\)</span> dada en la hipótesis nula (recuerde que queremos hacer pruebas relacionadas con el cuantil <span class="math inline">\(x_{p}\)</span> de la <span class="math inline">\(v.a.\)</span> en cuestión).</p>
+<p>Por otro lado, si <span class="math inline">\(n&gt;20\)</span> puede resultar más sencillo utilizar una aproximación normal para realizar la prueba, en dicho caso se puede utilizar el cuantil:</p>
 <p><span class="math display">\[
-\begin{array}{|c| c c c c c c c c|} 
-\hline 
-\textbf{Método} &amp;\textbf{Puntajes} &amp;&amp;&amp;&amp;&amp; &amp; &amp; \\ 
- \hline
-\mbox{Actual} &amp; 68 &amp; 72 &amp; 79 &amp; 69 &amp; 84 &amp; 80 &amp; 78 &amp;\\ 
- \hline
-\mbox{Nuevo} &amp; 64 &amp; 60 &amp; 68 &amp; 73 &amp; 72 &amp; 70&amp; &amp; \\ 
-\hline
-\end{array}
+t=np+Z_{q}\sqrt{np(1-p)}
 \]</span></p>
-<p>¿Con una <span class="math inline">\(\alpha\)</span> del 5% podría decir que la efectividad (medida con los punatjes) de ambos métodos es similar?</p>
-<p><strong>2.</strong> En un laboratorio con entorno controlado, 10 hombres y 10 mujeres fueron evaluados para determinar la temperatura ambiente que encontraron más cómoda. los resultados fueron los siguientes:</p>
+<p>Donde <span class="math inline">\(Z_{q}\)</span> es el cuantil de una distribución normal estándar que se puede obtener en la tabla correspondiente.</p>
+<p>Dependiendo del planteamiento de nuestro problema a resolver se formulan las hipótesis:</p>
+</div>
+<div id="hipótesis-1" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> Hipótesis</h2>
+<div id="caso-a-prueba-de-dos-colas-1" class="section level3 unnumbered">
+<h3>Caso A (Prueba de dos colas)</h3>
+<p><span class="math display">\[\textbf{H}_{o}: x_{p} = x^* \ \ \mbox{es equivalente  decir}: \ \ \mathbf{P}[X \leq x^*]= p^*\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: x_{p} \neq x^* \ \ \mbox{es equivalente  decir}: \ \ \mathbf{P}[X \leq x^*]\neq p^*\]</span></p>
+<div id="regla-de-decisión-3" class="section level4 unnumbered">
+<h4>Regla de decisión</h4>
+<p>Rechazamos <span class="math inline">\(H_0\)</span> a un nivel de significancia <span class="math inline">\(\alpha\)</span> si</p>
+<p><span class="math display">\[T_{1}\leq t_{1} \ \ \ \ \  o   \ \ \ \ \ T_{2}&gt;t_{2}\]</span></p>
+<p>Elegimos <span class="math inline">\(\alpha_{1},\alpha_{2}\geq 0\)</span>, tales que <span class="math inline">\(\alpha_{1}+\alpha_{2}=\alpha\)</span> el tamaño de la prueba y debemos encontrar <span class="math inline">\(t_{1}\)</span> y <span class="math inline">\(t_{2}\)</span> tales que:</p>
+<p><span class="math display">\[\mathbf{P}[Y \leq t_{1}]=\alpha_{1} \ \ \ \ \  y  \ \ \ \ \ \mathbf{P}[Y \leq t_{2}]=1-\alpha_{2}\]</span></p>
+<p>Donde <span class="math inline">\(Y \sim Bin (n,p^*)\)</span>.</p>
+<p>y calculamos el <span class="math inline">\(p-value\)</span> de la siguiente manera:</p>
+<p><span class="math display">\[p-value=2*min \{ \mathbf{P}[Y\leq T_{1}],\mathbf{P}[Y \geq T_{2}] \}\]</span></p>
+<p>Sugerimos que si <span class="math inline">\(n &gt; 20\)</span> ,el <span class="math inline">\(p-value\)</span> puede obtenerse usando:</p>
+<p><span class="math display">\[\mathbf{P}[Y\leq T_{1}] \thickapprox \mathcal{N}\left(\frac{T_{1}-np^*+0.5}{\sqrt{np^*(1-p^*)}}\right)\]</span></p>
+<p>y</p>
+<p><span class="math display">\[\mathbf{P}[Y\geq T_{2}] \thickapprox 1-\mathcal{N} \left(\frac{T_{2}-np^*-0.5}{\sqrt{np^*(1-p^*)}}\right)\]</span>
+Con <span class="math inline">\(\mathcal{N}(\cdot)\)</span> la función de distribución de la normal estándar.</p>
+</div>
+</div>
+<div id="caso-b-prueba-de-cola-inferior-1" class="section level3 unnumbered">
+<h3>Caso B (Prueba de cola inferior)</h3>
+<p><span class="math display">\[\textbf{H}_0: x_{p} \leq x^* \ \ \mbox{es equivalente a decir:} \ \ \ \mathbf{P}[X &lt; x^*]\geq p^*\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
 <p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\textbf{Hombres} &amp; \textbf{Mujeres} \\  
- \hline
-74&amp;75\\
- \hline
-72&amp;77\\
- \hline
-77&amp;78\\
- \hline
-76&amp;79\\
- \hline
-76&amp;77\\
- \hline
-73&amp;73\\
- \hline
-75&amp;78\\
- \hline
-73&amp;79\\
- \hline
-74&amp;78\\
- \hline
-75&amp;80\\
-  \hline
-\hline
-\end{array}
+\textbf{H}_a: x_{p} &gt; x^* \ \  \mbox{es equivalente a decir}: \ \ \mathbf{P}[X &lt; x^*]&lt; p^*
 \]</span></p>
-<p>Suponiendo que estas temperaturas son una muestra aleatoria de la población, ¿la temperatura promedio es la misma para hombres y mujeres?.</p>
-<p><strong>3.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las marcas? De haber diferencia, que marcas parecen ser las diferentes? Use <span class="math inline">\(\alpha=10\%\)</span></p>
-<p><strong>4.</strong> Tres maestros desean comparar las claificaciones que pusieron en el semestre pasado para ver si alguno tiende a dar calificaciones diferentes que los otros.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||} 
-\hline 
-\mbox{Calificación} &amp; A &amp; B&amp;C \\  
- \hline
-10&amp;4&amp;10&amp;6\\
- \hline
-9&amp;14&amp;6&amp;7\\
- \hline
-8&amp;17&amp;9&amp;8\\
- \hline
-7&amp;6&amp;7&amp;6\\
- \hline
-6&amp;2&amp;6&amp;1\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Con los datos observados se puede corroborar la sospecha de que alguno de los maestros da calificaciones diferentes a los otros? Use <span class="math inline">\(\alpha=5\%\)</span></p>
-<p><strong>5.</strong> El Hospital “Los Ángeles” realizó un estudio en 4 Dietas a un grupo de 20 individuos; cada Dieta se aplicó aleatoriamente a cada individio. Se registró la pérdida de peso en <span class="math inline">\(kg\)</span>.
-Realiza la prueba correspondiente para poder concluir si, ¿Hay diferencia significativa entre la efectividad de las Dietas?</p>
-<p><span class="math display">\[
-\begin{array}{c c c c} 
-\textbf{Dieta 1} &amp; \textbf{Dieta 2} &amp; \textbf{Dieta 3} &amp; \textbf{Dieta 4}\\
-6.1&amp;5&amp;7.6&amp;6.2\\
-4.3&amp;5.6&amp;6.8&amp;8\\
-4.5&amp;7.3&amp;3.9&amp;7.4\\
-2.4&amp;5.7&amp;7.9&amp;4.6\\
-9.1&amp;2.1&amp;5.9&amp;7\\
-\end{array}
-\]</span></p>
-<p><strong>6.</strong> Un banco de sangre mantuvo un registro de la frecuencia cardíaca de varios donadores de sangre.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Hombres}&amp; \mbox{Mujeres} \\  
- \hline
-58&amp;66\\
- \hline
-76&amp;74\\
- \hline
-82&amp;69\\
- \hline
-74&amp;76\\
- \hline
-79&amp;72\\
- \hline
-65&amp;73\\
- \hline
-74&amp;75\\
- \hline
-86&amp;67\\
- \hline
-&amp;68\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p>¿Es la variación entre los hombres significativamente mayor que la variación entre las mujeres? nivel de significancia <span class="math inline">\(5\%\)</span></p>
-<p><strong>7.</strong> Se desea probar que las variaciones de las temperaturas altas en Des Moines son mayores que las variaciones de las temperaturas altas en Spokane, para ello se tomó una muestra de las temperaturas altas diarias durante el verano. Use nivel de significancia <span class="math inline">\(10\%\)</span></p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Des Moines}&amp; \mbox{Spokane} \\ 
- \hline
-83&amp;78\\
- \hline
-91&amp;82\\
- \hline
-94&amp;81\\
- \hline
-89&amp;77\\
- \hline
-89&amp;79\\
- \hline
-96&amp;81\\
- \hline
-91&amp;80\\
- \hline
-92&amp;81\\
- \hline
-82&amp;79\\
- \hline
-93&amp;80\\
- \hline
-90&amp;\\
- \hline
-93&amp;\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p><strong>8.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las varianzas de las duraciones por marca? Use <span class="math inline">\(\alpha=10\%\)</span></p>
+<div id="regla-de-decisión-4" class="section level4 unnumbered">
+<h4>Regla de decisión</h4>
+<p>Rechazamos <span class="math inline">\(H_0\)</span> a un nivel de significancia <span class="math inline">\(\alpha\)</span> si</p>
+<p><span class="math display">\[T_{1} \leq t_{1}\]</span></p>
+<p>Elegimos <span class="math inline">\(\alpha\)</span>, el tamaño de la prueba y debemos encontrar <span class="math inline">\(t_{1}\)</span> tal que</p>
+<p><span class="math display">\[\mathbf{P}[Y \leq t_{1}]=\alpha\]</span></p>
+<p>Donde <span class="math inline">\(Y \sim Bin (n,p^*)\)</span>.</p>
+<p>y calculamos el <span class="math inline">\(p-value\)</span> de la siguiente manera:</p>
+<p><span class="math display">\[p-value= \mathbf{P}[Y\leq T_{1}]\]</span></p>
+<p>Sugerimos que si <span class="math inline">\(n &gt; 20\)</span>, el <span class="math inline">\(p-value\)</span> puede obtenerse más sencillo usando la aproximación normal:</p>
+<p><span class="math display">\[\mathbf{P}[Y\leq T_{1}] \thickapprox \mathcal{N} \left(\frac{T_{1}-np^*+0.5}{\sqrt{np^*(1-p^*)}}\right)\]</span></p>
+</div>
+</div>
+<div id="caso-c-prueba-de-cola-supeior" class="section level3 unnumbered">
+<h3>Caso C (Prueba de cola supeior)</h3>
+<p><span class="math display">\[\textbf{H}_0: x_{p} \geq x^* \ \ \mbox{es equivalente a decir}: \ \ \mathbf{P}[X &lt; x^*]\leq p^*\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: x_{p} &lt; x^*  \ \ \mbox{es equivalente a decir}: \ \ \mathbf{P}[X &lt; x^*]&gt; p^*\]</span></p>
+<div id="regla-de-decisión-5" class="section level4 unnumbered">
+<h4>Regla de decisión</h4>
+<p>Rechazamos <span class="math inline">\(H_0\)</span> a un nivel de significancia <span class="math inline">\(\alpha\)</span> si</p>
+<p><span class="math display">\[T_{2} &gt; t_{2}\]</span></p>
+<p>Elegimos <span class="math inline">\(\alpha\)</span>, el tamaño de la prueba y debemos encontrar <span class="math inline">\(t_{2}\)</span> tal que</p>
+<p><span class="math display">\[\mathbf{P}[Y \leq t_{2}]=1-\alpha\]</span> </p>
+<p>Donde <span class="math inline">\(Y \sim Bin (n,p^*)\)</span>.</p>
+<p>y calculamos el <span class="math inline">\(p-value\)</span> de la siguiente manera:</p>
+<p><span class="math display">\[p-value=\mathbf{P}[Y\geq T_{2}]\]</span></p>
+<p>Sugerimos que si <span class="math inline">\(n &gt; 20\)</span> ,el <span class="math inline">\(p-value\)</span> puede obtenerse más sencillo usando la aproximación normal:</p>
+<p><span class="math display">\[\mathbf{P}[Y\geq T_{2}] \thickapprox 1- \mathcal{N} \left(\frac{T_{2}-np^*-0.5}{\sqrt{np^*(1-p^*)}}\right)\]</span></p>
+<p>Ahora aplicaremos lo anterior en un ejemplo ilustrativo:</p>
+</div>
+</div>
+</div>
+<div id="ejemplo-1" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> Ejemplo</h2>
+<p>El intervalo de tiempo entre las erupciones del geiser Old Faithful se registra 112 veces, de las cuales 8 son menores a 60 minutos y una es exactamente 60 minutos. Se quiere desea verificar que la mediana del intervalo es mayor a 60 minutos.</p>
+<p><strong>Paso 1</strong> Escribimos la prueba a utilizar</p>
+<p>La prueba a utilizar <strong>Prueba de cuantiles caso B cola inferior</strong></p>
+<p><strong>Paso 2</strong> Formulamos nuestras hipótesis en contexto al problema planteado</p>
+<p><span class="math display">\[\textbf{H}_0: \mathbf{P}[X \leq 60]\geq 0.50\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a:  \mathbf{P}[X \leq 60]&lt;0.50\]</span></p>
+<p>Donde <span class="math inline">\(X\)</span> es el intervalo de tiempo entre las erupciones, asumiendo que ambos intervalos son independientes e identicamente distribuidas.</p>
+<p><strong>Paso 3</strong> Estadístico de prueba</p>
+<p>La estadística de prueba será <span class="math inline">\(T_1=9\)</span> y <span class="math inline">\(T_2=8\)</span>. Tomaremos <span class="math inline">\(\alpha=.1\)</span></p>
+<p><span class="math display">\[T_{1}=9 \ \mbox{número  de  intervalos que  son menores o iguales  a 60 minutos.}\]</span></p>
+<p><span class="math display">\[T_{2}=8 \ \mbox{número  de  intervalos que  son estrictamente menores a 60 minutos.}\]</span></p>
+<p><span class="math display">\[T_{1}\sim Bin(112,0.50)\]</span></p>
+<p><strong>Paso 4</strong> Procedimiento completo</p>
+<p><strong>Supuestos:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Muestra aleatoria de tamaño 112.</li>
+</ol>
+<ul>
+<li><p>Tomaremos <span class="math inline">\(\alpha = 5% = 0.05\)</span> el nivel de significancia.</p></li>
+<li><p><span class="math inline">\(n = 112\)</span> tamaño de la muestra</p></li>
+<li><p><span class="math inline">\(p^* = 0.50\)</span></p></li>
+</ul>
+<p><strong>Paso 5</strong> Regla de decisión</p>
+<p>Rechazamos <span class="math inline">\(H_0\)</span> a un nivel de significancia <span class="math inline">\(\alpha\)</span> si <span class="math inline">\(T_{1} \leq t_{1}\)</span> y Rechazo <span class="math inline">\(H_0\)</span> si <span class="math inline">\(p-value&lt;\alpha\)</span></p>
+<p><span class="math display">\[T_{1}=9 \leq 47.3=t_{1}\]</span></p>
+<p>como <span class="math inline">\(n&gt;20\)</span> puede resultar más sencillo utilizar una aproximación normal para realizar la prueba, en dicho caso se puede utilizar el estadístico:</p>
+<p><span class="math display">\[t_{1}=np+Z_{q}\sqrt{np(1-p)}=(112)(0.5)+(-1.645)\sqrt{112(0.5)(1-0.5)}\]</span></p>
+<p><span class="math display">\[t_{1}=47.3\]</span></p>
+<p><span class="math inline">\(\therefore\)</span> Rechazamos <span class="math inline">\(H_0\)</span></p>
+<p>y calculamos el <span class="math inline">\(p-value\)</span> de la siguiente manera:</p>
+<p><span class="math display">\[p-value= \mathbf{P}[Y\leq T_{1}]=\mathbf{P}[Y\leq 9]\]</span></p>
+<p>Como <span class="math inline">\(n &gt; 20\)</span>, el <span class="math inline">\(p-value\)</span> puede obtenerse más sencillo usando la aproximación normal:</p>
+<p><span class="math display">\[\mathbf{P}[Y\leq 9] \thickapprox \mathcal{P} \left[Z\leq\frac{T_{1}-np^*+0.5}{\sqrt{np^*(1-p^*)}}\right]=\]</span>
+<span class="math display">\[\left(Z\leq\frac{9-(112)(0.5)+0.5}{\sqrt{(112)(0.5)(1-0.5)}}\right)=\mathbf{P}[Z\leq -8.7876] &lt; &lt; 0.0001\]</span>
+<span class="math inline">\(\therefore\)</span> Rechazo <span class="math inline">\(H_0\)</span> ya que <span class="math inline">\(p-value=0.0001&lt;&lt;0.05=\alpha.\)</span> es decir, el <span class="math inline">\(p-value\)</span> es “muy pequeño.”</p>
+<p><strong>Paso 6</strong> Conclusión</p>
+<p>Existe información suficiente para decir que la mediana del intervalo de erupciones es mayor a 60 minutos.</p>
+</div>
+<div id="ejemplo-en-r-studio-1" class="section level2" number="3.6">
+<h2><span class="header-section-number">3.6</span> Ejemplo en R-Studio</h2>
+<p>Ahora haremos la réplica en R.</p>
+<p>La estadística de prueba será <span class="math inline">\(T_1=9\)</span> y <span class="math inline">\(T_2=8\)</span>. Tomaremos <span class="math inline">\(\alpha=.1\)</span></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="prueba-de-cuantiles.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Datos</span></span>
+<span id="cb7-2"><a href="prueba-de-cuantiles.html#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="prueba-de-cuantiles.html#cb7-3" aria-hidden="true" tabindex="-1"></a>T_1<span class="ot">=</span><span class="dv">9</span>         <span class="co">#Observaciones menores/iguales a 60 minutos</span></span>
+<span id="cb7-4"><a href="prueba-de-cuantiles.html#cb7-4" aria-hidden="true" tabindex="-1"></a>T_2<span class="ot">=</span><span class="dv">8</span>         <span class="co">#Observaciones que son menores estrictamente a 60 minutos</span></span>
+<span id="cb7-5"><a href="prueba-de-cuantiles.html#cb7-5" aria-hidden="true" tabindex="-1"></a>alpha<span class="ot">=</span><span class="fl">0.05</span>    <span class="co">#Nivel de significancia</span></span>
+<span id="cb7-6"><a href="prueba-de-cuantiles.html#cb7-6" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">112</span>         <span class="co">#Tamaño de la muestra</span></span>
+<span id="cb7-7"><a href="prueba-de-cuantiles.html#cb7-7" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fl">0.5</span>         <span class="co">#Cuantil en este caso la mediana </span></span></code></pre></div>
+<p>Según el planteamiento de las hipótesis, este es un Caso B (de cola inferior), por lo que siguiendo la regla de decisión, se rechaza <span class="math inline">\(H_0\)</span> si <span class="math inline">\(T_1\leq t_1\)</span> donde <span class="math inline">\(t_1\)</span> será el cuantil que acumule 10% en la distribución binomial</p>
+<p>Podemos graficar la función de distribución:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>A continuación calculamos <span class="math inline">\(t_1\)</span> y el <span class="math inline">\(p-value\)</span>:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="prueba-de-cuantiles.html#cb8-1" aria-hidden="true" tabindex="-1"></a>t_1<span class="ot">=</span><span class="fu">qbinom</span>(.<span class="dv">10</span>,n,p)        <span class="co">#Cuantil a comparar con el estadístico de prueba</span></span>
+<span id="cb8-2"><a href="prueba-de-cuantiles.html#cb8-2" aria-hidden="true" tabindex="-1"></a>t_1</span></code></pre></div>
+<pre><code>[1] 49</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="prueba-de-cuantiles.html#cb10-1" aria-hidden="true" tabindex="-1"></a>pvalue<span class="ot">=</span><span class="fu">pbinom</span>(T_1,n,p)     <span class="co">#P-value correspondiente</span></span>
+<span id="cb10-2"><a href="prueba-de-cuantiles.html#cb10-2" aria-hidden="true" tabindex="-1"></a>pvalue</span></code></pre></div>
+<pre><code>[1] 1.157256e-21</code></pre>
+<p>Tenemos que como <span class="math inline">\(T_1=9\leq 49 =t_1\)</span>, entonces se rechaza <span class="math inline">\(H_0\)</span> y por lo tanto se concluye que hay información suficiente para decir que la mediana de los intervalos de tiempo entre erupciones es mayor a 60 minutos.</p>
+<p>Al mismo resultado llegamos si en lugar de buscar <span class="math inline">\(t_1\)</span> calculamos el <span class="math inline">\(p-value\)</span> de la estadística <span class="math inline">\(T_1\)</span> la cual da un valor muy cercano a cero por lo tanto cae en la región de rechazo y se conlcuye que la mediana de los intervalos de tiempo entre erupciones es mayor a 60 minutos.</p>
+<p>Finalmente podemos utilizar la función en R.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="prueba-de-cuantiles.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(T_1,n,<span class="at">p=</span><span class="fl">0.5</span>,<span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
+<pre><code>
+    Exact binomial test
+
+data:  T_1 and n
+number of successes = 9, number of trials = 112, p-value &lt; 2.2e-16
+alternative hypothesis: true probability of success is less than 0.5
+95 percent confidence interval:
+ 0.000000 0.136034
+sample estimates:
+probability of success 
+            0.08035714 </code></pre>
 
 </div>
-
-
-
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="prueba-para-más-de-dos-muestras.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introducción-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="prueba-de-proporciones.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="prueba-de-signos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

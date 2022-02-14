@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 13 Ejercicios | Modelos no paramétricos</title>
+  <title>Capítulo 6 Prueba de Cox Stuart | Modelos no paramétricos</title>
   <meta name="description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta property="og:title" content="Capítulo 6 Prueba de Cox Stuart | Modelos no paramétricos" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://github.com/svg18/MNP" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="svg18/MNP" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta name="twitter:title" content="Capítulo 6 Prueba de Cox Stuart | Modelos no paramétricos" />
   
   <meta name="twitter:description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="prueba-para-más-de-dos-muestras.html"/>
-<link rel="next" href="introducción-3.html"/>
+<link rel="prev" href="prueba-mc-nemar.html"/>
+<link rel="next" href="ejercicios.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -458,196 +458,227 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ejercicios-1" class="section level1" number="13">
-<h1><span class="header-section-number">Capítulo 13</span> Ejercicios</h1>
-<p><strong>1.</strong> Siete estudiantes aprendieron álgebra utilizando el método actual y seis estudiantes aprendieron álgebra según un nuevo método.</p>
+<div id="prueba-de-cox-stuart" class="section level1" number="6">
+<h1><span class="header-section-number">Capítulo 6</span> Prueba de Cox Stuart</h1>
+<p>La siguiente prueba tiene como objetivo identificar tendencias en series de observaciones.
+Si <span class="math inline">\(\{X_{i}\}^{n}_{i=1}\)</span> es una serie de observaciones consecutivas, una manera de
+intentar descubrir si hay o no una tendencia es fijarse en las diferencias del tipo <span class="math inline">\(X_{i+c} - X_{i}\)</span> con <span class="math inline">\(c = \frac{n}{2}\)</span> si <span class="math inline">\(n\)</span> es par y <span class="math inline">\(c =\frac{(n + 1)}{2}\)</span> si es impar.
+Si <span class="math inline">\(\{X_{i}\}^{n}_{i=1}\)</span> tuviera una tendencia creciente, esperaríamos que las diferencias <span class="math inline">\(X_{i+c} - X_{i}\)</span> fuesen, en promedio, positivas, en cambio, si la tendencia fuese decreciente, se esperaría que las <span class="math inline">\(X_{i+c} - X_{i}\)</span> fueran negativas, en promedio.
+Note que la elección de <span class="math inline">\(c\)</span> produce las mayores distancias entre índices temporales para diferencias homogéneas de la serie de tiempo.</p>
+<div id="datos-4" class="section level2" number="6.1">
+<h2><span class="header-section-number">6.1</span> Datos</h2>
+<p>Los datos son observaciones consecutivas de una serie de tiempo <span class="math inline">\(\{X_{i}\}^{n}_{i=1}\)</span>.</p>
+<p>En esta prueba se agrupan en parejas de la forma <span class="math inline">\((X_{i},X_{i+c})\)</span> a las que se les asigna el signo <span class="math inline">\(&quot;+&quot;\)</span> si <span class="math inline">\(X_{i+c} &gt; X_{i}\)</span>, el signo <span class="math inline">\(&quot;-&quot;\)</span> si <span class="math inline">\(X_{i+c} &lt; X_{i}\)</span> o “0” si hay empates.</p>
+</div>
+<div id="supuestos-4" class="section level2" number="6.2">
+<h2><span class="header-section-number">6.2</span> Supuestos</h2>
+<ol style="list-style-type: decimal">
+<li><p>Las variables aleatorias <span class="math inline">\(X_{1}, X_{2}, \ldots, X_{n}\)</span> son mutuamente independientes.</p></li>
+<li><p>La escala de medida de las <span class="math inline">\(X_{i}s\)</span> es al menos ordinal.</p></li>
+<li><p>Las <span class="math inline">\(X_{i}s\)</span> son todas idénticamente distribuidas o existe una tendencia creciente o decreciente.</p></li>
+</ol>
+</div>
+<div id="estadístico-de-prueba-4" class="section level2" number="6.3">
+<h2><span class="header-section-number">6.3</span> Estadístico de Prueba</h2>
+<p><span class="math display">\[T=Total\ de\ signos\ &quot;+&quot;\]</span></p>
+<p>La distribución nula de <span class="math inline">\(T\)</span> es una distribución binomial con <span class="math inline">\(n\)</span> el número de parejas de la muestra sin empates y <span class="math inline">\(p=1/2\)</span>.</p>
+<p><span class="math display">\[T\sim Bin(n,1/2)\]</span></p>
+<p>Dependiendo del planteamiento de nuestro problema a resolver se formulan las hipótesis:</p>
+</div>
+<div id="hipótesis-4" class="section level2" number="6.4">
+<h2><span class="header-section-number">6.4</span> Hipótesis</h2>
+<div id="caso-a-prueba-de-dos-colas-4" class="section level3 unnumbered">
+<h3>Caso A (Prueba de dos colas)</h3>
+<p><span class="math display">\[\textbf{H}_0: \mathbf{P}[obtener\ +]= \mathbf{P}[obtener\ -]\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: \mathbf{P}[obtener\ +] \neq \mathbf{P}[obtener\ -]\]</span></p>
+<div id="regla-de-decisión-10" class="section level4 unnumbered">
+<h4>Regla de decisión</h4>
+<p>Rechazamos <span class="math inline">\(H_0\)</span> a un nivel de significancia <span class="math inline">\(\alpha\)</span> si</p>
+<p><span class="math display">\[T \leq t \ \ \  o \ \ \ T&gt;n-t\]</span></p>
+<p>Elegimos <span class="math inline">\(\alpha\)</span>, el tamaño de la prueba y debemos encontrar <span class="math inline">\(t\)</span> tal que</p>
+<p><span class="math display">\[\mathbf{P}[Y \leq t]=\alpha/2\]</span></p>
+<p>Donde <span class="math inline">\(Y \sim Bin (n,1/2)\)</span>.</p>
+<p>Por otro lado, si <span class="math inline">\(n&gt;20\)</span> puede resultar más sencillo utilizar una aproximación normal para realizar la prueba, en dicho caso se puede utilizar el estadístico:</p>
+<p><span class="math display">\[t=\frac{1}{2}\left(n+z_{\alpha/2}\ \sqrt{n}\right)\]</span></p>
+<p>Donde <span class="math inline">\(z_{\alpha/2}\)</span> es el cuantil de una distribución normal estándar que se puede obtener en la tabla correspondiente.</p>
+<p>y calculamos el <span class="math inline">\(p-value\)</span> de la siguiente manera:</p>
+<p><span class="math display">\[p-value=2*min\{\mathbf{P}[Y\leq T],\mathbf{P}[Y\geq T]\}\]</span></p>
+<p>Sugerimos que si <span class="math inline">\(n&gt;20\)</span>,el <span class="math inline">\(p-value\)</span> puede obtenerse más sencillo usando la aproximación normal:</p>
+<p><span class="math display">\[\mathbf{P}[Y\leq T] \thickapprox  \mathcal{N} \left(\frac{2T-n+1}{\sqrt{n}}\right)\]</span>
+<span class="math display">\[\mathbf{P}[Y\geq T] \thickapprox 1- \mathcal{N} \left(\frac{2T-n-1}{\sqrt{n}}\right)\]</span></p>
+</div>
+</div>
+<div id="caso-b-prueba-de-cola-inferior-3" class="section level3 unnumbered">
+<h3>Caso B (Prueba de cola inferior)</h3>
+<p><span class="math display">\[\textbf{H}_0: \mathbf{P}[obtener\ +] \geq \mathbf{P}[obtener\ -]\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: \mathbf{P}[obtener\ +] &lt; \mathbf{P}[obtener\ -]\]</span></p>
+<div id="regla-de-decisión-11" class="section level4 unnumbered">
+<h4>Regla de decisión</h4>
+<p>Rechazamos <span class="math inline">\(H_0\)</span> a un nivel de significancia <span class="math inline">\(\alpha\)</span> si</p>
+<p><span class="math display">\[T \leq t\]</span></p>
+<p>Elegimos <span class="math inline">\(\alpha\)</span>, el tamaño de la prueba y debemos encontrar <span class="math inline">\(t\)</span> tal que</p>
+<p><span class="math display">\[\mathbf{P}[Y \leq t]=\alpha\]</span></p>
+<p>Donde <span class="math inline">\(Y \sim Bin (n,1/2)\)</span>.</p>
+<p>y calculamos el <span class="math inline">\(p-value\)</span> de la siguiente manera:</p>
+<p><span class="math display">\[p-value=\mathbf{P}[Y\leq T]\]</span></p>
+<p>Sugerimos que si <span class="math inline">\(n&gt;20\)</span>,el <span class="math inline">\(p-value\)</span> puede obtenerse más sencillo usando la aproximación normal:</p>
+<p><span class="math display">\[\mathbf{P}[Y\leq T] \thickapprox  \mathcal{N} (\frac{2T-n+1}{\sqrt{n}})\]</span></p>
+</div>
+</div>
+<div id="caso-c-prueba-de-cola-superior-2" class="section level3 unnumbered">
+<h3>Caso C (Prueba de cola superior)</h3>
+<p><span class="math display">\[\textbf{H}_0: \mathbf{P}[obtener\ +] \leq \mathbf{P}[obtener\ -]\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: \mathbf{P}[obtener\ +] &gt; \mathbf{P}[obtener\ -]\]</span></p>
+<div id="regla-de-decisión-12" class="section level4 unnumbered">
+<h4>Regla de decisión</h4>
+<p>Rechazamos <span class="math inline">\(H_0\)</span> a un nivel de significancia <span class="math inline">\(\alpha\)</span> si</p>
+<p><span class="math display">\[T &gt; n-t \]</span></p>
+<p>Elegimos <span class="math inline">\(\alpha\)</span>, el tamaño de la prueba y debemos encontrar <span class="math inline">\(t\)</span> tal que</p>
+<p><span class="math display">\[\mathbf{P}[Y \leq t]=\alpha\]</span></p>
+<p>Donde <span class="math inline">\(Y \sim Bin (n,1/2)\)</span>.</p>
+<p>y calculamos el <span class="math inline">\(p-value\)</span> de la siguiente manera:</p>
+<p><span class="math display">\[p-value=\mathbf{P}[Y\geq T]\]</span></p>
+<p>Sugerimos que si <span class="math inline">\(n &gt; 20\)</span>,el <span class="math inline">\(p-value\)</span> puede obtenerse más sencillo usando la aproximación normal:</p>
+<p><span class="math display">\[\mathbf{P}[Y\geq T] \thickapprox 1- \mathcal{N} \left(\frac{2T-n-1}{\sqrt{n}}\right)\]</span></p>
+<p>Ahora aplicaremos lo anterior en un ejemplo ilustrativo:</p>
+</div>
+</div>
+</div>
+<div id="ejemplo-4" class="section level2" number="6.5">
+<h2><span class="header-section-number">6.5</span> Ejemplo</h2>
+<p>Una hidroeléctrica esta muy interesada en seguir las tasas promedio de descarga de agua de las corrientes que lo alimentan. Se tienen los registros mensuales de estas tasas (en pies cúbicos por segundo) durante un período de 24 meses.
+La empresa sospecha que la tasa esta disminuyendo. ¿Podemos corroborar la sospecha con un nivel de significancia del 5%?</p>
+<p>Los datos están en la siguiente tabla, los cuales estan emparejados por mes ya que estas tasa de descarga siguen un ciclo anual,Se sabe que la tasa de descarga sigue un ciclo anual, por lo que no se puede emparejar las descargas de corriente durante dos meses diferentes; sin embargo, al emparejar los mismos meses consecutivos, se puede investigar la existencia de una tendencia. Los datos son los siguientes::</p>
 <p><span class="math display">\[
-\begin{array}{|c| c c c c c c c c|} 
-\hline 
-\textbf{Método} &amp;\textbf{Puntajes} &amp;&amp;&amp;&amp;&amp; &amp; &amp; \\ 
- \hline
-\mbox{Actual} &amp; 68 &amp; 72 &amp; 79 &amp; 69 &amp; 84 &amp; 80 &amp; 78 &amp;\\ 
- \hline
-\mbox{Nuevo} &amp; 64 &amp; 60 &amp; 68 &amp; 73 &amp; 72 &amp; 70&amp; &amp; \\ 
+\begin{array}{|c| c c|c| c c|} 
+\hline
+\textbf{Mes} &amp; \textbf{Primer Año} &amp; \textbf{Segundo Año} &amp; \textbf{Mes} &amp; \textbf{Primer Año} &amp; \textbf{Segundo Año}\\
+\hline
+Enero &amp; 14.6 &amp; 14.2 &amp; Julio &amp; 92.8 &amp; 88.1 \\
+\hline
+Febrero&amp;12.2&amp;10.5&amp;Agosto&amp;74.4&amp;80 \\
+\hline
+Marzo&amp;104&amp;123&amp;Septiembre&amp;75.4&amp;75.6 \\
+\hline
+Abril&amp;220&amp;190&amp;Octubre&amp;51.7&amp;48.8 \\
+\hline
+Mayo&amp;110&amp;138&amp;Noviembre&amp;29.3&amp;27.1 \\
+\hline
+Junio&amp;86&amp;98.1&amp;Diciembre&amp;16&amp;15.7 \\
 \hline
 \end{array}
 \]</span></p>
-<p>¿Con una <span class="math inline">\(\alpha\)</span> del 5% podría decir que la efectividad (medida con los punatjes) de ambos métodos es similar?</p>
-<p><strong>2.</strong> En un laboratorio con entorno controlado, 10 hombres y 10 mujeres fueron evaluados para determinar la temperatura ambiente que encontraron más cómoda. los resultados fueron los siguientes:</p>
+<p>Los datos ya estan emparejados ahora sólo debemos asignar los signos considerando <span class="math inline">\(X_i\)</span> el primer año y <span class="math inline">\(Y_i\)</span> el segundo año.</p>
+<p>Recordando que cada par de datos en la muestra se clasificará por un signo <span class="math inline">\(&quot;+&quot;\)</span> cuando <span class="math inline">\(X_{i} &lt; Y_{i}\)</span>, por un signo “-” cuando <span class="math inline">\(X_{i} &gt; Y_{i}\)</span> y se omitirán las parejas cuando <span class="math inline">\(X_i = Y_i\)</span>. Y el tamaño de la muestra después de quitar los empates será <span class="math inline">\(n\)</span>, haremos lo siguiente:</p>
 <p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\textbf{Hombres} &amp; \textbf{Mujeres} \\  
- \hline
-74&amp;75\\
- \hline
-72&amp;77\\
- \hline
-77&amp;78\\
- \hline
-76&amp;79\\
- \hline
-76&amp;77\\
- \hline
-73&amp;73\\
- \hline
-75&amp;78\\
- \hline
-73&amp;79\\
- \hline
-74&amp;78\\
- \hline
-75&amp;80\\
-  \hline
+\begin{array}{|c|c c c|} 
+\hline
+\textbf{Mes} &amp; \textbf{Primer Año} &amp; \textbf{Segundo Año}&amp;\textbf{Signo}\\
+\hline
+Enero&amp;14.6&amp;14.2&amp;- \\
+Febrero&amp;12.2&amp;10.5&amp;-\\
+Marzo&amp;104&amp;123&amp;+ \\
+Abril&amp;220&amp;190&amp;- \\
+Mayo&amp;110&amp;138&amp;+ \\
+Junio&amp;86&amp;98.1&amp;+ \\
+Julio&amp;92.8&amp;88.1&amp;-\\
+Agosto&amp;74.4&amp;80&amp;+ \\
+Septiembre&amp;75.4&amp;75.6&amp;+ \\
+Octubre&amp;51.7&amp;48.8&amp;- \\
+Noviembre&amp;29.3&amp;27.1&amp;- \\
+Diciembre&amp;16&amp;15.7&amp;-\\
 \hline
 \end{array}
 \]</span></p>
-<p>Suponiendo que estas temperaturas son una muestra aleatoria de la población, ¿la temperatura promedio es la misma para hombres y mujeres?.</p>
-<p><strong>3.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las marcas? De haber diferencia, que marcas parecen ser las diferentes? Use <span class="math inline">\(\alpha=10\%\)</span></p>
-<p><strong>4.</strong> Tres maestros desean comparar las claificaciones que pusieron en el semestre pasado para ver si alguno tiende a dar calificaciones diferentes que los otros.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||} 
-\hline 
-\mbox{Calificación} &amp; A &amp; B&amp;C \\  
- \hline
-10&amp;4&amp;10&amp;6\\
- \hline
-9&amp;14&amp;6&amp;7\\
- \hline
-8&amp;17&amp;9&amp;8\\
- \hline
-7&amp;6&amp;7&amp;6\\
- \hline
-6&amp;2&amp;6&amp;1\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Con los datos observados se puede corroborar la sospecha de que alguno de los maestros da calificaciones diferentes a los otros? Use <span class="math inline">\(\alpha=5\%\)</span></p>
-<p><strong>5.</strong> El Hospital “Los Ángeles” realizó un estudio en 4 Dietas a un grupo de 20 individuos; cada Dieta se aplicó aleatoriamente a cada individio. Se registró la pérdida de peso en <span class="math inline">\(kg\)</span>.
-Realiza la prueba correspondiente para poder concluir si, ¿Hay diferencia significativa entre la efectividad de las Dietas?</p>
-<p><span class="math display">\[
-\begin{array}{c c c c} 
-\textbf{Dieta 1} &amp; \textbf{Dieta 2} &amp; \textbf{Dieta 3} &amp; \textbf{Dieta 4}\\
-6.1&amp;5&amp;7.6&amp;6.2\\
-4.3&amp;5.6&amp;6.8&amp;8\\
-4.5&amp;7.3&amp;3.9&amp;7.4\\
-2.4&amp;5.7&amp;7.9&amp;4.6\\
-9.1&amp;2.1&amp;5.9&amp;7\\
-\end{array}
-\]</span></p>
-<p><strong>6.</strong> Un banco de sangre mantuvo un registro de la frecuencia cardíaca de varios donadores de sangre.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Hombres}&amp; \mbox{Mujeres} \\  
- \hline
-58&amp;66\\
- \hline
-76&amp;74\\
- \hline
-82&amp;69\\
- \hline
-74&amp;76\\
- \hline
-79&amp;72\\
- \hline
-65&amp;73\\
- \hline
-74&amp;75\\
- \hline
-86&amp;67\\
- \hline
-&amp;68\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p>¿Es la variación entre los hombres significativamente mayor que la variación entre las mujeres? nivel de significancia <span class="math inline">\(5\%\)</span></p>
-<p><strong>7.</strong> Se desea probar que las variaciones de las temperaturas altas en Des Moines son mayores que las variaciones de las temperaturas altas en Spokane, para ello se tomó una muestra de las temperaturas altas diarias durante el verano. Use nivel de significancia <span class="math inline">\(10\%\)</span></p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Des Moines}&amp; \mbox{Spokane} \\ 
- \hline
-83&amp;78\\
- \hline
-91&amp;82\\
- \hline
-94&amp;81\\
- \hline
-89&amp;77\\
- \hline
-89&amp;79\\
- \hline
-96&amp;81\\
- \hline
-91&amp;80\\
- \hline
-92&amp;81\\
- \hline
-82&amp;79\\
- \hline
-93&amp;80\\
- \hline
-90&amp;\\
- \hline
-93&amp;\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p><strong>8.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las varianzas de las duraciones por marca? Use <span class="math inline">\(\alpha=10\%\)</span></p>
+<p><strong>Paso 1</strong> Escribimos la prueba a utilizar</p>
+<p>La prueba a utilizar <strong>Prueba Cox-Stuart Caso B cola inferior</strong></p>
+<p><strong>Paso 2</strong> Formulamos nuestras hipótesis en contexto al problema planteado</p>
+<p><span class="math display">\[\textbf{H}_0:\ \mbox{La tasa promedio de descarga de agua no está disminuyendo.}\]</span>
+<span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: \  \mbox{La tasa promedio de descarga de agua está disminuyendo.}\]</span></p>
+<p><strong>Paso 3</strong> Estadístico de prueba</p>
+<p>Utilizaremos el estadístico</p>
+<p><span class="math display">\[T=5 \ \ número \ de \ signos\ &quot;+&quot;\]</span></p>
+<p><span class="math display">\[T\sim Bin(12,1/2)\]</span></p>
+<p><strong>Paso 4</strong> Procedimiento completo</p>
+<p><strong>Supuestos:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Muestra aleatoria de tamaño 12.</li>
+</ol>
+<ul>
+<li><p>Tomaremos como “éxito” los que si están disminuyendo, en este caso los signos “+.”</p></li>
+<li><p>Tomaremos <span class="math inline">\(\alpha\)</span>= 5% =0.05 el nivel de significancia.</p></li>
+<li><p><span class="math inline">\(n=12\)</span> tamaño de la muestra</p></li>
+<li><p><span class="math inline">\(p\)</span>=1/2</p></li>
+</ul>
+<p><strong>Paso 5</strong> Regla de decisión</p>
+<p>Rechazamos <span class="math inline">\(H_0\)</span> a un nivel de significancia <span class="math inline">\(\alpha\)</span> si <span class="math inline">\(T \leq t\)</span></p>
+<p><span class="math display">\[T=5 \nleq 3=t\]</span></p>
+<p><span class="math inline">\(\therefore\)</span> No rechazamos <span class="math inline">\(H_0\)</span></p>
+<p>y calculamos el <span class="math inline">\(p-value\)</span> de la siguiente manera:</p>
+<p><span class="math display">\[p-value=\mathbf{P}[Y\leq T]=\mathbf{P}[Y\leq 5]=0.3872\]</span>
+<span class="math inline">\(\therefore\)</span> <span class="math inline">\(p-value=0.3872&gt;0.05=\alpha\)</span> entonces no rechazamos <span class="math inline">\(H_0\)</span>.</p>
+<p><strong>Paso 6</strong> Conclusión</p>
+<p>Existe evidencia suficiente para decir que la tasa promedio de descarga de agua no está disminuyendo.</p>
+</div>
+<div id="ejemplo-en-r-studio-4" class="section level2" number="6.6">
+<h2><span class="header-section-number">6.6</span> Ejemplo en R-Studio</h2>
+<p>Ahora haremos la réplica en R.</p>
+<p>La estadística de prueba será <span class="math inline">\(T=5\)</span>. Tomaremos <span class="math inline">\(\alpha=5\%\)</span></p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="prueba-de-cox-stuart.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Datos</span></span>
+<span id="cb34-2"><a href="prueba-de-cox-stuart.html#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="prueba-de-cox-stuart.html#cb34-3" aria-hidden="true" tabindex="-1"></a>T_1<span class="ot">=</span><span class="dv">5</span>              <span class="co">#Número de éxitos (+)</span></span>
+<span id="cb34-4"><a href="prueba-de-cox-stuart.html#cb34-4" aria-hidden="true" tabindex="-1"></a>alpha<span class="ot">=</span><span class="fl">0.05</span>       <span class="co">#Nivel de significancia</span></span>
+<span id="cb34-5"><a href="prueba-de-cox-stuart.html#cb34-5" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">12</span>              <span class="co">#Tamaño de la muestra </span></span>
+<span id="cb34-6"><a href="prueba-de-cox-stuart.html#cb34-6" aria-hidden="true" tabindex="-1"></a>p<span class="ot">=</span><span class="fl">0.5</span>            <span class="co">#Para la prueba de cox &quot;p&quot; siempre será 1/2</span></span></code></pre></div>
+<p>Según el planteamiento de las hipótesis, este es un Caso B (de cola inferior), por lo que siguiendo la regla de decisión se rechaza <span class="math inline">\(H_0\)</span> si <span class="math inline">\(T\leq t\)</span> donde <span class="math inline">\(t\)</span> será en cuantil que acumule 5% en la distribución binomial</p>
+<p>Podemos graficar la función de distribución:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-22-1.png" width="672" style="display: block; margin: auto;" />
+Calculamos <span class="math inline">\(t\)</span> y el <span class="math inline">\(p-value\)</span>:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="prueba-de-cox-stuart.html#cb35-1" aria-hidden="true" tabindex="-1"></a>t<span class="ot">=</span><span class="fu">qbinom</span>(.<span class="dv">05</span>,n,p)       <span class="co">#Cuantil a comparar con el estadístico</span></span>
+<span id="cb35-2"><a href="prueba-de-cox-stuart.html#cb35-2" aria-hidden="true" tabindex="-1"></a>t</span></code></pre></div>
+<pre><code>[1] 3</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="prueba-de-cox-stuart.html#cb37-1" aria-hidden="true" tabindex="-1"></a>pvalue<span class="ot">=</span><span class="fu">pbinom</span>(T_1,n,p)  <span class="co">#p-value</span></span>
+<span id="cb37-2"><a href="prueba-de-cox-stuart.html#cb37-2" aria-hidden="true" tabindex="-1"></a>pvalue</span></code></pre></div>
+<pre><code>[1] 0.387207</code></pre>
+<p>Tenemos que como <span class="math inline">\(T=5\nleq 3 =t\)</span>, entonces NO se rechaza <span class="math inline">\(H_0\)</span> y por lo tanto se concluye que NO hay información suficiente para decir que la tasa promedio de descarga mensual este disminuyendo.</p>
+<p>Finalmente utilizaremos la función en R:</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="prueba-de-cox-stuart.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="dv">5</span>,n,<span class="at">p=</span><span class="fl">0.5</span>,<span class="at">alternative =</span> <span class="st">&quot;less&quot;</span>)</span></code></pre></div>
+<pre><code>
+    Exact binomial test
+
+data:  5 and n
+number of successes = 5, number of trials = 12, p-value = 0.3872
+alternative hypothesis: true probability of success is less than 0.5
+95 percent confidence interval:
+ 0.0000000 0.6847622
+sample estimates:
+probability of success 
+             0.4166667 </code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="prueba-de-cox-stuart.html#cb41-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">c</span>(<span class="fl">14.6</span>,<span class="fl">14.2</span>,<span class="fl">12.2</span>,<span class="fl">10.5</span>,<span class="dv">104</span>,<span class="dv">123</span>,<span class="dv">220</span>,<span class="dv">190</span>,<span class="dv">110</span>,<span class="dv">138</span>,<span class="dv">86</span>,<span class="fl">98.1</span>,<span class="fl">92.8</span>,<span class="fl">88.1</span>,<span class="fl">74.4</span>,<span class="dv">80</span>,<span class="fl">75.4</span>,<span class="fl">75.6</span>,<span class="fl">51.7</span>,<span class="fl">48.8</span>,<span class="fl">29.3</span>,<span class="fl">27.1</span>,<span class="dv">16</span>,<span class="fl">15.7</span>)</span>
+<span id="cb41-2"><a href="prueba-de-cox-stuart.html#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-3"><a href="prueba-de-cox-stuart.html#cb41-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb41-4"><a href="prueba-de-cox-stuart.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(randtests)</span>
+<span id="cb41-5"><a href="prueba-de-cox-stuart.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cox.stuart.test</span>(x)</span></code></pre></div>
+<pre><code>
+    Cox Stuart test
+
+data:  x
+statistic = 4, n = 12, p-value = 0.3877
+alternative hypothesis: non randomness</code></pre>
 
 </div>
-
-
-
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="prueba-para-más-de-dos-muestras.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introducción-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="prueba-mc-nemar.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ejercicios.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 13 Ejercicios | Modelos no paramétricos</title>
+  <title>Capítulo 15 Prueba de Independencia | Modelos no paramétricos</title>
   <meta name="description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta property="og:title" content="Capítulo 15 Prueba de Independencia | Modelos no paramétricos" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://github.com/svg18/MNP" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="svg18/MNP" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta name="twitter:title" content="Capítulo 15 Prueba de Independencia | Modelos no paramétricos" />
   
   <meta name="twitter:description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="prueba-para-más-de-dos-muestras.html"/>
-<link rel="next" href="introducción-3.html"/>
+<link rel="prev" href="tablas-de-contingencia-de-2x2.html"/>
+<link rel="next" href="tablas-de-contingecia-de-r-times-c.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -458,196 +458,218 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ejercicios-1" class="section level1" number="13">
-<h1><span class="header-section-number">Capítulo 13</span> Ejercicios</h1>
-<p><strong>1.</strong> Siete estudiantes aprendieron álgebra utilizando el método actual y seis estudiantes aprendieron álgebra según un nuevo método.</p>
+<div id="prueba-de-independencia" class="section level1" number="15">
+<h1><span class="header-section-number">Capítulo 15</span> Prueba de Independencia</h1>
+<div id="datos-11" class="section level2" number="15.1">
+<h2><span class="header-section-number">15.1</span> Datos</h2>
+<p>Una muestra aleatoria de tamaño <span class="math inline">\(N\)</span>. Las observaciones en la muestra aleatoria son clasificados de acuerdo a dos criterios, usando el primer criterio cada observación es asociada con uno de los <span class="math inline">\(r\)</span> renglones, y usando el segundo criterio cada observación es asociada con una de las <span class="math inline">\(C\)</span> columnas.
+Sea <span class="math inline">\(O_{ij}\)</span> el número de observaciones asociadas con el renglón <span class="math inline">\(i\)</span> y la columna <span class="math inline">\(j\)</span> simultáneamente; el número total de observaciones en el renglón <span class="math inline">\(i\)</span> es designado por <span class="math inline">\(R_{i}\)</span>, (en lugar de <span class="math inline">\(n_{i}\)</span> como la prueba anterior, para enfatizar que los totales de las filas ahora son aleatorios en lugar de fijos), y en la columna <span class="math inline">\(j\)</span> por <span class="math inline">\(C_{j}\)</span>. La suma de los números en todas las celdas es <span class="math inline">\(N\)</span>.</p>
+<p>Los datos se organizan en la siguiente tabla de contingencia:</p>
 <p><span class="math display">\[
-\begin{array}{|c| c c c c c c c c|} 
+\begin{array}{|c|c|c|c|c|c|} 
+\hline
+&amp;\textbf{Columna 1} &amp;\textbf{Columna 2} &amp;\ldots&amp;\textbf{Columna c}&amp;\textbf{Totales}\\
+\hline
+\textbf{Renglón 1} &amp;O_{11} &amp;O_{12} &amp;\ldots&amp;O_{1c}&amp;R_1\\
+\hline
+\textbf{Renglón 2} &amp;O_{21} &amp;O_{22} &amp;\ldots&amp;O_{2c}&amp;R_2\\
+\hline
+\vdots&amp; \vdots&amp; \vdots&amp; \ddots&amp;\vdots&amp; \vdots\\
+\textbf{Renglón r}&amp;O_{r1} &amp;O_{r2} &amp;\ldots&amp;O_{rc}&amp;R_r\\
+\hline
+\textbf{Totales}&amp;C_1&amp;C_2&amp;\ldots&amp;C_c&amp;N\\
+\hline
+\end {array}
+\]</span></p>
+</div>
+<div id="supuestos-10" class="section level2" number="15.2">
+<h2><span class="header-section-number">15.2</span> Supuestos</h2>
+<ul>
+<li><p>La muestra de <span class="math inline">\(N\)</span> observaciones es una muestra aleatoria. (Cada observación tiene la misma probabilidad como cualquier otra observación de ser clasificada en el renglón <span class="math inline">\(i\)</span> y la columna <span class="math inline">\(j\)</span> independientemente de las otras observaciones).</p></li>
+<li><p>Cada observación puede ser clasificada en una de las <span class="math inline">\(r\)</span> diferentes categorías de acuerdo al primer criterio y en una de las <span class="math inline">\(C\)</span> diferentes categorías de acuerdo al segundo criterio.</p></li>
+</ul>
+</div>
+<div id="estadístico-de-prueba-10" class="section level2" number="15.3">
+<h2><span class="header-section-number">15.3</span> Estadístico de Prueba</h2>
+<p>El estadístico de prueba <span class="math inline">\(T\)</span> es obtenido de la siguiente manera:</p>
+<p><span class="math display">\[T=\sum_{i=1}^{r}\sum_{j=1}^{c}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}, \ \ \ Donde\ \ E_{ij}=\frac{R_{j}C_{j}}{N}\]</span></p>
+<p>Una expresión equivalente para <span class="math inline">\(T\)</span>, mas adecuado para el uso de su calculadora es:</p>
+<p><span class="math display">\[T=\sum_{i=1}^{r}\sum_{j=1}^{c}\frac{O_{ij}^{2}}{E_{ij}}-N\]</span></p>
+<p><strong>Distribución de T</strong></p>
+<p>La distribución nula de T es obtenida aproximadamente por la Distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\((r-1)\times(c-1)\)</span> grados de libertad, cuyos cuantiles se encuentran en las tablas de dicha distribución.</p>
+<p>Es decir,</p>
+<p><span class="math display">\[T\sim \chi^2_{(r-1)(c-1)}\]</span></p>
+</div>
+<div id="hipótesis-10" class="section level2" number="15.4">
+<h2><span class="header-section-number">15.4</span> Hipótesis</h2>
+<p><span class="math display">\[\textbf{H}_0: \ \mbox{El evento} \  &quot;una\ observación\ está\ en\ la\ fila\ i&quot;\ \mbox{es independiente}\]</span>
+<span class="math display">\[\mbox{del evento} \ &quot;esa\ misma\ observación\ está\ en\ la\ columna\ j&quot;\ \mbox{para todos} \ \ i,\ j.\]</span></p>
+<p><span class="math display">\[es \ decir,\]</span></p>
+<p><span class="math display">\[\textbf{H}_0: \mathbf{P}[\ \ renglón\ \ i\ ,\ \ columna\ \ j\ \ ]= \mathbf{P}[\ \ renglón\ \ i \ \ ]*\mathbf{P}[\ \ columna\ \ j\ \ ]\ \ \ \ \forall \  \ i,\ j.\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a:\mathbf{P}[\ \ renglón\ \ i\ ,\ columna\ \ j\ \ ]\ \  \neq \ \mathbf{P}[ \ \ renglón\ i\ \ ]*P[\ \ columna\ j\ \  ]\ \ \ \ ; \ para\ alguna\ \ i \ , \ j. \ \]</span></p>
+<div id="regla-de-decisión-24" class="section level4 unnumbered">
+<h4>Regla de decisión</h4>
+<p>Rechazo <span class="math inline">\(H_0\)</span> si <span class="math inline">\(T&gt; \chi^2(1-\alpha)\)</span> con <span class="math inline">\((r-1)\times(c-1)\)</span> grados de libertad, cuyos cuantiles se encuentran en las tablas de dicha distribución.</p>
+<p>Ahora un ejercicio:</p>
+</div>
+</div>
+<div id="ejercicio" class="section level2" number="15.5">
+<h2><span class="header-section-number">15.5</span> Ejercicio</h2>
+<p>Se especula que la preferencia del cereal ToastyOs está asociada con el nivel educativo de las
+personas. Si esto resulta cierto, Tabisco Food, la distribuidora del producto, siente que debería
+aprovechar este mercado dando un mayor empuje de su campaña de marketing a este segmento
+de la población. Sin embargo, antes de comprometerse a esta tarea se decidió realizar un análisis
+objetivo que verifiquen las especulaciones. Para esto se tomó una muestra aleatoria de 500
+individuos que han probado el producto con los siguientes resultados:</p>
+<p><span class="math display">\[
+\begin{array}{|c|c|c|c|} 
+\hline
+\mbox{Preferencia}&amp; \mbox{Sin Universidad}&amp;\mbox{Nivel de Estudios Truncados}&amp;\mbox{Graduados}\\
+\hline
+\mbox{Gusta}&amp; 75&amp;90&amp;135\\
+\hline
+\mbox{Neutral/No les gusta}&amp; 25&amp;60&amp;115\\
+\hline
+\end {array}
+\]</span></p>
+<p><strong>Paso 1</strong> Prueba a utilizar <strong>Tablas de Contingencia rxc prueba de Independencia</strong></p>
+<p>Es una prueba de independencia ya que sólo tenemos una población.</p>
+<p><strong>Paso 2</strong> Planteamiento de hipótesis</p>
+<p><span class="math display">\[\textbf{H}_0: \ \mbox{El nivel educativo es independiente de la preferencia hacia el producto.}\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a:\ \mbox{El nivel educativo no es independiente de la preferencia hacia el producto.}\]</span></p>
+<p><strong>Paso 3</strong> Estadístico de Prueba</p>
+<p>Para poder calcular el estadístico de prueba no ayudaremos de cierto calculos previos.</p>
+<p><span class="math display">\[
+\begin{array}{||c| c| c |c |c||} 
 \hline 
-\textbf{Método} &amp;\textbf{Puntajes} &amp;&amp;&amp;&amp;&amp; &amp; &amp; \\ 
+\mbox{Preferencia}&amp; \mbox{Sin Universidad}&amp;\mbox{Nivel de Estudios Truncados}&amp;\mbox{Graduados} &amp;\mbox{ Totales} \\  
  \hline
-\mbox{Actual} &amp; 68 &amp; 72 &amp; 79 &amp; 69 &amp; 84 &amp; 80 &amp; 78 &amp;\\ 
+\mbox{Gusta}&amp;75&amp;90&amp;135&amp;300\\
  \hline
-\mbox{Nuevo} &amp; 64 &amp; 60 &amp; 68 &amp; 73 &amp; 72 &amp; 70&amp; &amp; \\ 
-\hline
+\mbox{Neutral/No les gusta}&amp;25&amp;60&amp;115&amp;200\\
+ \hline
+\mbox{Totales}&amp;100&amp;150&amp;250&amp;500\\
+ \hline
 \end{array}
 \]</span></p>
-<p>¿Con una <span class="math inline">\(\alpha\)</span> del 5% podría decir que la efectividad (medida con los punatjes) de ambos métodos es similar?</p>
-<p><strong>2.</strong> En un laboratorio con entorno controlado, 10 hombres y 10 mujeres fueron evaluados para determinar la temperatura ambiente que encontraron más cómoda. los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\textbf{Hombres} &amp; \textbf{Mujeres} \\  
- \hline
-74&amp;75\\
- \hline
-72&amp;77\\
- \hline
-77&amp;78\\
- \hline
-76&amp;79\\
- \hline
-76&amp;77\\
- \hline
-73&amp;73\\
- \hline
-75&amp;78\\
- \hline
-73&amp;79\\
- \hline
-74&amp;78\\
- \hline
-75&amp;80\\
-  \hline
-\hline
-\end{array}
-\]</span></p>
-<p>Suponiendo que estas temperaturas son una muestra aleatoria de la población, ¿la temperatura promedio es la misma para hombres y mujeres?.</p>
-<p><strong>3.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las marcas? De haber diferencia, que marcas parecen ser las diferentes? Use <span class="math inline">\(\alpha=10\%\)</span></p>
-<p><strong>4.</strong> Tres maestros desean comparar las claificaciones que pusieron en el semestre pasado para ver si alguno tiende a dar calificaciones diferentes que los otros.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||} 
-\hline 
-\mbox{Calificación} &amp; A &amp; B&amp;C \\  
- \hline
-10&amp;4&amp;10&amp;6\\
- \hline
-9&amp;14&amp;6&amp;7\\
- \hline
-8&amp;17&amp;9&amp;8\\
- \hline
-7&amp;6&amp;7&amp;6\\
- \hline
-6&amp;2&amp;6&amp;1\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Con los datos observados se puede corroborar la sospecha de que alguno de los maestros da calificaciones diferentes a los otros? Use <span class="math inline">\(\alpha=5\%\)</span></p>
-<p><strong>5.</strong> El Hospital “Los Ángeles” realizó un estudio en 4 Dietas a un grupo de 20 individuos; cada Dieta se aplicó aleatoriamente a cada individio. Se registró la pérdida de peso en <span class="math inline">\(kg\)</span>.
-Realiza la prueba correspondiente para poder concluir si, ¿Hay diferencia significativa entre la efectividad de las Dietas?</p>
-<p><span class="math display">\[
-\begin{array}{c c c c} 
-\textbf{Dieta 1} &amp; \textbf{Dieta 2} &amp; \textbf{Dieta 3} &amp; \textbf{Dieta 4}\\
-6.1&amp;5&amp;7.6&amp;6.2\\
-4.3&amp;5.6&amp;6.8&amp;8\\
-4.5&amp;7.3&amp;3.9&amp;7.4\\
-2.4&amp;5.7&amp;7.9&amp;4.6\\
-9.1&amp;2.1&amp;5.9&amp;7\\
-\end{array}
-\]</span></p>
-<p><strong>6.</strong> Un banco de sangre mantuvo un registro de la frecuencia cardíaca de varios donadores de sangre.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Hombres}&amp; \mbox{Mujeres} \\  
- \hline
-58&amp;66\\
- \hline
-76&amp;74\\
- \hline
-82&amp;69\\
- \hline
-74&amp;76\\
- \hline
-79&amp;72\\
- \hline
-65&amp;73\\
- \hline
-74&amp;75\\
- \hline
-86&amp;67\\
- \hline
-&amp;68\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p>¿Es la variación entre los hombres significativamente mayor que la variación entre las mujeres? nivel de significancia <span class="math inline">\(5\%\)</span></p>
-<p><strong>7.</strong> Se desea probar que las variaciones de las temperaturas altas en Des Moines son mayores que las variaciones de las temperaturas altas en Spokane, para ello se tomó una muestra de las temperaturas altas diarias durante el verano. Use nivel de significancia <span class="math inline">\(10\%\)</span></p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Des Moines}&amp; \mbox{Spokane} \\ 
- \hline
-83&amp;78\\
- \hline
-91&amp;82\\
- \hline
-94&amp;81\\
- \hline
-89&amp;77\\
- \hline
-89&amp;79\\
- \hline
-96&amp;81\\
- \hline
-91&amp;80\\
- \hline
-92&amp;81\\
- \hline
-82&amp;79\\
- \hline
-93&amp;80\\
- \hline
-90&amp;\\
- \hline
-93&amp;\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p><strong>8.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las varianzas de las duraciones por marca? Use <span class="math inline">\(\alpha=10\%\)</span></p>
+<p>Ahora:</p>
+<p><span class="math inline">\(P[Guste\ el\ producto]= \frac{300}{500}=.6= 60\ \%\ de\ la\ población\ le\ gusta\ el\ cereal\)</span></p>
+<p><span class="math inline">\(P[No\ Guste\ el\ producto]= \frac{200}{500}=.4= 40\ \%\ de\ la\ población\ no\ le\ gusta\ el\ cereal\)</span></p>
+<p><span class="math inline">\(P[Sin\ universidad]= \frac{100}{500}=.2= 20\ \%\ de\ la\ población\ no\ tiene\ universidad.\)</span></p>
+<p><span class="math inline">\(P[Estudios\ truncados]= \frac{150}{500}=.3= 30\ \%\ de\ la\ población\ tiene\ estudios\ truncados.\)</span></p>
+<p><span class="math inline">\(P[Graduados]= \frac{250}{500}=.5= 50\ \%\ de\ la\ población\ están\ graduados.\)</span></p>
+<p>Bajo <span class="math inline">\(H_0\)</span> el nivel educativo y la preferencia por el cereal son independientes:</p>
+<p>Ahora:</p>
+<p><span class="math inline">\(P[Guste\ el\ producto\ y\ sin\ universidad]=\)</span>
+<span class="math inline">\(P[Guste\ el\ producto]*P[sin\ universidad]=.6*.2=.12\)</span></p>
+<p><span class="math inline">\(P[Guste\ el\ producto\ y\ Estudios\ truncados]=\)</span>
+<span class="math inline">\(P[Guste\ el\ producto]*P[Estudios\ truncados]=.6*.3=.18\)</span></p>
+<p><span class="math inline">\(P[Guste\ el\ producto\ y\ Graduados]=\)</span>
+<span class="math inline">\(P[Guste\ el\ producto]*P[Graduados]=.6*.5=.30\)</span></p>
+<p>Análogo para no gustar el producto.</p>
+<p>Ahora vamos a calcular los valores esperados:</p>
+<p><span class="math display">\[E_{11}=\frac{300*100}{500}=60 \ \ E_{12}=\frac{300*150}{500}=90 \ \  E_{13}=\frac{300*250}{500}=150\]</span>
+<span class="math display">\[E_{21}=\frac{200*100}{500}=40 \ \  E_{22}=\frac{200*150}{500}=60 \ \ E_{23}=\frac{200*250}{500}=100\]</span></p>
+<p>Regresando al Estadístico de Prueba:</p>
+<p><span class="math display">\[T=\sum_{i=1}^{2}\sum_{j=1}^{3}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}= \frac{(75-60)^2}{60}+\frac{(90-90)^2}{90}+\frac{(135-150)^2}{150}+\]</span>
+<span class="math display">\[\frac{(25-40)^2}{40}+\frac{(60-60)^2}{60}+\frac{(115-100)^2}{100}=13.125\]</span></p>
+<p><strong>Paso 4</strong> Procedimiento completo</p>
+<p>Utilizaremos un <span class="math inline">\(\alpha=0.05\)</span></p>
+<p>Entonces tenemos <span class="math inline">\(\chi^2_{(.95,(2-1)*(3-1))}=\chi^2_{(.95,2)}=5.99\)</span></p>
+<p><strong>Paso 5</strong> Regla de decisión</p>
+<p>Rechazo <span class="math inline">\(H_0\)</span> si <span class="math inline">\(T&gt; \chi^2(1-\alpha)\)</span> con <span class="math inline">\((r-1)\times(c-1)\)</span> grados de libertad, cuyos cuantiles se encuentran en las tablas de dicha distribución.</p>
+<p>como <span class="math inline">\(\chi^2=5.99 &lt; T=13.125\)</span></p>
+<p><span class="math inline">\(\therefore\)</span> Rechazo <span class="math inline">\(H_0\)</span>.</p>
+<p><strong>Paso 6</strong> Conclusión</p>
+<p>Existe evidencia suficiente para suponer que hay una relación entre la preferencia del cereal y el nivel educativo.</p>
+</div>
+<div id="ejemplo-en-r-studio-10" class="section level2" number="15.6">
+<h2><span class="header-section-number">15.6</span> Ejemplo en R-Studio</h2>
+<p>Ahora haremos la réplica en R.</p>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="prueba-de-independencia.html#cb106-1" aria-hidden="true" tabindex="-1"></a>Preferencia<span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;Gusta&quot;</span>,<span class="st">&quot;Neutral/No les gusta&quot;</span>)</span>
+<span id="cb106-2"><a href="prueba-de-independencia.html#cb106-2" aria-hidden="true" tabindex="-1"></a>Sin_Universidad<span class="ot">=</span><span class="fu">c</span>(<span class="dv">75</span>,<span class="dv">25</span>)</span>
+<span id="cb106-3"><a href="prueba-de-independencia.html#cb106-3" aria-hidden="true" tabindex="-1"></a>Nivel_Truncado<span class="ot">=</span><span class="fu">c</span>(<span class="dv">90</span>,<span class="dv">60</span>)</span>
+<span id="cb106-4"><a href="prueba-de-independencia.html#cb106-4" aria-hidden="true" tabindex="-1"></a>Graduados<span class="ot">=</span><span class="fu">c</span>(<span class="dv">135</span>,<span class="dv">115</span>)</span>
+<span id="cb106-5"><a href="prueba-de-independencia.html#cb106-5" aria-hidden="true" tabindex="-1"></a>datos<span class="ot">=</span><span class="fu">data.frame</span>(Preferencia,Sin_Universidad,Nivel_Truncado,Graduados)</span>
+<span id="cb106-6"><a href="prueba-de-independencia.html#cb106-6" aria-hidden="true" tabindex="-1"></a>datos</span></code></pre></div>
+<pre><code>           Preferencia Sin_Universidad Nivel_Truncado Graduados
+1                Gusta              75             90       135
+2 Neutral/No les gusta              25             60       115</code></pre>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="prueba-de-independencia.html#cb108-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ahora, vamos a calcular los totales y adjuntarlos a la tabla</span></span>
+<span id="cb108-2"><a href="prueba-de-independencia.html#cb108-2" aria-hidden="true" tabindex="-1"></a>Preferencia<span class="ot">=</span><span class="fu">c</span>(Preferencia,<span class="st">&quot;Totales&quot;</span>)</span>
+<span id="cb108-3"><a href="prueba-de-independencia.html#cb108-3" aria-hidden="true" tabindex="-1"></a>Sin_Universidad<span class="ot">=</span><span class="fu">c</span>(Sin_Universidad, <span class="fu">sum</span>(Sin_Universidad))</span>
+<span id="cb108-4"><a href="prueba-de-independencia.html#cb108-4" aria-hidden="true" tabindex="-1"></a>Nivel_Truncado<span class="ot">=</span><span class="fu">c</span>(Nivel_Truncado, <span class="fu">sum</span>(Nivel_Truncado))</span>
+<span id="cb108-5"><a href="prueba-de-independencia.html#cb108-5" aria-hidden="true" tabindex="-1"></a>Graduados<span class="ot">=</span><span class="fu">c</span>(Graduados,<span class="fu">sum</span>(Graduados))</span>
+<span id="cb108-6"><a href="prueba-de-independencia.html#cb108-6" aria-hidden="true" tabindex="-1"></a>Totales<span class="ot">=</span><span class="fu">c</span>(Sin_Universidad[<span class="dv">1</span>]<span class="sc">+</span>Nivel_Truncado[<span class="dv">1</span>]<span class="sc">+</span>Graduados[<span class="dv">1</span>],Sin_Universidad[<span class="dv">2</span>]<span class="sc">+</span>Nivel_Truncado[<span class="dv">2</span>]<span class="sc">+</span>Graduados[<span class="dv">2</span>],</span>
+<span id="cb108-7"><a href="prueba-de-independencia.html#cb108-7" aria-hidden="true" tabindex="-1"></a>           Sin_Universidad[<span class="dv">1</span>]<span class="sc">+</span>Nivel_Truncado[<span class="dv">1</span>]<span class="sc">+</span>Graduados[<span class="dv">1</span>]<span class="sc">+</span>Sin_Universidad[<span class="dv">2</span>]<span class="sc">+</span>Nivel_Truncado[<span class="dv">2</span>]<span class="sc">+</span>Graduados[<span class="dv">2</span>])</span>
+<span id="cb108-8"><a href="prueba-de-independencia.html#cb108-8" aria-hidden="true" tabindex="-1"></a>datos<span class="ot">=</span><span class="fu">data.frame</span>(Preferencia,Sin_Universidad,Nivel_Truncado,Graduados,Totales)</span>
+<span id="cb108-9"><a href="prueba-de-independencia.html#cb108-9" aria-hidden="true" tabindex="-1"></a>datos</span></code></pre></div>
+<pre><code>           Preferencia Sin_Universidad Nivel_Truncado Graduados Totales
+1                Gusta              75             90       135     300
+2 Neutral/No les gusta              25             60       115     200
+3              Totales             100            150       250     500</code></pre>
+<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="prueba-de-independencia.html#cb110-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ESTADÍSTICO DE PRUEBA</span></span>
+<span id="cb110-2"><a href="prueba-de-independencia.html#cb110-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Primero calcularemos los valores esperados</span></span>
+<span id="cb110-3"><a href="prueba-de-independencia.html#cb110-3" aria-hidden="true" tabindex="-1"></a>Esperados<span class="ot">=</span><span class="fu">matrix</span>(<span class="at">nrow =</span> <span class="dv">2</span>,<span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb110-4"><a href="prueba-de-independencia.html#cb110-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) {</span>
+<span id="cb110-5"><a href="prueba-de-independencia.html#cb110-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {</span>
+<span id="cb110-6"><a href="prueba-de-independencia.html#cb110-6" aria-hidden="true" tabindex="-1"></a>    Esperados[i,j]<span class="ot">=</span>(datos<span class="sc">$</span>Totales[i]<span class="sc">*</span>datos[<span class="dv">3</span>,j<span class="sc">+</span><span class="dv">1</span>])<span class="sc">/</span>datos<span class="sc">$</span>Totales[<span class="dv">3</span>]</span>
+<span id="cb110-7"><a href="prueba-de-independencia.html#cb110-7" aria-hidden="true" tabindex="-1"></a>  }  </span>
+<span id="cb110-8"><a href="prueba-de-independencia.html#cb110-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb110-9"><a href="prueba-de-independencia.html#cb110-9" aria-hidden="true" tabindex="-1"></a><span class="co">#Ahora sí, vamos a calcular el estadístico completo</span></span>
+<span id="cb110-10"><a href="prueba-de-independencia.html#cb110-10" aria-hidden="true" tabindex="-1"></a>Totales<span class="ot">=</span><span class="fu">matrix</span>(<span class="at">nrow =</span> <span class="dv">2</span>,<span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb110-11"><a href="prueba-de-independencia.html#cb110-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) {</span>
+<span id="cb110-12"><a href="prueba-de-independencia.html#cb110-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {</span>
+<span id="cb110-13"><a href="prueba-de-independencia.html#cb110-13" aria-hidden="true" tabindex="-1"></a>    Totales[i,j]<span class="ot">=</span>(datos[i,j<span class="sc">+</span><span class="dv">1</span>]<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(Esperados[i,j])</span>
+<span id="cb110-14"><a href="prueba-de-independencia.html#cb110-14" aria-hidden="true" tabindex="-1"></a>  }  </span>
+<span id="cb110-15"><a href="prueba-de-independencia.html#cb110-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb110-16"><a href="prueba-de-independencia.html#cb110-16" aria-hidden="true" tabindex="-1"></a>T1<span class="ot">=</span><span class="fu">sum</span>(Totales)<span class="sc">-</span>datos<span class="sc">$</span>Totales[<span class="dv">3</span>]</span>
+<span id="cb110-17"><a href="prueba-de-independencia.html#cb110-17" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">c</span>(<span class="st">&quot;Estadístico T1 = &quot;</span>, T1))</span></code></pre></div>
+<pre><code>[1] &quot;Estadístico T1 = &quot; &quot;13.125&quot;           </code></pre>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="prueba-de-independencia.html#cb112-1" aria-hidden="true" tabindex="-1"></a>alpha<span class="ot">=</span>.<span class="dv">05</span></span>
+<span id="cb112-2"><a href="prueba-de-independencia.html#cb112-2" aria-hidden="true" tabindex="-1"></a><span class="co">#Ahora vamos a calcular nuestro cuantil</span></span>
+<span id="cb112-3"><a href="prueba-de-independencia.html#cb112-3" aria-hidden="true" tabindex="-1"></a>cuantil<span class="ot">=</span><span class="fu">qchisq</span>(<span class="dv">1</span><span class="sc">-</span>alpha,<span class="dv">2</span>)</span>
+<span id="cb112-4"><a href="prueba-de-independencia.html#cb112-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">c</span>(<span class="st">&quot;Cuantil Ji-cuadrado con 2 grados de libertad  = &quot;</span>, cuantil))</span></code></pre></div>
+<pre><code>[1] &quot;Cuantil Ji-cuadrado con 2 grados de libertad  = &quot; &quot;5.99146454710798&quot;                                </code></pre>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="prueba-de-independencia.html#cb114-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(T1<span class="sc">&gt;</span>cuantil){</span>
+<span id="cb114-2"><a href="prueba-de-independencia.html#cb114-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;Se rechaza $H_0$&quot;</span>)</span>
+<span id="cb114-3"><a href="prueba-de-independencia.html#cb114-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">c</span>(<span class="st">&quot;Estadístico T1 = &quot;</span>, T1))</span>
+<span id="cb114-4"><a href="prueba-de-independencia.html#cb114-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">c</span>(<span class="st">&quot;Cuantil Ji-cuadrado con 2 grados de libertad  = &quot;</span>, cuantil))</span>
+<span id="cb114-5"><a href="prueba-de-independencia.html#cb114-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<pre><code>[1] &quot;Se rechaza $H_0$&quot;
+[1] &quot;Estadístico T1 = &quot; &quot;13.125&quot;           
+[1] &quot;Cuantil Ji-cuadrado con 2 grados de libertad  = &quot; &quot;5.99146454710798&quot;                                </code></pre>
+<p>Observamos que la estadística de prueba tiene un valor de 13.125 y su correspondiente p-value es menor a 0.05, por lo tanto con <span class="math inline">\(\alpha=5\%\)</span> rechazaremos <span class="math inline">\(H_0\)</span> y concluimos existe evidencia suficiente para suponer que hay una relación entre la preferencia del cereal y el nivel
+educativo.</p>
+<p>Ahora podemos utilizar la prueba en R:</p>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="prueba-de-independencia.html#cb116-1" aria-hidden="true" tabindex="-1"></a>tabla<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">75</span>,<span class="dv">90</span>,<span class="dv">135</span>,<span class="dv">25</span>,<span class="dv">60</span>,<span class="dv">115</span>),<span class="at">ncol=</span><span class="dv">3</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb116-2"><a href="prueba-de-independencia.html#cb116-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(tabla)<span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">Preferencia=</span><span class="fu">c</span>(<span class="st">&quot;Gustar&quot;</span>,<span class="st">&quot;Neutral o no les gusta&quot;</span>), <span class="at">Nivel=</span><span class="fu">c</span>(<span class="st">&quot;Sin universidad&quot;</span>,<span class="st">&quot;Estudios truncados&quot;</span>,</span>
+<span id="cb116-3"><a href="prueba-de-independencia.html#cb116-3" aria-hidden="true" tabindex="-1"></a>                      <span class="st">&quot;Graduados&quot;</span>))</span>
+<span id="cb116-4"><a href="prueba-de-independencia.html#cb116-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-5"><a href="prueba-de-independencia.html#cb116-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb116-6"><a href="prueba-de-independencia.html#cb116-6" aria-hidden="true" tabindex="-1"></a>tabla</span></code></pre></div>
+<pre><code>                        Nivel
+Preferencia              Sin universidad Estudios truncados Graduados
+  Gustar                              75                 90       135
+  Neutral o no les gusta              25                 60       115</code></pre>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="prueba-de-independencia.html#cb118-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tabla)</span></code></pre></div>
+<pre><code>
+    Pearson&#39;s Chi-squared test
+
+data:  tabla
+X-squared = 13.125, df = 2, p-value = 0.001412</code></pre>
 
 </div>
-
-
-
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="prueba-para-más-de-dos-muestras.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introducción-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="tablas-de-contingencia-de-2x2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="tablas-de-contingecia-de-r-times-c.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

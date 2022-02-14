@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 13 Ejercicios | Modelos no paramétricos</title>
+  <title>Capítulo 12 Prueba para más de dos Muestras | Modelos no paramétricos</title>
   <meta name="description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta property="og:title" content="Capítulo 12 Prueba para más de dos Muestras | Modelos no paramétricos" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://github.com/svg18/MNP" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="svg18/MNP" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta name="twitter:title" content="Capítulo 12 Prueba para más de dos Muestras | Modelos no paramétricos" />
   
   <meta name="twitter:description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="prueba-para-más-de-dos-muestras.html"/>
-<link rel="next" href="introducción-3.html"/>
+<link rel="prev" href="prueba-de-igualdad-de-varianzas.html"/>
+<link rel="next" href="ejercicios-1.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -458,196 +458,171 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ejercicios-1" class="section level1" number="13">
-<h1><span class="header-section-number">Capítulo 13</span> Ejercicios</h1>
-<p><strong>1.</strong> Siete estudiantes aprendieron álgebra utilizando el método actual y seis estudiantes aprendieron álgebra según un nuevo método.</p>
+<div id="prueba-para-más-de-dos-muestras" class="section level1" number="12">
+<h1><span class="header-section-number">Capítulo 12</span> Prueba para más de dos Muestras</h1>
+<p>Si hay tres o más muestras, esta prueba se modifica fácilmente para probar la igualdad de varianzas. De cada observación se resta su media poblacional (o su media muestral (<span class="math inline">\(\overline{x}\)</span>) cuando <span class="math inline">\(\mu_{i}\)</span> es desconocida) y convertimos el signo de la diferencia resultante a <span class="math inline">\(&quot;+&quot;\)</span>, como se acaba de describir para ambas muestras.
+Los rangos se asignan de menor a mayor y asignamos el promedio de los rangos correspondientes en caso de empate.</p>
+<p>Calculamos la suma del cuadrado de los rangos asignados de cada muestra, denotamos por <span class="math display">\[S_{1},S_{2},\cdots,S_{k} \  \ \mbox{la suma de los rangos de cada muestra.}\]</span></p>
+<div id="datos-9" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> Datos</h2>
+<p>Se tienen <span class="math inline">\(k\)</span> m.a que pueden tener distintos tamaños, la <span class="math inline">\(j-ésima\)</span> m.a, de tamaño <span class="math inline">\(n_j\)</span> es <span class="math display">\[x_{j1},\ x_{j2},\ x_{j3},\ \cdots, \ x_{jn_j}.\]</span></p>
+<p>Así.</p>
 <p><span class="math display">\[
-\begin{array}{|c| c c c c c c c c|} 
-\hline 
-\textbf{Método} &amp;\textbf{Puntajes} &amp;&amp;&amp;&amp;&amp; &amp; &amp; \\ 
- \hline
-\mbox{Actual} &amp; 68 &amp; 72 &amp; 79 &amp; 69 &amp; 84 &amp; 80 &amp; 78 &amp;\\ 
- \hline
-\mbox{Nuevo} &amp; 64 &amp; 60 &amp; 68 &amp; 73 &amp; 72 &amp; 70&amp; &amp; \\ 
-\hline
+\begin{array}{c c c c c} 
+Muestra \ 1&amp;Muestra\ 2&amp;Muestra\ 3&amp;...&amp; Muestra\ k \\
+x_{11}&amp;x_{21}&amp;x_{31}&amp;...&amp;x_{k1}\\
+x_{12}&amp;x_{22}&amp;x_{32}&amp;...&amp;x_{k2}\\
+\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+x_{1n_1}&amp;x_{2n_2}&amp;x_{3n_3}&amp;...&amp;x_{kn_k}\\
 \end{array}
 \]</span></p>
-<p>¿Con una <span class="math inline">\(\alpha\)</span> del 5% podría decir que la efectividad (medida con los punatjes) de ambos métodos es similar?</p>
-<p><strong>2.</strong> En un laboratorio con entorno controlado, 10 hombres y 10 mujeres fueron evaluados para determinar la temperatura ambiente que encontraron más cómoda. los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\textbf{Hombres} &amp; \textbf{Mujeres} \\  
- \hline
-74&amp;75\\
- \hline
-72&amp;77\\
- \hline
-77&amp;78\\
- \hline
-76&amp;79\\
- \hline
-76&amp;77\\
- \hline
-73&amp;73\\
- \hline
-75&amp;78\\
- \hline
-73&amp;79\\
- \hline
-74&amp;78\\
- \hline
-75&amp;80\\
-  \hline
-\hline
-\end{array}
-\]</span></p>
-<p>Suponiendo que estas temperaturas son una muestra aleatoria de la población, ¿la temperatura promedio es la misma para hombres y mujeres?.</p>
-<p><strong>3.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las marcas? De haber diferencia, que marcas parecen ser las diferentes? Use <span class="math inline">\(\alpha=10\%\)</span></p>
-<p><strong>4.</strong> Tres maestros desean comparar las claificaciones que pusieron en el semestre pasado para ver si alguno tiende a dar calificaciones diferentes que los otros.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||} 
-\hline 
-\mbox{Calificación} &amp; A &amp; B&amp;C \\  
- \hline
-10&amp;4&amp;10&amp;6\\
- \hline
-9&amp;14&amp;6&amp;7\\
- \hline
-8&amp;17&amp;9&amp;8\\
- \hline
-7&amp;6&amp;7&amp;6\\
- \hline
-6&amp;2&amp;6&amp;1\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Con los datos observados se puede corroborar la sospecha de que alguno de los maestros da calificaciones diferentes a los otros? Use <span class="math inline">\(\alpha=5\%\)</span></p>
-<p><strong>5.</strong> El Hospital “Los Ángeles” realizó un estudio en 4 Dietas a un grupo de 20 individuos; cada Dieta se aplicó aleatoriamente a cada individio. Se registró la pérdida de peso en <span class="math inline">\(kg\)</span>.
-Realiza la prueba correspondiente para poder concluir si, ¿Hay diferencia significativa entre la efectividad de las Dietas?</p>
+<p>Sea <span class="math inline">\(N\)</span> el número total de observaciones:</p>
+<p><span class="math display">\[N=\sum_{j=1}^k n_j\]</span></p>
+</div>
+<div id="hipótesis-8" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Hipótesis</h2>
+<p><span class="math display">\[\textbf{H}_0: \ \mbox{Las} \  k  \ \mbox{poblaciones son identicas, excepto por diferencia en las medias.}\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: \mbox{Algunas de las varianzas de las poblaciones no son idénticas entre sí.}\]</span></p>
+</div>
+<div id="estadístico-de-prueba-8" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Estadístico de Prueba</h2>
+<ul>
+<li><strong>Cuando tenemos empates</strong></li>
+</ul>
+<p><span class="math display">\[T_{2}= \frac{1}{D^2}\left[\sum_{j=1}^{k}\frac{S_{j}^2}{n_j}-N(\overline{S})^2\right]\]</span>
+donde:</p>
+<ul>
+<li><p><span class="math inline">\(n_{j}\)</span>= Número de observaciones en la muestra <span class="math inline">\(j\)</span></p></li>
+<li><p><span class="math inline">\(N= n_{1}+n_{2}+\cdots+n_{k}\)</span></p></li>
+<li><p><span class="math inline">\(S_{j}\)</span>= la suma de los cuadrados de los rangos en la muestra <span class="math inline">\(j\)</span></p></li>
+<li><p><span class="math inline">\(\overline{S}= \frac{1}{N}\sum_{j=1}^{k}S_{j}\)</span> Es el promedio de los cuadrados de todos los rangos.</p></li>
+<li><p><span class="math inline">\(D^2=\frac{1}{N-1}\left[\sum_{i=1}^{N}R^4_{j}-N(\overline{S})^2\right]\)</span> y <span class="math inline">\(\sum{R_{i}^4}\)</span> representa la suma de los rangos después de elevarlos a la cuarta potencia.</p></li>
+<li><p><strong>Cuando no tenemos empates</strong></p></li>
+</ul>
+<p><span class="math inline">\(D^2\)</span> y <span class="math inline">\(\overline{S}\)</span> se simplifican:</p>
+<p><span class="math display">\[D^2=N(N+1)(2N+1)(8N+11)/180\]</span></p>
+<p><span class="math display">\[\overline{S}=(N+1)(2N+1)/6\]</span></p>
+</div>
+<div id="regla-de-decisión-20" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> Regla de decisión</h2>
+<p>Rechazamos <span class="math inline">\(H_0\)</span> si:</p>
+<p><span class="math display">\[T_{2}&gt;t_{1-\alpha}\]</span></p>
+<p>donde <span class="math inline">\(t_{1-\alpha}\)</span> es el cuantil de la distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(k-1\)</span> grados de libertad donde el cuantil se localiza en las tablas de dicha distribución.</p>
+<p>y calculamos el <span class="math inline">\(p-value\)</span></p>
+<p><span class="math display">\[p-value= \mathbf{P}\left[\chi^2&gt;T_{2}\right]\]</span>
+es la probabilidad de una variable aleatoria <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(k-1\)</span> grados de libertad sea mayor a el valor observado de <span class="math inline">\(T_2\)</span>.</p>
+</div>
+<div id="comparación-múltiple" class="section level2" number="12.5">
+<h2><span class="header-section-number">12.5</span> Comparación múltiple</h2>
+<p>Si la hipótesis nula es rechazada, podriamos utilizar el siguiente procediemiento para determinar cuales pares de poblaciones tienden a ser diferentes.</p>
+<p>Podemos decir que las poblaciones <span class="math inline">\(i\)</span> y <span class="math inline">\(j\)</span> parecen ser diferentes si se satisface la siguiente desigualdad:</p>
+<p><span class="math display">\[\left|\frac{Si}{ni}- \frac{Sj}{nj}\right|&gt; t_{1-\alpha/2}\left(D^2\frac{N-1-T_{2}}{N-k}\right)^{1/2}\left(\frac{1}{n_i}+\frac{1}{n_j}\right)^{1/2}\]</span>
+Donde <span class="math inline">\(t_{1-\alpha/2}\)</span> es el cuantil <span class="math inline">\(1-\alpha/2\)</span> de la distribución <span class="math inline">\(t\)</span> obtenido en tablas de dicha distribución con <span class="math inline">\(N-k\)</span> grados de libertad.</p>
+<p>Ahora resolveremos un ejercicio:</p>
+</div>
+<div id="ejemplo-9" class="section level2" number="12.6">
+<h2><span class="header-section-number">12.6</span> Ejemplo</h2>
+<p>Retomando en ejemplo de los 4 métodos de cultivo de maíz, probaremos ahora si las varianzas de la cantidad de cosecha por <span class="math inline">\(m^2\)</span> de tierra de cada terreno son diferentes.</p>
 <p><span class="math display">\[
 \begin{array}{c c c c} 
-\textbf{Dieta 1} &amp; \textbf{Dieta 2} &amp; \textbf{Dieta 3} &amp; \textbf{Dieta 4}\\
-6.1&amp;5&amp;7.6&amp;6.2\\
-4.3&amp;5.6&amp;6.8&amp;8\\
-4.5&amp;7.3&amp;3.9&amp;7.4\\
-2.4&amp;5.7&amp;7.9&amp;4.6\\
-9.1&amp;2.1&amp;5.9&amp;7\\
+\textbf{Método 1} &amp; \textbf{Método 2} &amp; \textbf{Método 3} &amp; \textbf{Método 4}\\
+83&amp;91&amp;101&amp;78\\
+91&amp;90&amp;100&amp;82\\
+94&amp;81&amp;91&amp;81\\
+89&amp;83&amp;93&amp;77\\
+89&amp;84&amp;96&amp;79\\
+96&amp;83&amp;95&amp;81\\
+91&amp;88&amp;94&amp;80\\
+92&amp;91&amp;  &amp;81\\
+90&amp;89&amp;  &amp;\\
+  &amp;84&amp;  &amp;\\
 \end{array}
 \]</span></p>
-<p><strong>6.</strong> Un banco de sangre mantuvo un registro de la frecuencia cardíaca de varios donadores de sangre.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Hombres}&amp; \mbox{Mujeres} \\  
- \hline
-58&amp;66\\
- \hline
-76&amp;74\\
- \hline
-82&amp;69\\
- \hline
-74&amp;76\\
- \hline
-79&amp;72\\
- \hline
-65&amp;73\\
- \hline
-74&amp;75\\
- \hline
-86&amp;67\\
- \hline
-&amp;68\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p>¿Es la variación entre los hombres significativamente mayor que la variación entre las mujeres? nivel de significancia <span class="math inline">\(5\%\)</span></p>
-<p><strong>7.</strong> Se desea probar que las variaciones de las temperaturas altas en Des Moines son mayores que las variaciones de las temperaturas altas en Spokane, para ello se tomó una muestra de las temperaturas altas diarias durante el verano. Use nivel de significancia <span class="math inline">\(10\%\)</span></p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Des Moines}&amp; \mbox{Spokane} \\ 
- \hline
-83&amp;78\\
- \hline
-91&amp;82\\
- \hline
-94&amp;81\\
- \hline
-89&amp;77\\
- \hline
-89&amp;79\\
- \hline
-96&amp;81\\
- \hline
-91&amp;80\\
- \hline
-92&amp;81\\
- \hline
-82&amp;79\\
- \hline
-93&amp;80\\
- \hline
-90&amp;\\
- \hline
-93&amp;\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p><strong>8.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las varianzas de las duraciones por marca? Use <span class="math inline">\(\alpha=10\%\)</span></p>
+<p><strong>Paso 1</strong> Prueba a utilizar <strong>Prueba de Igualdad de Varianzas para mas de dos muestras</strong></p>
+<p><strong>Paso 2</strong> Formulamos las hipótesis</p>
+<p><span class="math display">\[\textbf{H}_0: \ \mbox{Los 4 métodos son idénticos, excepto por diferencias en las medias.}\]</span>
+<span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a:\ \mbox{Al menos alguno de los métodos tiene varianzas distintas}\]</span>
+<span class="math display">\[\mbox{a al menos alguno de los otros métodos.}\]</span></p>
+<p><strong>Paso 3</strong> Estadístico de Prueba</p>
+<p><strong>Cuando tenemos empates</strong></p>
+<p><span class="math display">\[T_{2}= \frac{1}{D^2}\left[\sum_{j=1}^{k}\frac{S_{j}^2}{n_j}-N(\overline{S})^2\right]\]</span>
+donde:</p>
+<ul>
+<li><p><span class="math inline">\(n_{j}\)</span>= Número de observaciones en la muestra <span class="math inline">\(j\)</span></p></li>
+<li><p><span class="math inline">\(N= n_{1}+n_{2}+\cdots+n_{k}\)</span></p></li>
+<li><p><span class="math inline">\(S_{j}\)</span>= la suma de los cuadrados de los rangos en la muestra <span class="math inline">\(j\)</span></p></li>
+<li><p><span class="math inline">\(\overline{S}= \frac{1}{N}\sum_{j=1}^{k}S_{j}\)</span> Es el promedio de los cuadrados de todos los rangos.</p></li>
+<li><p><span class="math inline">\(D^2=\frac{1}{N-1}\left[\sum_{i=1}^{N}R^4_{j}-N(\overline{S})^2\right]\)</span> y <span class="math inline">\(\sum{R_{i}^4}\)</span> representa la suma de los rangos después de elevarlos a la cuarta potencia.</p></li>
+</ul>
+<p><span class="math display">\[T_{2}=6.006\]</span></p>
+<p><strong>Paso 5</strong> Regla de Decisión</p>
+<p>Rechazamos <span class="math inline">\(H_0\)</span> al nivel de significancia <span class="math inline">\(\alpha\)</span> si:</p>
+<p><span class="math display">\[T_{2}&gt;t_{1-\alpha}\]</span></p>
+<p>donde <span class="math inline">\(t_{1-\alpha}\)</span> es el cuantil de la distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\(k-1\)</span> grados de libertad donde el cuantil se localiza en las tablas de dicha distribución.</p>
+<p>Ya que utilizamos la estadística <span class="math inline">\(T_2\)</span>, entonces el cuantil que hay que buscar es en una distribución Ji-cuadrada con <span class="math inline">\(k-1=3\)</span> grados de libertad. Consideremos <span class="math inline">\(\alpha=0.01\)</span>.</p>
+<p><span class="math display">\[t_{1-\alpha}=11.334\]</span>
+Como <span class="math inline">\(T_2=6.006 \ngtr 11.344=t_{1-\alpha}\)</span> entonces no se cumple la regla de decisión.</p>
+<p><span class="math inline">\(\therefore\)</span>Entonces no rechazo <span class="math inline">\(H_0\)</span>.</p>
+<p><strong>Paso 6</strong> Conclusión</p>
+<p>Conlcuimos que no hay evidencia suficiente para decir que las distribuciones de los rendimientos de los 4 métodos de cultivo no sean idénticos, excepto por diferencias en las medias.</p>
+</div>
+<div id="ejemplo-en-r-studio-8" class="section level2" number="12.7">
+<h2><span class="header-section-number">12.7</span> Ejemplo en R-Studio</h2>
+<p>Ahora haremos la réplica en R.</p>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="prueba-para-más-de-dos-muestras.html#cb87-1" aria-hidden="true" tabindex="-1"></a>M1<span class="ot">=</span><span class="fu">c</span>(<span class="dv">83</span>,<span class="dv">91</span>,<span class="dv">94</span>,<span class="dv">89</span>,<span class="dv">89</span>,<span class="dv">96</span>,<span class="dv">91</span>,<span class="dv">92</span>,<span class="dv">90</span>)</span>
+<span id="cb87-2"><a href="prueba-para-más-de-dos-muestras.html#cb87-2" aria-hidden="true" tabindex="-1"></a>M2<span class="ot">=</span><span class="fu">c</span>(<span class="dv">91</span>,<span class="dv">90</span>,<span class="dv">81</span>,<span class="dv">83</span>,<span class="dv">84</span>,<span class="dv">83</span>,<span class="dv">88</span>,<span class="dv">91</span>,<span class="dv">89</span>,<span class="dv">84</span>)</span>
+<span id="cb87-3"><a href="prueba-para-más-de-dos-muestras.html#cb87-3" aria-hidden="true" tabindex="-1"></a>M3<span class="ot">=</span><span class="fu">c</span>(<span class="dv">101</span>,<span class="dv">100</span>,<span class="dv">91</span>,<span class="dv">93</span>,<span class="dv">96</span>,<span class="dv">95</span>,<span class="dv">94</span>)</span>
+<span id="cb87-4"><a href="prueba-para-más-de-dos-muestras.html#cb87-4" aria-hidden="true" tabindex="-1"></a>M4<span class="ot">=</span><span class="fu">c</span>(<span class="dv">78</span>,<span class="dv">82</span>,<span class="dv">81</span>,<span class="dv">77</span>,<span class="dv">79</span>,<span class="dv">81</span>,<span class="dv">80</span>,<span class="dv">81</span>)</span>
+<span id="cb87-5"><a href="prueba-para-más-de-dos-muestras.html#cb87-5" aria-hidden="true" tabindex="-1"></a>n1<span class="ot">=</span><span class="fu">length</span>(M1)</span>
+<span id="cb87-6"><a href="prueba-para-más-de-dos-muestras.html#cb87-6" aria-hidden="true" tabindex="-1"></a>n2<span class="ot">=</span><span class="fu">length</span>(M2)</span>
+<span id="cb87-7"><a href="prueba-para-más-de-dos-muestras.html#cb87-7" aria-hidden="true" tabindex="-1"></a>n3<span class="ot">=</span><span class="fu">length</span>(M3)</span>
+<span id="cb87-8"><a href="prueba-para-más-de-dos-muestras.html#cb87-8" aria-hidden="true" tabindex="-1"></a>n4<span class="ot">=</span><span class="fu">length</span>(M4)</span>
+<span id="cb87-9"><a href="prueba-para-más-de-dos-muestras.html#cb87-9" aria-hidden="true" tabindex="-1"></a>N<span class="ot">=</span>n1<span class="sc">+</span>n2<span class="sc">+</span>n3<span class="sc">+</span>n4</span>
+<span id="cb87-10"><a href="prueba-para-más-de-dos-muestras.html#cb87-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-11"><a href="prueba-para-más-de-dos-muestras.html#cb87-11" aria-hidden="true" tabindex="-1"></a>U1<span class="ot">=</span><span class="fu">sort</span>(<span class="fu">abs</span>(M1<span class="sc">-</span><span class="fu">mean</span>(M1)))</span>
+<span id="cb87-12"><a href="prueba-para-más-de-dos-muestras.html#cb87-12" aria-hidden="true" tabindex="-1"></a>U2<span class="ot">=</span><span class="fu">sort</span>(<span class="fu">abs</span>(M2<span class="sc">-</span><span class="fu">mean</span>(M2)))</span>
+<span id="cb87-13"><a href="prueba-para-más-de-dos-muestras.html#cb87-13" aria-hidden="true" tabindex="-1"></a>U3<span class="ot">=</span><span class="fu">sort</span>(<span class="fu">abs</span>(M3<span class="sc">-</span><span class="fu">mean</span>(M3)))</span>
+<span id="cb87-14"><a href="prueba-para-más-de-dos-muestras.html#cb87-14" aria-hidden="true" tabindex="-1"></a>U4<span class="ot">=</span><span class="fu">sort</span>(<span class="fu">abs</span>(M4<span class="sc">-</span><span class="fu">mean</span>(M4)))</span>
+<span id="cb87-15"><a href="prueba-para-más-de-dos-muestras.html#cb87-15" aria-hidden="true" tabindex="-1"></a><span class="co">#U=rbind(U1,U2,U3,U4)</span></span>
+<span id="cb87-16"><a href="prueba-para-más-de-dos-muestras.html#cb87-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Asignación de rango</span></span>
+<span id="cb87-17"><a href="prueba-para-más-de-dos-muestras.html#cb87-17" aria-hidden="true" tabindex="-1"></a>R1<span class="ot">=</span><span class="fu">c</span>(<span class="fl">3.5</span>,<span class="fl">3.5</span>,<span class="dv">5</span>,<span class="dv">11</span>,<span class="fl">12.5</span>,<span class="fl">12.5</span>,<span class="dv">25</span>,<span class="dv">33</span>,<span class="dv">34</span>)</span>
+<span id="cb87-18"><a href="prueba-para-más-de-dos-muestras.html#cb87-18" aria-hidden="true" tabindex="-1"></a>R2<span class="ot">=</span><span class="fu">c</span>(<span class="dv">14</span>,<span class="fl">18.5</span>,<span class="fl">18.5</span>,<span class="dv">20</span>,<span class="fl">23.5</span>,<span class="fl">23.5</span>,<span class="dv">26</span>,<span class="fl">28.5</span>,<span class="fl">28.5</span>,<span class="dv">32</span>)</span>
+<span id="cb87-19"><a href="prueba-para-más-de-dos-muestras.html#cb87-19" aria-hidden="true" tabindex="-1"></a>R3<span class="ot">=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">15</span>,<span class="dv">21</span>,<span class="dv">27</span>,<span class="dv">30</span>,<span class="dv">31</span>)</span>
+<span id="cb87-20"><a href="prueba-para-más-de-dos-muestras.html#cb87-20" aria-hidden="true" tabindex="-1"></a>R4<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">7</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">9</span>,<span class="dv">16</span>,<span class="dv">17</span>,<span class="dv">22</span>)</span>
+<span id="cb87-21"><a href="prueba-para-más-de-dos-muestras.html#cb87-21" aria-hidden="true" tabindex="-1"></a><span class="co">#rangos al cuadrado</span></span>
+<span id="cb87-22"><a href="prueba-para-más-de-dos-muestras.html#cb87-22" aria-hidden="true" tabindex="-1"></a>R1s<span class="ot">=</span>R1<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb87-23"><a href="prueba-para-más-de-dos-muestras.html#cb87-23" aria-hidden="true" tabindex="-1"></a>R2s<span class="ot">=</span>R2<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb87-24"><a href="prueba-para-más-de-dos-muestras.html#cb87-24" aria-hidden="true" tabindex="-1"></a>R3s<span class="ot">=</span>R3<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb87-25"><a href="prueba-para-más-de-dos-muestras.html#cb87-25" aria-hidden="true" tabindex="-1"></a>R4s<span class="ot">=</span>R4<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb87-26"><a href="prueba-para-más-de-dos-muestras.html#cb87-26" aria-hidden="true" tabindex="-1"></a><span class="co">#suma del cuadrado de los rangos</span></span>
+<span id="cb87-27"><a href="prueba-para-más-de-dos-muestras.html#cb87-27" aria-hidden="true" tabindex="-1"></a>S1<span class="ot">=</span><span class="fu">sum</span>(R1s)</span>
+<span id="cb87-28"><a href="prueba-para-más-de-dos-muestras.html#cb87-28" aria-hidden="true" tabindex="-1"></a>S2<span class="ot">=</span><span class="fu">sum</span>(R2s)</span>
+<span id="cb87-29"><a href="prueba-para-más-de-dos-muestras.html#cb87-29" aria-hidden="true" tabindex="-1"></a>S3<span class="ot">=</span><span class="fu">sum</span>(R3s)</span>
+<span id="cb87-30"><a href="prueba-para-más-de-dos-muestras.html#cb87-30" aria-hidden="true" tabindex="-1"></a>S4<span class="ot">=</span><span class="fu">sum</span>(R4s)</span>
+<span id="cb87-31"><a href="prueba-para-más-de-dos-muestras.html#cb87-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb87-32"><a href="prueba-para-más-de-dos-muestras.html#cb87-32" aria-hidden="true" tabindex="-1"></a>S<span class="ot">=</span><span class="fu">sum</span>(S1,S2,S3,S4)<span class="sc">/</span>N</span>
+<span id="cb87-33"><a href="prueba-para-más-de-dos-muestras.html#cb87-33" aria-hidden="true" tabindex="-1"></a>R4<span class="ot">=</span><span class="fu">sum</span>(R1s<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">sum</span>(R2s<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">sum</span>(R3s<span class="sc">^</span><span class="dv">2</span>)<span class="sc">+</span><span class="fu">sum</span>(R4s<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb87-34"><a href="prueba-para-más-de-dos-muestras.html#cb87-34" aria-hidden="true" tabindex="-1"></a>D2<span class="ot">=</span>(R4<span class="sc">-</span>N<span class="sc">*</span>S<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(N<span class="dv">-1</span>)</span>
+<span id="cb87-35"><a href="prueba-para-más-de-dos-muestras.html#cb87-35" aria-hidden="true" tabindex="-1"></a>T2<span class="ot">=</span>(S1<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>n1<span class="sc">+</span>S2<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>n2<span class="sc">+</span>S3<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>n3<span class="sc">+</span>S4<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>n4<span class="sc">-</span>N<span class="sc">*</span>S<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>D2</span>
+<span id="cb87-36"><a href="prueba-para-más-de-dos-muestras.html#cb87-36" aria-hidden="true" tabindex="-1"></a>T2</span></code></pre></div>
+<pre><code>[1] 6.006228</code></pre>
+<p>Ya que utilizamos la estadística <span class="math inline">\(T_2\)</span>, entonces el cuantil que hay que buscar es en una distribución Ji-cuadrada con <span class="math inline">\(k-1=3\)</span> grados de libertad. Consideremos <span class="math inline">\(\alpha=0.01\)</span>.</p>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="prueba-para-más-de-dos-muestras.html#cb89-1" aria-hidden="true" tabindex="-1"></a>t<span class="ot">=</span><span class="fu">qchisq</span>(.<span class="dv">99</span>,<span class="dv">3</span>)</span>
+<span id="cb89-2"><a href="prueba-para-más-de-dos-muestras.html#cb89-2" aria-hidden="true" tabindex="-1"></a>t</span></code></pre></div>
+<pre><code>[1] 11.34487</code></pre>
+<p>Como <span class="math inline">\(T_2=6.006\ngtr11.344=t_{1-\alpha}\)</span> entonces no se cumple la regla de decisión y no rechazamos <span class="math inline">\(H_0\)</span>. Conlcuimos que no hay evidencia suficiente para decir que las distribuciones de los rendimientos de los 4 métodos de cultivo no sean idénticos, excepto por diferencias en las medias.</p>
 
 </div>
-
-
-
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="prueba-para-más-de-dos-muestras.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introducción-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="prueba-de-igualdad-de-varianzas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="ejercicios-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

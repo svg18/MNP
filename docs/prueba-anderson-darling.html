@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 13 Ejercicios | Modelos no paramétricos</title>
+  <title>Capítulo 24 Prueba Anderson-Darling | Modelos no paramétricos</title>
   <meta name="description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta property="og:title" content="Capítulo 24 Prueba Anderson-Darling | Modelos no paramétricos" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://github.com/svg18/MNP" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="svg18/MNP" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta name="twitter:title" content="Capítulo 24 Prueba Anderson-Darling | Modelos no paramétricos" />
   
   <meta name="twitter:description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="prueba-para-más-de-dos-muestras.html"/>
-<link rel="next" href="introducción-3.html"/>
+<link rel="prev" href="pueba-de-lilliefors-exponencial.html"/>
+<link rel="next" href="otras-estadísticas.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -458,196 +458,541 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ejercicios-1" class="section level1" number="13">
-<h1><span class="header-section-number">Capítulo 13</span> Ejercicios</h1>
-<p><strong>1.</strong> Siete estudiantes aprendieron álgebra utilizando el método actual y seis estudiantes aprendieron álgebra según un nuevo método.</p>
+<div id="prueba-anderson-darling" class="section level1" number="24">
+<h1><span class="header-section-number">Capítulo 24</span> Prueba Anderson-Darling</h1>
+<p>La prueba de Anderson Darling, al igual que la prueba de Lilliefors sirve para probar la
+hipótesis de que una muestra aleatoria sigue una cierta distribución especificada.</p>
+<div id="datos-18" class="section level2" number="24.1">
+<h2><span class="header-section-number">24.1</span> Datos</h2>
+<p>Los datos consisten en una muestra aleatoria <span class="math inline">\(X_{1},X_{2},\ldots,X_{n}\)</span> de tamaño <span class="math inline">\(n\)</span> asociada con alguna función de distribución desconocida, denotada por <span class="math inline">\(F(x)\)</span>.</p>
+</div>
+<div id="supuestos-16" class="section level2" number="24.2">
+<h2><span class="header-section-number">24.2</span> Supuestos</h2>
+<ul>
+<li>La muestra es una muestra aleatoria.</li>
+</ul>
+</div>
+<div id="hipótesis-18" class="section level2" number="24.3">
+<h2><span class="header-section-number">24.3</span> Hipótesis</h2>
+<div id="caso-a-prueba-de-2-colas-solo-será-este-caso" class="section level3 unnumbered">
+<h3>Caso A (Prueba de 2 colas) Solo será este caso</h3>
+<p><span class="math display">\[\textbf{H}_0: \ F(x)=F^*(x) \ \ \ \ \forall\ \ x\  \mbox{de} \ \ -\infty \ \ \mbox{a} \ \  +\infty\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: \ F(x) \neq F^*(x) \ \ \ \ \mbox{para al menos un  valor de} \  x.\]</span></p>
+<p>Donde <span class="math inline">\(F^*(x)\)</span> es la distribución teórica que se quiere probar con un nivel de significancia <span class="math inline">\(\alpha\)</span>.</p>
+<p>Para probar dicha hipótesis Anderson propone examinar las diferencias al cuadrados entre la distribución empírica de los datos <span class="math inline">\(S_{n}(X)\)</span> y la distribución teórica propuesta y completamente
+especificada <span class="math inline">\(F^*(X)\)</span> y luego integrar respecto a la distribución propuesta.
+A este tipo de pruebas se les conoce como funciones de distribución empíricas cuadráticas <strong>(QEDF)</strong> por
+sus siglas en inglés.
+De esta manera la estadística de la prueba <strong>Anderson-Darling</strong> se obtiene de integrar la
+siguiente función <strong>QEDF</strong>:</p>
+<p><span class="math display">\[A_n^2=n \int_{-\infty}^{\infty} (Sn(X)-F^*(X))^2 \frac{1}{F^*(X)(1-F^*(X))}\]</span></p>
+<p>Una característica importante es que se usa la expresión <span class="math inline">\(\frac{1}{F^*(X)(1-F^*(X))}\)</span>
+debido a que se busca que las colas de distribución tengan un peso cuantificablemente mayor, con la finalidad de detectar diferencias en las colas de la distribución.</p>
+</div>
+</div>
+<div id="estadístico-de-prueba-16" class="section level2" number="24.4">
+<h2><span class="header-section-number">24.4</span> Estadístico de Prueba</h2>
+<p>Resolviendo la integral se obtiene la estadístico de la forma:</p>
+<p><span class="math display">\[A_n^2=-n-\frac{1}{n}\sum_{i=1}^{n}\left(2i-1\right) \ [ \ ln(F^*(X_{(i)})) +ln(1-F^*(X_{(n-i+1)})) \ ]\]</span></p>
+<p>Dado que el estadístico no depende de <span class="math inline">\(F(X)\)</span> y sólo depende de <span class="math inline">\(n\)</span> entonces la distribución
+asintótica de <strong>Anderson-Darling</strong> es la que se muestra a continuación, asimismo se mostrarán algunos
+ajustes a la estadística con la finalidad de que la prueba sea más potente para determinados
+casos:</p>
 <p><span class="math display">\[
-\begin{array}{|c| c c c c c c c c|} 
-\hline 
-\textbf{Método} &amp;\textbf{Puntajes} &amp;&amp;&amp;&amp;&amp; &amp; &amp; \\ 
- \hline
-\mbox{Actual} &amp; 68 &amp; 72 &amp; 79 &amp; 69 &amp; 84 &amp; 80 &amp; 78 &amp;\\ 
- \hline
-\mbox{Nuevo} &amp; 64 &amp; 60 &amp; 68 &amp; 73 &amp; 72 &amp; 70&amp; &amp; \\ 
+\begin{array}{|c c| c c c c|}
+\hline
+\textbf{Caso} &amp; \textbf{Ajuste en el estadístico} &amp;\textbf{0.90} &amp;\textbf{0.95} &amp; \textbf{0.975} &amp; \textbf{0.99} \\
+\hline
+\mbox{Todos los parámetros conocidos} &amp; A_{n}^{2} \ \ para\ n\ \geq 5 &amp; 1.933 &amp; 2.492 &amp; 3.070 &amp; 3.857 \\
+Normal\ con\ N(\overline{X},S^2) &amp; (1+\frac{4}{n}+\frac{25}{n^2})A_{n}^{2} &amp; 0.632 &amp; 0.751 &amp; 0.870 &amp; 1.029 \\
+\mbox{Exponencial con} \ \ exp(\overline{X}) &amp; (1+\frac{0.6}{n})A_{n}^{2} &amp; 1.070 &amp; 1.326 &amp; 1.587 &amp; 1.943 \\
+\mbox{Weibull con} \ \ Weibull(\hat{\alpha},\hat{\beta}) &amp; (1+\frac{0.2}{\sqrt{n}})A_{n}^{2} &amp; 0.637 &amp; 0.757 &amp; 0.877 &amp; 1.038 \\
+\mbox{Log-logística con} \ \ Log-log(\hat{\alpha},\hat{\beta}) &amp; (1+\frac{0.25}{\sqrt{n}})A_{n}^{2} &amp; 0.563 &amp; 0.660 &amp; 0.769 &amp; 0.906 \\
 \hline
 \end{array}
 \]</span></p>
-<p>¿Con una <span class="math inline">\(\alpha\)</span> del 5% podría decir que la efectividad (medida con los punatjes) de ambos métodos es similar?</p>
-<p><strong>2.</strong> En un laboratorio con entorno controlado, 10 hombres y 10 mujeres fueron evaluados para determinar la temperatura ambiente que encontraron más cómoda. los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\textbf{Hombres} &amp; \textbf{Mujeres} \\  
- \hline
-74&amp;75\\
- \hline
-72&amp;77\\
- \hline
-77&amp;78\\
- \hline
-76&amp;79\\
- \hline
-76&amp;77\\
- \hline
-73&amp;73\\
- \hline
-75&amp;78\\
- \hline
-73&amp;79\\
- \hline
-74&amp;78\\
- \hline
-75&amp;80\\
-  \hline
+</div>
+<div id="regla-de-decisión-34" class="section level2" number="24.5">
+<h2><span class="header-section-number">24.5</span> Regla de Decisión</h2>
+<p>Rechazo <span class="math inline">\(H_0\)</span> a un nivel de significancia <span class="math inline">\(\alpha\)</span> si <span class="math inline">\(A_{n}^2&gt; A_{1-\alpha}\)</span> donde <span class="math inline">\(A_{n}^{2}\)</span> ya tiene el ajuste para cada caso mencionado anteriormente y <span class="math inline">\(A_{1-\alpha}\)</span> es el cuantil obtenido en las tablas correspondientes a nuestra prueba.</p>
+<p>Para ejemplificar la prueba de <span class="math inline">\(Anderson-Darling\)</span> veamos el siguiente ejemplo:</p>
+<div id="ejemplo-17" class="section level3" number="24.5.1">
+<h3><span class="header-section-number">24.5.1</span> Ejemplo</h3>
+<p>Se desea probar si la siguiente muestra:</p>
+<p><span class="math display">\[-4.1302,\ \ 9.315,\ \ 3.9757,\ \ 8.49,\ \ 5.6204,\ \ -6.9098,\ \ -0.1426,\ \ -2.3838,\]</span>
+<span class="math display">\[-2.0039,\ \ 1.7349,\ \ 5.7442,\ \ 2.7931,\ \ 6.2938,\ \ 11.7337,\ \ -0.1318.\]</span></p>
+<p>Sigue una distribución Normal, para ello se realizará la prueba de Anderson Darling con un nivel de significancia del <span class="math inline">\(5\%\)</span>.</p>
+<p><strong>Paso 1</strong> Prueba a utilizar <strong>Prueba de Bondad de Ajuste Anderson-Darling</strong></p>
+<p><strong>Paso 2</strong> Planteamiento de Hipótesis</p>
+<p><span class="math display">\[\textbf{H}_0: \ \mbox{La muestra} \ \sim \  N(\mu,\sigma^2).\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: \ \mbox{La muestra} \ \ \nsim \ \  N(\mu,\sigma^2).\]</span></p>
+<p><strong>Paso 3</strong> Estadístico de Prueba</p>
+<p><span class="math display">\[A_n^2=-n-\frac{1}{n}\sum_{i=1}^{n}\left(2i-1\right)[ \ ln(F^*(X_{(i)})) +ln(1-F^*(X_{(n-i+1)})) \ ]\]</span></p>
+<p><strong>Paso 4</strong> Procedimiento completo para el cálculo del Estadístico de Prueba:</p>
+<ol style="list-style-type: decimal">
+<li><p>Se procede a ordenar nuestras observaciones de menor a mayor.</p></li>
+<li><p>Se obtienen los estimadores puntuales de distribución normal con los datos de la muestra,
+<span class="math inline">\(\overline{X}=\frac{1}{n}\sum_{i=1}^{n}X_{i}= 2.66658\)</span> y <span class="math inline">\(s=\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\overline{X})^2}=5.313212\)</span></p></li>
+<li><p>Se calcula la distribución propuesta, en este caso una distribución normal con media <span class="math inline">\(\overline{X}\)</span> y varianza <span class="math inline">\(s^2\)</span>, es decir,<span class="math inline">\(F^*(X)\)</span>, para ello se usa la aproximación a una normal estándar</p></li>
+<li><p>Se calcula el primer sumando <span class="math inline">\(ln(F^*(X_{(i)}))\)</span> el cual se denotará como <span class="math inline">\(L1\)</span>, después se calculará el segundo sumando <span class="math inline">\(ln(1-F^*(X_{(n-i+1)}))\)</span> el cual se denotará como <span class="math inline">\(L2\)</span></p></li>
+<li><p>Se realiza el sumando de manera puntal, es decir, calcular:</p></li>
+</ol>
+<p><span class="math display">\[Q_{i}=\left(\frac{2i-1}{n}\right)[ \ ln(F^*(X_{(i)})) +ln(1-F^*(X_{(n-i+1)})) \ ] \ \ \ \mbox{para} \  i=1,\ldots,15.\]</span></p>
+<ol start="6" style="list-style-type: decimal">
+<li>Y se realiza la siguiente tabla:</li>
+</ol>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+<span class="math inline">\(i\)</span>
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(X\)</span>
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(X_i\)</span>
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(F*(X_i)\)</span>
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(L_1=ln(F*(X_i))\)</span>
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(L_2=ln(1-F*(X_n-i+1))\)</span>
+</th>
+<th style="text-align:center;">
+Qi
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+-4.1302
+</td>
+<td style="text-align:center;">
+-6.9098
+</td>
+<td style="text-align:center;">
+0.0357
+</td>
+<td style="text-align:center;">
+-3.3313
+</td>
+<td style="text-align:center;">
+-3.1245
+</td>
+<td style="text-align:center;">
+-0.4303
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+9.3150
+</td>
+<td style="text-align:center;">
+-4.1302
+</td>
+<td style="text-align:center;">
+0.1004
+</td>
+<td style="text-align:center;">
+-2.2984
+</td>
+<td style="text-align:center;">
+-2.2498
+</td>
+<td style="text-align:center;">
+-0.9096
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+3.9757
+</td>
+<td style="text-align:center;">
+-2.3838
+</td>
+<td style="text-align:center;">
+0.1709
+</td>
+<td style="text-align:center;">
+-1.7665
+</td>
+<td style="text-align:center;">
+-1.9911
+</td>
+<td style="text-align:center;">
+-1.2525
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+8.4900
+</td>
+<td style="text-align:center;">
+-2.0039
+</td>
+<td style="text-align:center;">
+0.1896
+</td>
+<td style="text-align:center;">
+-1.6623
+</td>
+<td style="text-align:center;">
+-1.3967
+</td>
+<td style="text-align:center;">
+-1.4275
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+5.6204
+</td>
+<td style="text-align:center;">
+-0.1426
+</td>
+<td style="text-align:center;">
+0.2985
+</td>
+<td style="text-align:center;">
+-1.2089
+</td>
+<td style="text-align:center;">
+-1.2686
+</td>
+<td style="text-align:center;">
+-1.4865
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+-6.9098
+</td>
+<td style="text-align:center;">
+-0.1318
+</td>
+<td style="text-align:center;">
+0.2992
+</td>
+<td style="text-align:center;">
+-1.2066
+</td>
+<td style="text-align:center;">
+-1.2408
+</td>
+<td style="text-align:center;">
+-1.7948
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+-0.1426
+</td>
+<td style="text-align:center;">
+1.7349
+</td>
+<td style="text-align:center;">
+0.4304
+</td>
+<td style="text-align:center;">
+-0.8430
+</td>
+<td style="text-align:center;">
+-0.9095
+</td>
+<td style="text-align:center;">
+-1.5189
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+-2.3838
+</td>
+<td style="text-align:center;">
+2.7931
+</td>
+<td style="text-align:center;">
+0.5094
+</td>
+<td style="text-align:center;">
+-0.6743
+</td>
+<td style="text-align:center;">
+-0.7123
+</td>
+<td style="text-align:center;">
+-1.3866
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+-2.0039
+</td>
+<td style="text-align:center;">
+3.9757
+</td>
+<td style="text-align:center;">
+0.5973
+</td>
+<td style="text-align:center;">
+-0.5153
+</td>
+<td style="text-align:center;">
+-0.5628
+</td>
+<td style="text-align:center;">
+-1.2218
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+10
+</td>
+<td style="text-align:center;">
+1.7349
+</td>
+<td style="text-align:center;">
+5.6204
+</td>
+<td style="text-align:center;">
+0.7108
+</td>
+<td style="text-align:center;">
+-0.3412
+</td>
+<td style="text-align:center;">
+-0.3555
+</td>
+<td style="text-align:center;">
+-0.8826
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+11
+</td>
+<td style="text-align:center;">
+5.7442
+</td>
+<td style="text-align:center;">
+5.7442
+</td>
+<td style="text-align:center;">
+0.7187
+</td>
+<td style="text-align:center;">
+-0.3301
+</td>
+<td style="text-align:center;">
+-0.3545
+</td>
+<td style="text-align:center;">
+-0.9586
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+12
+</td>
+<td style="text-align:center;">
+2.7931
+</td>
+<td style="text-align:center;">
+6.2938
+</td>
+<td style="text-align:center;">
+0.7525
+</td>
+<td style="text-align:center;">
+-0.2842
+</td>
+<td style="text-align:center;">
+-0.2103
+</td>
+<td style="text-align:center;">
+-0.7583
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+13
+</td>
+<td style="text-align:center;">
+6.2938
+</td>
+<td style="text-align:center;">
+8.4900
+</td>
+<td style="text-align:center;">
+0.8634
+</td>
+<td style="text-align:center;">
+-0.1468
+</td>
+<td style="text-align:center;">
+-0.1874
+</td>
+<td style="text-align:center;">
+-0.5570
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+14
+</td>
+<td style="text-align:center;">
+11.7337
+</td>
+<td style="text-align:center;">
+9.3150
+</td>
+<td style="text-align:center;">
+0.8945
+</td>
+<td style="text-align:center;">
+-0.1113
+</td>
+<td style="text-align:center;">
+-0.1058
+</td>
+<td style="text-align:center;">
+-0.3909
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+15
+</td>
+<td style="text-align:center;">
+-0.1318
+</td>
+<td style="text-align:center;">
+11.7337
+</td>
+<td style="text-align:center;">
+0.9560
+</td>
+<td style="text-align:center;">
+-0.0449
+</td>
+<td style="text-align:center;">
+-0.0363
+</td>
+<td style="text-align:center;">
+-0.1572
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol start="7" style="list-style-type: decimal">
+<li>Finalmente se suma todos los <span class="math inline">\(Q_{i}s\)</span> y se construye el estadístico:</li>
+</ol>
+<p><span class="math display">\[A_n^2=-n-\sum_{i=1}^{n}Qi=-n-\frac{1}{n}\sum_{i=1}^{n}\left(2i-1\right)[ \ ln(F^*(X_{(i)})) +ln(1-F^*(X_{(n-i+1)})) \ ]\]</span>
+<span class="math display">\[A_n^2=-n-\sum_{i=1}^{n}Qi=-15-(-15.1340)=15.1340-15=0.1340\]</span></p>
+<p><span class="math display">\[A_n^2=0.1340\]</span></p>
+<ol start="8" style="list-style-type: decimal">
+<li>Aplicando el ajuste de la tabla anterior:
+<span class="math display">\[
+\begin{array}{|c c| c c c c|}
+\hline
+\textbf{Caso} &amp; \textbf{Ajuste en el estadístico} &amp;\textbf{0.90} &amp;\textbf{0.95} &amp; \textbf{0.975} &amp; \textbf{0.99} \\
+\hline
+\hline
+Normal\ con\ N(\overline{X},S^2) &amp; (1+\frac{4}{n}+\frac{25}{n^2})A_{n}^{2} &amp; 0.632 &amp; 0.751 &amp; 0.870 &amp; 1.029 \\
 \hline
 \end{array}
-\]</span></p>
-<p>Suponiendo que estas temperaturas son una muestra aleatoria de la población, ¿la temperatura promedio es la misma para hombres y mujeres?.</p>
-<p><strong>3.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las marcas? De haber diferencia, que marcas parecen ser las diferentes? Use <span class="math inline">\(\alpha=10\%\)</span></p>
-<p><strong>4.</strong> Tres maestros desean comparar las claificaciones que pusieron en el semestre pasado para ver si alguno tiende a dar calificaciones diferentes que los otros.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||} 
-\hline 
-\mbox{Calificación} &amp; A &amp; B&amp;C \\  
- \hline
-10&amp;4&amp;10&amp;6\\
- \hline
-9&amp;14&amp;6&amp;7\\
- \hline
-8&amp;17&amp;9&amp;8\\
- \hline
-7&amp;6&amp;7&amp;6\\
- \hline
-6&amp;2&amp;6&amp;1\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Con los datos observados se puede corroborar la sospecha de que alguno de los maestros da calificaciones diferentes a los otros? Use <span class="math inline">\(\alpha=5\%\)</span></p>
-<p><strong>5.</strong> El Hospital “Los Ángeles” realizó un estudio en 4 Dietas a un grupo de 20 individuos; cada Dieta se aplicó aleatoriamente a cada individio. Se registró la pérdida de peso en <span class="math inline">\(kg\)</span>.
-Realiza la prueba correspondiente para poder concluir si, ¿Hay diferencia significativa entre la efectividad de las Dietas?</p>
-<p><span class="math display">\[
-\begin{array}{c c c c} 
-\textbf{Dieta 1} &amp; \textbf{Dieta 2} &amp; \textbf{Dieta 3} &amp; \textbf{Dieta 4}\\
-6.1&amp;5&amp;7.6&amp;6.2\\
-4.3&amp;5.6&amp;6.8&amp;8\\
-4.5&amp;7.3&amp;3.9&amp;7.4\\
-2.4&amp;5.7&amp;7.9&amp;4.6\\
-9.1&amp;2.1&amp;5.9&amp;7\\
-\end{array}
-\]</span></p>
-<p><strong>6.</strong> Un banco de sangre mantuvo un registro de la frecuencia cardíaca de varios donadores de sangre.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Hombres}&amp; \mbox{Mujeres} \\  
- \hline
-58&amp;66\\
- \hline
-76&amp;74\\
- \hline
-82&amp;69\\
- \hline
-74&amp;76\\
- \hline
-79&amp;72\\
- \hline
-65&amp;73\\
- \hline
-74&amp;75\\
- \hline
-86&amp;67\\
- \hline
-&amp;68\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p>¿Es la variación entre los hombres significativamente mayor que la variación entre las mujeres? nivel de significancia <span class="math inline">\(5\%\)</span></p>
-<p><strong>7.</strong> Se desea probar que las variaciones de las temperaturas altas en Des Moines son mayores que las variaciones de las temperaturas altas en Spokane, para ello se tomó una muestra de las temperaturas altas diarias durante el verano. Use nivel de significancia <span class="math inline">\(10\%\)</span></p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Des Moines}&amp; \mbox{Spokane} \\ 
- \hline
-83&amp;78\\
- \hline
-91&amp;82\\
- \hline
-94&amp;81\\
- \hline
-89&amp;77\\
- \hline
-89&amp;79\\
- \hline
-96&amp;81\\
- \hline
-91&amp;80\\
- \hline
-92&amp;81\\
- \hline
-82&amp;79\\
- \hline
-93&amp;80\\
- \hline
-90&amp;\\
- \hline
-93&amp;\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p><strong>8.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las varianzas de las duraciones por marca? Use <span class="math inline">\(\alpha=10\%\)</span></p>
+\]</span></li>
+</ol>
+<p><span class="math display">\[ (1+\frac{4}{n}+\frac{25}{n^2})A_{n}^{2}=(1+\frac{4}{15}+\frac{25}{15^2})A_{n}^{2}=0.1846\]</span></p>
+<p><strong>Paso 5</strong> Regla de Decisión</p>
+<p>Este último resultado se compara con la tabla de valores críticos de la Tabla Anderson-Darling para el caso de Normalidad, para un nivel de significancia <span class="math inline">\(\alpha\)</span> = 0.05.</p>
+<p>Por lo anterior <span class="math inline">\(A_{0.95}\)</span>=0.751, de esta manera se tiene que 0.751 = <span class="math inline">\(A_{0.95} &gt; A_{n}^2=0.1846\)</span>, como el valor crítico <span class="math inline">\(A_{0.95}\)</span> es mayor a comparación de <span class="math inline">\(A_{n}^2\)</span>=0.1846.</p>
+<p><span class="math inline">\(\therefore\)</span> No Rechazamos <span class="math inline">\(H_0\)</span>.</p>
+<p><strong>Paso 6</strong> Conclusión</p>
+<p>Podemos concluir que a un nivel de significancia <span class="math inline">\(\alpha=0.05\)</span>, no existe evidencia estadística suficiente para decir que la muestra no tiene distribución normal.</p>
+</div>
+</div>
+<div id="ejemplo-en-r-studio-17" class="section level2" number="24.6">
+<h2><span class="header-section-number">24.6</span> Ejemplo en R-Studio</h2>
+<p>Ahora haremos la réplica en R.</p>
+<div class="sourceCode" id="cb202"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb202-1"><a href="prueba-anderson-darling.html#cb202-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Datos</span></span>
+<span id="cb202-2"><a href="prueba-anderson-darling.html#cb202-2" aria-hidden="true" tabindex="-1"></a>i<span class="ot">=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">15</span></span>
+<span id="cb202-3"><a href="prueba-anderson-darling.html#cb202-3" aria-hidden="true" tabindex="-1"></a>n<span class="ot">=</span><span class="dv">15</span></span>
+<span id="cb202-4"><a href="prueba-anderson-darling.html#cb202-4" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">4.1302</span>, <span class="fl">9.315</span>, <span class="fl">3.9757</span>, <span class="fl">8.49</span>, <span class="fl">5.6204</span>, <span class="sc">-</span><span class="fl">6.9098</span>, <span class="sc">-</span><span class="fl">0.1426</span>, <span class="sc">-</span><span class="fl">2.3838</span>,</span>
+<span id="cb202-5"><a href="prueba-anderson-darling.html#cb202-5" aria-hidden="true" tabindex="-1"></a>                            <span class="sc">-</span><span class="fl">2.0039</span>, <span class="fl">1.7349</span>, <span class="fl">5.7442</span>,<span class="fl">2.7931</span>,<span class="fl">6.2938</span>,<span class="fl">11.7337</span>,<span class="sc">-</span><span class="fl">0.1318</span>)</span>
+<span id="cb202-6"><a href="prueba-anderson-darling.html#cb202-6" aria-hidden="true" tabindex="-1"></a>X_i<span class="ot">=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">6.9098</span>,<span class="sc">-</span><span class="fl">4.1302</span>,<span class="sc">-</span><span class="fl">2.3838</span>,<span class="sc">-</span><span class="fl">2.0039</span>, <span class="sc">-</span><span class="fl">0.1426</span>,<span class="sc">-</span><span class="fl">0.1318</span>,<span class="fl">1.7349</span>,<span class="fl">2.7931</span>,<span class="fl">3.9757</span>,<span class="fl">5.6204</span>,</span>
+<span id="cb202-7"><a href="prueba-anderson-darling.html#cb202-7" aria-hidden="true" tabindex="-1"></a>      <span class="fl">5.7442</span>,<span class="fl">6.2938</span>,<span class="fl">8.4900</span>,<span class="fl">9.3150</span>,<span class="fl">11.7337</span>)</span>
+<span id="cb202-8"><a href="prueba-anderson-darling.html#cb202-8" aria-hidden="true" tabindex="-1"></a>F_Xi<span class="ot">=</span><span class="fu">c</span>( <span class="fl">0.0357</span>, <span class="fl">0.1004</span>,<span class="fl">0.1709</span>,<span class="fl">0.1896</span>,<span class="fl">0.2985</span>,<span class="fl">0.2992</span>,<span class="fl">0.4304</span>,<span class="fl">0.5094</span>,<span class="fl">0.5973</span>,<span class="fl">0.7108</span>,</span>
+<span id="cb202-9"><a href="prueba-anderson-darling.html#cb202-9" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.7187</span>,<span class="fl">0.7525</span>,<span class="fl">0.8634</span>,<span class="fl">0.8945</span>,<span class="fl">0.9560</span>)</span>
+<span id="cb202-10"><a href="prueba-anderson-darling.html#cb202-10" aria-hidden="true" tabindex="-1"></a>L1<span class="ot">=</span><span class="fu">c</span>( <span class="sc">-</span><span class="fl">3.3313</span>,<span class="sc">-</span><span class="fl">2.2984</span>,<span class="sc">-</span><span class="fl">1.7665</span>,<span class="sc">-</span><span class="fl">1.6623</span>,<span class="sc">-</span><span class="fl">1.2089</span>,<span class="sc">-</span><span class="fl">1.2066</span>,<span class="sc">-</span><span class="fl">0.8430</span>,<span class="sc">-</span><span class="fl">0.6743</span>,<span class="sc">-</span><span class="fl">0.5153</span>,<span class="sc">-</span><span class="fl">0.3412</span>,<span class="sc">-</span><span class="fl">0.3301</span>,</span>
+<span id="cb202-11"><a href="prueba-anderson-darling.html#cb202-11" aria-hidden="true" tabindex="-1"></a>      <span class="sc">-</span><span class="fl">0.2842</span>,<span class="sc">-</span><span class="fl">0.1468</span>,<span class="sc">-</span><span class="fl">0.1113</span>,<span class="sc">-</span><span class="fl">0.0449</span>)    <span class="co">#ln(F*(Xi))</span></span>
+<span id="cb202-12"><a href="prueba-anderson-darling.html#cb202-12" aria-hidden="true" tabindex="-1"></a>L2<span class="ot">=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">3.1245</span>,<span class="sc">-</span><span class="fl">2.2498</span>,<span class="sc">-</span><span class="fl">1.9911</span>,<span class="sc">-</span><span class="fl">1.3967</span>,<span class="sc">-</span><span class="fl">1.2686</span>,<span class="sc">-</span><span class="fl">1.2408</span>,<span class="sc">-</span><span class="fl">0.9095</span>,</span>
+<span id="cb202-13"><a href="prueba-anderson-darling.html#cb202-13" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fl">0.7123</span>,<span class="sc">-</span><span class="fl">0.5628</span>,<span class="sc">-</span><span class="fl">0.3555</span>,<span class="sc">-</span><span class="fl">0.3545</span>,<span class="sc">-</span><span class="fl">0.2103</span>,<span class="sc">-</span><span class="fl">0.1874</span>,<span class="sc">-</span><span class="fl">0.1058</span>,<span class="sc">-</span><span class="fl">0.0363</span>)  <span class="co">#ln(1-F*(Xn-i+1))</span></span>
+<span id="cb202-14"><a href="prueba-anderson-darling.html#cb202-14" aria-hidden="true" tabindex="-1"></a>Qi<span class="ot">=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.4303</span>,<span class="sc">-</span><span class="fl">0.9096</span>,<span class="sc">-</span><span class="fl">1.2525</span>,<span class="sc">-</span><span class="fl">1.4275</span>,<span class="sc">-</span><span class="fl">1.4865</span>,<span class="sc">-</span><span class="fl">1.7948</span>,<span class="sc">-</span><span class="fl">1.5189</span>,<span class="sc">-</span><span class="fl">1.3866</span>,<span class="sc">-</span><span class="fl">1.2218</span>,<span class="sc">-</span><span class="fl">0.8826</span>,</span>
+<span id="cb202-15"><a href="prueba-anderson-darling.html#cb202-15" aria-hidden="true" tabindex="-1"></a><span class="sc">-</span><span class="fl">0.9586</span>,<span class="sc">-</span><span class="fl">0.7583</span>,<span class="sc">-</span><span class="fl">0.5570</span>,<span class="sc">-</span><span class="fl">0.3909</span>,<span class="sc">-</span><span class="fl">0.1572</span>)</span>
+<span id="cb202-16"><a href="prueba-anderson-darling.html#cb202-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb202-17"><a href="prueba-anderson-darling.html#cb202-17" aria-hidden="true" tabindex="-1"></a><span class="co">#Ahora calcularemos el estadistico de prueba</span></span>
+<span id="cb202-18"><a href="prueba-anderson-darling.html#cb202-18" aria-hidden="true" tabindex="-1"></a>A_2<span class="ot">=</span><span class="sc">-</span>n<span class="sc">-</span>(<span class="fu">sum</span>(Qi))</span>
+<span id="cb202-19"><a href="prueba-anderson-darling.html#cb202-19" aria-hidden="true" tabindex="-1"></a>A_2</span></code></pre></div>
+<pre><code>[1] 0.1331</code></pre>
+<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="prueba-anderson-darling.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Ahora aplicaremos el ajuste correspondiente</span></span>
+<span id="cb204-2"><a href="prueba-anderson-darling.html#cb204-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb204-3"><a href="prueba-anderson-darling.html#cb204-3" aria-hidden="true" tabindex="-1"></a>A_2ajust<span class="ot">=</span>(<span class="dv">1</span><span class="sc">+</span><span class="dv">4</span><span class="sc">/</span>n<span class="sc">+</span><span class="dv">25</span><span class="sc">/</span>n<span class="sc">^</span><span class="dv">2</span>)<span class="sc">*</span>A_2</span>
+<span id="cb204-4"><a href="prueba-anderson-darling.html#cb204-4" aria-hidden="true" tabindex="-1"></a>A_2ajust</span></code></pre></div>
+<pre><code>[1] 0.1833822</code></pre>
+<p>Por la tabla auxiliar tenemos <span class="math inline">\(A_{0.95}=0.751\)</span>, de esta manera se tiene que 0.751 = <span class="math inline">\(A_{0.95} &gt; A_{n}^2=0.1846\)</span>, como el valor crítico <span class="math inline">\(A_{0.95}\)</span> es mayor a comparación de <span class="math inline">\(A_{n}^2=0.1846\)</span>, entonces no rechazamos <span class="math inline">\(H_0\)</span>. Podemos concluir que a un nivel de significancia <span class="math inline">\(\alpha\)</span>=0.05, no existe evidencia estadística suficiente para decir que la muestra no tiene distribución normal.</p>
+<p>Ahora podemos utilizar la prueba en R</p>
+<div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="prueba-anderson-darling.html#cb206-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ad.test</span>(X)   <span class="co">#Recordemos que la función no hace el ajuste</span></span></code></pre></div>
+<pre><code>
+    Anderson-Darling normality test
+
+data:  X
+A = 0.13402, p-value = 0.9722</code></pre>
 
 </div>
-
-
-
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="prueba-para-más-de-dos-muestras.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introducción-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="pueba-de-lilliefors-exponencial.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="otras-estadísticas.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

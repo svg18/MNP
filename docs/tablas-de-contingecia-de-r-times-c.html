@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 13 Ejercicios | Modelos no paramétricos</title>
+  <title>Capítulo 16 Tablas de Contingecia de \(r \times c\) | Modelos no paramétricos</title>
   <meta name="description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta property="og:title" content="Capítulo 16 Tablas de Contingecia de \(r \times c\) | Modelos no paramétricos" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://github.com/svg18/MNP" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="svg18/MNP" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta name="twitter:title" content="Capítulo 16 Tablas de Contingecia de \(r \times c\) | Modelos no paramétricos" />
   
   <meta name="twitter:description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="prueba-para-más-de-dos-muestras.html"/>
-<link rel="next" href="introducción-3.html"/>
+<link rel="prev" href="prueba-de-independencia.html"/>
+<link rel="next" href="prueba-de-la-mediana.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -458,196 +458,218 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ejercicios-1" class="section level1" number="13">
-<h1><span class="header-section-number">Capítulo 13</span> Ejercicios</h1>
-<p><strong>1.</strong> Siete estudiantes aprendieron álgebra utilizando el método actual y seis estudiantes aprendieron álgebra según un nuevo método.</p>
+<div id="tablas-de-contingecia-de-r-times-c" class="section level1" number="16">
+<h1><span class="header-section-number">Capítulo 16</span> Tablas de Contingecia de <span class="math inline">\(r \times c\)</span></h1>
+<p>Como una generalización inmediata de la tabla de contingencia <span class="math inline">\(2 \times 2\)</span> mencionadas anteriormente, tenemos la tabla de contingencia con <span class="math inline">\(r\)</span> renglones y <span class="math inline">\(c\)</span> columnas, llamada <strong>tablas de contingencia de <span class="math inline">\(r \times c\)</span></strong>.
+Éstas tablas de contingencia pueden usarse, como en la sección anterior, para presentar una tabulación de los datos contenidos en varias muestras, donde los datos representan al menos una escala de medición nominal, y para probar la hipótesis de que las probabilidades no difieren de muestra en muestra.</p>
+<div id="prueba-de-chi2-para-tablas-de-contingencia-proporciones" class="section level2 unnumbered">
+<h2>Prueba de <span class="math inline">\(\chi^2\)</span> para Tablas de Contingencia (Proporciones)</h2>
+</div>
+<div id="datos-12" class="section level2" number="16.1">
+<h2><span class="header-section-number">16.1</span> Datos</h2>
+<p>Hay <span class="math inline">\(r\)</span> poblaciones en total, y se extrae una muestra aleatoria de cada población. Supongamos que <span class="math inline">\(n_{i}\)</span> representa el número de observaciones en la muestra <span class="math inline">\(i-ésima\)</span> (de la población <span class="math inline">\(i-ésima\)</span>) para <span class="math inline">\(1 \leq i \leq r\)</span>. Cada observación en cada muestra es clasificada en una de las <span class="math inline">\(C\)</span> diferentes categorías.</p>
+<p>Sea <span class="math inline">\(O_{ij}\)</span> el número de observaciones de la <span class="math inline">\(i-ésima\)</span> muestra de la categoría <span class="math inline">\(j\)</span>:</p>
+<p><span class="math display">\[n_{i}= O_{i1}+O_{i2}+\cdots+O_{ic}\ \ \ \ \ \ \ \ \   \forall \ \ i.\]</span>
+Los datos se organizan en la siguiente tabla de contingencia de <span class="math inline">\(r \times c\)</span>:</p>
 <p><span class="math display">\[
-\begin{array}{|c| c c c c c c c c|} 
-\hline 
-\textbf{Método} &amp;\textbf{Puntajes} &amp;&amp;&amp;&amp;&amp; &amp; &amp; \\ 
- \hline
-\mbox{Actual} &amp; 68 &amp; 72 &amp; 79 &amp; 69 &amp; 84 &amp; 80 &amp; 78 &amp;\\ 
- \hline
-\mbox{Nuevo} &amp; 64 &amp; 60 &amp; 68 &amp; 73 &amp; 72 &amp; 70&amp; &amp; \\ 
+\begin{array}{|c|c|c|c|c|c|}
+\hline
+ &amp; \textbf{Clase 1}  &amp; \textbf{Clase 2}    &amp; \cdots &amp; \textbf{Clase c} &amp;\textbf{Total}     \\
+\hline
+\textbf{Población 1} &amp; O_{11} &amp; O_{12} &amp; \cdots &amp; O_{1c} &amp; n_{1}   \\
+\hline
+\textbf{Población 2} &amp; O_{21} &amp; O_{22} &amp; \cdots &amp; O_{2c} &amp; n_{2}\\
+\hline
+\cdots    &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \cdots\\
+\hline
+\textbf{Población r} &amp;O_{r1} &amp; O_{r2} &amp; \cdots &amp; O_{rc} &amp; n_{r}\\
+\hline
+\textbf{Total}       &amp; C_{1}  &amp; C_{2}  &amp; \cdots &amp; C_{c}  &amp; N \\
 \hline
 \end{array}
 \]</span></p>
-<p>¿Con una <span class="math inline">\(\alpha\)</span> del 5% podría decir que la efectividad (medida con los punatjes) de ambos métodos es similar?</p>
-<p><strong>2.</strong> En un laboratorio con entorno controlado, 10 hombres y 10 mujeres fueron evaluados para determinar la temperatura ambiente que encontraron más cómoda. los resultados fueron los siguientes:</p>
+<p>El número total de observaciones de todas las muestras es denotado por <span class="math inline">\(N\)</span>:</p>
+<p><span class="math display">\[N=n_{1}+n_{2}+\cdots+n_{r}.\]</span></p>
+<p>El número de observaciones en la <span class="math inline">\(j-ésima\)</span> columna denotada como <span class="math inline">\(C_{j}\)</span>. Esto es, <span class="math inline">\(C_{j}\)</span> es el número total de observaciones en la <span class="math inline">\(j-ésima\)</span> categoría, o clase, de todas las muestras combinadas.</p>
+<p><span class="math display">\[C_{j}=O_{1j}+O_{2j}+\cdots+O_{rj}, \ \ \ \ \ para\ \ j= 1,2,\ldots,c. \]</span></p>
+</div>
+<div id="supuestos-11" class="section level2" number="16.2">
+<h2><span class="header-section-number">16.2</span> Supuestos</h2>
+<ul>
+<li><p>Cada muestra es una muestra aleatoria.</p></li>
+<li><p>Los resultados de las diversas muestras son mutuamente independientes (particularmente entre las muestras, porque la independencia dentro de las muestras es parte del primer supuesto).</p></li>
+<li><p>Cada observación puede clasificarse en exactamente una de las categorías o clases <span class="math inline">\(C\)</span>.</p></li>
+</ul>
+</div>
+<div id="estadístico-de-prueba-11" class="section level2" number="16.3">
+<h2><span class="header-section-number">16.3</span> Estadístico de Prueba</h2>
+<p>El estadístico de prueba <span class="math inline">\(T\)</span> es obtenido de la siguiente manera:</p>
+<p><span class="math display">\[T=\sum_{i=1}^{r}\sum_{j=1}^{c}\frac{(O_{ij}-E_{ij})^2}{E_{ij}}, \ \ \ Donde\ \ E_{ij}=\frac{n_{i}C_{j}}{N}\]</span></p>
+<p>Mientas el término <span class="math inline">\(O_{ij}\)</span> representa el número de observaciones en la celda <span class="math inline">\((i,j)\)</span>, el término <span class="math inline">\(E_{ij}\)</span> representa el número de observaciones esperadas en la celda <span class="math inline">\((i,j)\)</span>. Si <span class="math inline">\(H_0\)</span> es realmente verdadera, es decir, si <span class="math inline">\(H_0\)</span> es cierta el número de observaciones en la celda <span class="math inline">\((i,j)\)</span> podrían estar cerca a la <span class="math inline">\(i\)</span>-ésima muestra de tamaño <span class="math inline">\(n_{i}\)</span> multiplicado por la proporción <span class="math inline">\(\frac{C_{j}}{N}\)</span> de todas las observaciones en la categoría <span class="math inline">\(j\)</span>.</p>
+<p><strong>NOTA:</strong></p>
+<p>En el caso de <span class="math inline">\(2 \times 2\)</span> el estadístico <span class="math inline">\(T\)</span> es equivalente a <span class="math inline">\(T^2\)</span> visto anteriormente, porque solo se considera la hipótesis alternativa de dos colas.</p>
+<p>Una expresión equivalente para <span class="math inline">\(T\)</span>, mas adecuado para el uso de su calculadora es:</p>
+<p><span class="math display">\[T=\sum_{i=1}^{r}\sum_{j=1}^{c}\frac{O_{ij}^{2}}{E_{ij}}-N\]</span></p>
+<p><strong>Distribución de T</strong></p>
+<p>La distribución nula de T es obtenida aproximadamente por la Distribución <span class="math inline">\(\chi^2\)</span> con <span class="math inline">\((r-1)\times(c-1)\)</span> grados de libertad, cuyos cuantiles se encuentran en las tablas de dicha distribución.</p>
+<p>Es decir,</p>
+<p><span class="math display">\[T\sim \chi^2_{(r-1)(c-1)}\]</span></p>
+</div>
+<div id="hipótesis-11" class="section level2" number="16.4">
+<h2><span class="header-section-number">16.4</span> Hipótesis</h2>
+<p>Sea la probabilidad de que un valor seleccionado aleatoriamente de la i-ésima población se clasifique en la <span class="math inline">\(j\)</span>-ésima clase, denotado por <span class="math inline">\(p_{ij}\)</span> para <span class="math inline">\(i= 1, 2,\ldots,r\)</span> y <span class="math inline">\(j=1,2,\ldots,c.\)</span></p>
+<p><span class="math display">\[\textbf{H}_0: \ \mbox{Todas las probabilidades en la misma columna son iguales entre sí.}\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: \ \mbox{Al menos dos de las probabilidades en la misma columna no son iguales entre sí.}\]</span>
+en otros términos:</p>
+<p><span class="math display">\[\textbf{H}_0: \ p_{1j}=p_{2j}= \cdots=p_{rj} \ \ \ \ \  \forall\  j.\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: \ p_{ij} \ \neq \  p_{kj} \ \ \mbox{para algún par} \ \  i \ \ \mbox{y} \ \ k.\]</span></p>
+<div id="regla-de-decisión-25" class="section level4 unnumbered">
+<h4>Regla de decisión</h4>
+<p>Rechazo <span class="math inline">\(H_0\)</span> si <span class="math inline">\(T&gt; \chi^2(1-\alpha)\)</span> con <span class="math inline">\((r-1)\times(c-1)\)</span> grados de libertad, cuyos cuantiles se encuentran en las tablas de dicha distribución.</p>
+<p>Ahora aplicaremos los conocimientos en el próximo ejemplo:</p>
+</div>
+</div>
+<div id="ejercicio-1" class="section level2" number="16.5">
+<h2><span class="header-section-number">16.5</span> Ejercicio</h2>
+<p>Una muestra de estudiantes seleccionados aleatoriamente de escuelas secundarias privadas recibió pruebas de rendimiento estandarizadas con los siguientes resultados:</p>
 <p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\textbf{Hombres} &amp; \textbf{Mujeres} \\  
- \hline
-74&amp;75\\
- \hline
-72&amp;77\\
- \hline
-77&amp;78\\
- \hline
-76&amp;79\\
- \hline
-76&amp;77\\
- \hline
-73&amp;73\\
- \hline
-75&amp;78\\
- \hline
-73&amp;79\\
- \hline
-74&amp;78\\
- \hline
-75&amp;80\\
-  \hline
+\begin{array}{ |c|cc c c c c|}
+\hline
+&amp;\textbf{Puntaje de Prueba}&amp;&amp;&amp;&amp;\\
+\hline
+&amp;\textbf{0-275} &amp; \textbf{276-350} &amp; \textbf{351-425} &amp; \textbf{426-500} &amp; \textbf{Totales} \\
+\hline
+\textbf{Escuela Privada} &amp; 6    &amp; 14 &amp; 17 &amp; 9 &amp; 46 \\
+\hline
+\textbf{Escuela Pública} &amp; 30   &amp; 32 &amp; 17 &amp; 3 &amp; 82 \\
+\hline
+\textbf{Totales} &amp; 36   &amp; 46 &amp; 34 &amp; 12 &amp; 128 \\
 \hline
 \end{array}
 \]</span></p>
-<p>Suponiendo que estas temperaturas son una muestra aleatoria de la población, ¿la temperatura promedio es la misma para hombres y mujeres?.</p>
-<p><strong>3.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
+<p><strong>Paso 1</strong> Prueba a utilizar: <strong>Tablas de Contingencia de <span class="math inline">\(r\times c\)</span></strong></p>
+<p><strong>Paso 2</strong> Plantear hipótesis:</p>
+<p><span class="math display">\[\textbf{H}_0: \ \mbox{La distribución del puntaje de los estudiantes en la prueba es la misma para la escuela}\]</span>
+<span class="math display">\[\mbox{privada como para la escuela pública.}\]</span></p>
+<p><span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: \ \mbox{La distribución del puntaje de los estudiantes en la prueba es distinta para la escuela}\]</span>
+<span class="math display">\[\mbox{privada como para la escuela pública.}\]</span></p>
+<p>Para poder calcular nuestro estadístico de prueba podemos auxiliarnos de una pequeña tablita para</p>
+<ul>
+<li><span class="math inline">\(E_{ij}:\)</span></li>
+</ul>
 <p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
+\begin{array}{ |c|cccc|  }
 \hline
+&amp;\textbf{Columnas} &amp; &amp; &amp;\\
+\hline
+&amp;\textbf{1} &amp; \textbf{2} &amp; \textbf{3} &amp; \textbf{4} \\
+\hline
+\textbf{Renglón 1} &amp; 12.9   &amp; 16.5 &amp; 12.2 &amp; 4.3 \\
+\hline
+\textbf{Renglón 2} &amp; 23.1   &amp; 29.5 &amp; 21.8 &amp; 7.7 \\
 \hline
 \end{array}
 \]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las marcas? De haber diferencia, que marcas parecen ser las diferentes? Use <span class="math inline">\(\alpha=10\%\)</span></p>
-<p><strong>4.</strong> Tres maestros desean comparar las claificaciones que pusieron en el semestre pasado para ver si alguno tiende a dar calificaciones diferentes que los otros.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||} 
-\hline 
-\mbox{Calificación} &amp; A &amp; B&amp;C \\  
- \hline
-10&amp;4&amp;10&amp;6\\
- \hline
-9&amp;14&amp;6&amp;7\\
- \hline
-8&amp;17&amp;9&amp;8\\
- \hline
-7&amp;6&amp;7&amp;6\\
- \hline
-6&amp;2&amp;6&amp;1\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Con los datos observados se puede corroborar la sospecha de que alguno de los maestros da calificaciones diferentes a los otros? Use <span class="math inline">\(\alpha=5\%\)</span></p>
-<p><strong>5.</strong> El Hospital “Los Ángeles” realizó un estudio en 4 Dietas a un grupo de 20 individuos; cada Dieta se aplicó aleatoriamente a cada individio. Se registró la pérdida de peso en <span class="math inline">\(kg\)</span>.
-Realiza la prueba correspondiente para poder concluir si, ¿Hay diferencia significativa entre la efectividad de las Dietas?</p>
-<p><span class="math display">\[
-\begin{array}{c c c c} 
-\textbf{Dieta 1} &amp; \textbf{Dieta 2} &amp; \textbf{Dieta 3} &amp; \textbf{Dieta 4}\\
-6.1&amp;5&amp;7.6&amp;6.2\\
-4.3&amp;5.6&amp;6.8&amp;8\\
-4.5&amp;7.3&amp;3.9&amp;7.4\\
-2.4&amp;5.7&amp;7.9&amp;4.6\\
-9.1&amp;2.1&amp;5.9&amp;7\\
-\end{array}
-\]</span></p>
-<p><strong>6.</strong> Un banco de sangre mantuvo un registro de la frecuencia cardíaca de varios donadores de sangre.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Hombres}&amp; \mbox{Mujeres} \\  
- \hline
-58&amp;66\\
- \hline
-76&amp;74\\
- \hline
-82&amp;69\\
- \hline
-74&amp;76\\
- \hline
-79&amp;72\\
- \hline
-65&amp;73\\
- \hline
-74&amp;75\\
- \hline
-86&amp;67\\
- \hline
-&amp;68\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p>¿Es la variación entre los hombres significativamente mayor que la variación entre las mujeres? nivel de significancia <span class="math inline">\(5\%\)</span></p>
-<p><strong>7.</strong> Se desea probar que las variaciones de las temperaturas altas en Des Moines son mayores que las variaciones de las temperaturas altas en Spokane, para ello se tomó una muestra de las temperaturas altas diarias durante el verano. Use nivel de significancia <span class="math inline">\(10\%\)</span></p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Des Moines}&amp; \mbox{Spokane} \\ 
- \hline
-83&amp;78\\
- \hline
-91&amp;82\\
- \hline
-94&amp;81\\
- \hline
-89&amp;77\\
- \hline
-89&amp;79\\
- \hline
-96&amp;81\\
- \hline
-91&amp;80\\
- \hline
-92&amp;81\\
- \hline
-82&amp;79\\
- \hline
-93&amp;80\\
- \hline
-90&amp;\\
- \hline
-93&amp;\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p><strong>8.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las varianzas de las duraciones por marca? Use <span class="math inline">\(\alpha=10\%\)</span></p>
+<p><strong>Paso 3</strong> Estadístico de Prueba</p>
+<p>Para la celda en el <span class="math inline">\(renglón\ 1\)</span>, <span class="math inline">\(columna\ 1\)</span> tenemos:</p>
+<p><span class="math display">\[\frac{(O_{ij}-E_{ij})^2}{E_{ij}}= \frac{(O_{11}-E_{11})^2}{E_{11}}=\frac{(6-12.9)^2}{12.9}=\frac{47.61}{12.9}=3.69\]</span></p>
+<p>Si hacemos los calculos celda por celda el resultado es:</p>
+<p><span class="math display">\[T=3.69+0.38+1.89+5.14+2.06+0.21+1.06+2.87=17.3\]</span></p>
+<p><strong>Paso 4</strong> Procedimiento completo</p>
+<p>Ahora buscaremos el cuantil: <span class="math inline">\(\chi^2(1-\alpha)_{(r-1)(c-1)}\)</span> donde <span class="math inline">\((r-1)\times(c-1)=(2-1)\times(4-1)=3\)</span>
+entonces buscamos <span class="math inline">\(\chi^2_{(3)}=7.815\)</span></p>
+<p><strong>Paso 5</strong> Regla de desición :</p>
+<p>Rechazo <span class="math inline">\(H_0\)</span> si <span class="math inline">\(T&gt; \chi^2(1-\alpha)\)</span> y <span class="math inline">\(17.3&gt; 7.815\)</span> entonces Rechazo <span class="math inline">\(H_0\)</span>.</p>
+<p><strong>Paso 6</strong> Conclusión:</p>
+<p>Entonces la distribución del puntaje de los estudiantes en la prueba es distinta para la escuela privada como para la escuela pública.</p>
+</div>
+<div id="ejemplo-en-r-studio-11" class="section level2" number="16.6">
+<h2><span class="header-section-number">16.6</span> Ejemplo en R-Studio</h2>
+<p>Ahora haremos la réplica en R.</p>
+<div class="sourceCode" id="cb120"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb120-1"><a href="tablas-de-contingecia-de-r-times-c.html#cb120-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">14</span>,<span class="dv">17</span>,<span class="dv">9</span>,<span class="dv">46</span>,<span class="dv">30</span>,<span class="dv">32</span>,<span class="dv">17</span>,<span class="dv">3</span>,<span class="dv">82</span>,<span class="dv">36</span>,<span class="dv">46</span>,<span class="dv">34</span>,<span class="dv">12</span>,<span class="dv">128</span>),<span class="at">nrow=</span><span class="dv">3</span>,<span class="at">byrow=</span>T, </span>
+<span id="cb120-2"><a href="tablas-de-contingecia-de-r-times-c.html#cb120-2" aria-hidden="true" tabindex="-1"></a>               <span class="at">dimnames=</span><span class="fu">list</span>(<span class="st">&quot;Escuelas&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;EscuelaPrivada&quot;</span>,<span class="st">&quot;EscuelaPublica&quot;</span>,<span class="st">&quot;Totales&quot;</span>), </span>
+<span id="cb120-3"><a href="tablas-de-contingecia-de-r-times-c.html#cb120-3" aria-hidden="true" tabindex="-1"></a>                             <span class="st">&quot;Puntajes&quot;</span><span class="ot">=</span><span class="fu">c</span>(<span class="st">&quot;cat1&quot;</span>,<span class="st">&quot;cat2&quot;</span>,<span class="st">&quot;cat3&quot;</span>,<span class="st">&quot;cat4&quot;</span>,<span class="st">&quot;Totales&quot;</span>)))</span>
+<span id="cb120-4"><a href="tablas-de-contingecia-de-r-times-c.html#cb120-4" aria-hidden="true" tabindex="-1"></a>data</span></code></pre></div>
+<pre><code>                Puntajes
+Escuelas         cat1 cat2 cat3 cat4 Totales
+  EscuelaPrivada    6   14   17    9      46
+  EscuelaPublica   30   32   17    3      82
+  Totales          36   46   34   12     128</code></pre>
+<div class="sourceCode" id="cb122"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb122-1"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Datos</span></span>
+<span id="cb122-2"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-3"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-3" aria-hidden="true" tabindex="-1"></a>O11<span class="ot">=</span><span class="dv">6</span></span>
+<span id="cb122-4"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-4" aria-hidden="true" tabindex="-1"></a>O12<span class="ot">=</span><span class="dv">14</span></span>
+<span id="cb122-5"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-5" aria-hidden="true" tabindex="-1"></a>O13<span class="ot">=</span><span class="dv">17</span></span>
+<span id="cb122-6"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-6" aria-hidden="true" tabindex="-1"></a>O14<span class="ot">=</span><span class="dv">9</span></span>
+<span id="cb122-7"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-7" aria-hidden="true" tabindex="-1"></a>O21<span class="ot">=</span><span class="dv">30</span></span>
+<span id="cb122-8"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-8" aria-hidden="true" tabindex="-1"></a>O22<span class="ot">=</span><span class="dv">32</span></span>
+<span id="cb122-9"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-9" aria-hidden="true" tabindex="-1"></a>O23<span class="ot">=</span><span class="dv">17</span></span>
+<span id="cb122-10"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-10" aria-hidden="true" tabindex="-1"></a>O24<span class="ot">=</span><span class="dv">3</span></span>
+<span id="cb122-11"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-11" aria-hidden="true" tabindex="-1"></a>n1<span class="ot">=</span><span class="dv">46</span></span>
+<span id="cb122-12"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-12" aria-hidden="true" tabindex="-1"></a>n2<span class="ot">=</span><span class="dv">82</span></span>
+<span id="cb122-13"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-13" aria-hidden="true" tabindex="-1"></a>C1<span class="ot">=</span><span class="dv">36</span></span>
+<span id="cb122-14"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-14" aria-hidden="true" tabindex="-1"></a>C2<span class="ot">=</span><span class="dv">46</span></span>
+<span id="cb122-15"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-15" aria-hidden="true" tabindex="-1"></a>C3<span class="ot">=</span><span class="dv">34</span></span>
+<span id="cb122-16"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-16" aria-hidden="true" tabindex="-1"></a>C4<span class="ot">=</span><span class="dv">12</span></span>
+<span id="cb122-17"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-17" aria-hidden="true" tabindex="-1"></a>N<span class="ot">=</span>n1<span class="sc">+</span>n2</span>
+<span id="cb122-18"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-19"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-19" aria-hidden="true" tabindex="-1"></a><span class="co">#Ahora calcularemos los Eij</span></span>
+<span id="cb122-20"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-21"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-21" aria-hidden="true" tabindex="-1"></a>E11<span class="ot">=</span>n1<span class="sc">*</span>C1<span class="sc">/</span>N</span>
+<span id="cb122-22"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-22" aria-hidden="true" tabindex="-1"></a>E12<span class="ot">=</span>n1<span class="sc">*</span>C2<span class="sc">/</span>N</span>
+<span id="cb122-23"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-23" aria-hidden="true" tabindex="-1"></a>E13<span class="ot">=</span>n1<span class="sc">*</span>C3<span class="sc">/</span>N</span>
+<span id="cb122-24"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-24" aria-hidden="true" tabindex="-1"></a>E14<span class="ot">=</span>n1<span class="sc">*</span>C4<span class="sc">/</span>N</span>
+<span id="cb122-25"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-25" aria-hidden="true" tabindex="-1"></a>E21<span class="ot">=</span>n2<span class="sc">*</span>C1<span class="sc">/</span>N</span>
+<span id="cb122-26"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-26" aria-hidden="true" tabindex="-1"></a>E22<span class="ot">=</span>n2<span class="sc">*</span>C2<span class="sc">/</span>N</span>
+<span id="cb122-27"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-27" aria-hidden="true" tabindex="-1"></a>E23<span class="ot">=</span>n2<span class="sc">*</span>C3<span class="sc">/</span>N</span>
+<span id="cb122-28"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-28" aria-hidden="true" tabindex="-1"></a>E24<span class="ot">=</span>n2<span class="sc">*</span>C4<span class="sc">/</span>N</span>
+<span id="cb122-29"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-30"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-30" aria-hidden="true" tabindex="-1"></a><span class="co">#Ahora calcularemos los (Oij-Eij)^2/Eij</span></span>
+<span id="cb122-31"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-32"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-32" aria-hidden="true" tabindex="-1"></a>j1<span class="ot">=</span>(O11<span class="sc">-</span>E11)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>E11</span>
+<span id="cb122-33"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-33" aria-hidden="true" tabindex="-1"></a>j2<span class="ot">=</span>(O12<span class="sc">-</span>E12)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>E12</span>
+<span id="cb122-34"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-34" aria-hidden="true" tabindex="-1"></a>j3<span class="ot">=</span>(O13<span class="sc">-</span>E13)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>E13</span>
+<span id="cb122-35"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-35" aria-hidden="true" tabindex="-1"></a>j4<span class="ot">=</span>(O14<span class="sc">-</span>E14)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>E14</span>
+<span id="cb122-36"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-36" aria-hidden="true" tabindex="-1"></a>j5<span class="ot">=</span>(O21<span class="sc">-</span>E21)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>E21</span>
+<span id="cb122-37"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-37" aria-hidden="true" tabindex="-1"></a>j6<span class="ot">=</span>(O22<span class="sc">-</span>E22)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>E22</span>
+<span id="cb122-38"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-38" aria-hidden="true" tabindex="-1"></a>j7<span class="ot">=</span>(O23<span class="sc">-</span>E23)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>E23</span>
+<span id="cb122-39"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-39" aria-hidden="true" tabindex="-1"></a>j8<span class="ot">=</span>(O24<span class="sc">-</span>E24)<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>E24</span>
+<span id="cb122-40"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-41"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-41" aria-hidden="true" tabindex="-1"></a><span class="co">#Ahora calculamos el estadístico de prueba</span></span>
+<span id="cb122-42"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb122-43"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-43" aria-hidden="true" tabindex="-1"></a>T<span class="ot">=</span><span class="fu">sum</span>(j1,j2,j3,j4,j5,j6,j7,j8)</span>
+<span id="cb122-44"><a href="tablas-de-contingecia-de-r-times-c.html#cb122-44" aria-hidden="true" tabindex="-1"></a>T</span></code></pre></div>
+<pre><code>[1] 17.28581</code></pre>
+<div class="sourceCode" id="cb124"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb124-1"><a href="tablas-de-contingecia-de-r-times-c.html#cb124-1" aria-hidden="true" tabindex="-1"></a><span class="co">#El cuantil es de una distribución ji.cuadrada con (r-1)(c-1) grados de libertad en este caso serian 3 gl</span></span>
+<span id="cb124-2"><a href="tablas-de-contingecia-de-r-times-c.html#cb124-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb124-3"><a href="tablas-de-contingecia-de-r-times-c.html#cb124-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qchisq</span>(<span class="fl">0.95</span>,<span class="dv">3</span>)</span></code></pre></div>
+<pre><code>[1] 7.814728</code></pre>
+<p>Observamos que la estadística de prueba tiene un valor de 17.28 y su correspondiente <span class="math inline">\(p-value\)</span> es menor a 0.05, por lo tanto con <span class="math inline">\(\alpha=5\%\)</span> rechazaremos <span class="math inline">\(H_0\)</span> y concluimos existe evidencia suficiente para suponer la distribución de los puntajes en la prueba es distinta entre las escuelas privadas y las escuelas públicas.</p>
+<p>Ahora podemos utilizar la prueba en R:</p>
+<div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="tablas-de-contingecia-de-r-times-c.html#cb126-1" aria-hidden="true" tabindex="-1"></a>tabla<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">14</span>,<span class="dv">17</span>,<span class="dv">9</span>,<span class="dv">46</span>,<span class="dv">30</span>,<span class="dv">32</span>,<span class="dv">17</span>,<span class="dv">3</span>,<span class="dv">82</span>),<span class="at">ncol=</span><span class="dv">5</span>,<span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb126-2"><a href="tablas-de-contingecia-de-r-times-c.html#cb126-2" aria-hidden="true" tabindex="-1"></a>tabla</span></code></pre></div>
+<pre><code>     [,1] [,2] [,3] [,4] [,5]
+[1,]    6   14   17    9   46
+[2,]   30   32   17    3   82</code></pre>
+<div class="sourceCode" id="cb128"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb128-1"><a href="tablas-de-contingecia-de-r-times-c.html#cb128-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(tabla)</span></code></pre></div>
+<pre><code>
+    Pearson&#39;s Chi-squared test
+
+data:  tabla
+X-squared = 17.286, df = 4, p-value = 0.001701</code></pre>
 
 </div>
-
-
-
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="prueba-para-más-de-dos-muestras.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introducción-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="prueba-de-independencia.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="prueba-de-la-mediana.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

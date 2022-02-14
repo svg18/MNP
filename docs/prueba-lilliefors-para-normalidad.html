@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capítulo 13 Ejercicios | Modelos no paramétricos</title>
+  <title>Capítulo 22 Prueba Lilliefors para Normalidad | Modelos no paramétricos</title>
   <meta name="description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta property="og:title" content="Capítulo 22 Prueba Lilliefors para Normalidad | Modelos no paramétricos" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://github.com/svg18/MNP" />
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="svg18/MNP" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capítulo 13 Ejercicios | Modelos no paramétricos" />
+  <meta name="twitter:title" content="Capítulo 22 Prueba Lilliefors para Normalidad | Modelos no paramétricos" />
   
   <meta name="twitter:description" content="Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="prueba-para-más-de-dos-muestras.html"/>
-<link rel="next" href="introducción-3.html"/>
+<link rel="prev" href="prueba-kolmogorov-smirnov.html"/>
+<link rel="next" href="pueba-de-lilliefors-exponencial.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -458,196 +458,656 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ejercicios-1" class="section level1" number="13">
-<h1><span class="header-section-number">Capítulo 13</span> Ejercicios</h1>
-<p><strong>1.</strong> Siete estudiantes aprendieron álgebra utilizando el método actual y seis estudiantes aprendieron álgebra según un nuevo método.</p>
-<p><span class="math display">\[
-\begin{array}{|c| c c c c c c c c|} 
-\hline 
-\textbf{Método} &amp;\textbf{Puntajes} &amp;&amp;&amp;&amp;&amp; &amp; &amp; \\ 
- \hline
-\mbox{Actual} &amp; 68 &amp; 72 &amp; 79 &amp; 69 &amp; 84 &amp; 80 &amp; 78 &amp;\\ 
- \hline
-\mbox{Nuevo} &amp; 64 &amp; 60 &amp; 68 &amp; 73 &amp; 72 &amp; 70&amp; &amp; \\ 
-\hline
-\end{array}
-\]</span></p>
-<p>¿Con una <span class="math inline">\(\alpha\)</span> del 5% podría decir que la efectividad (medida con los punatjes) de ambos métodos es similar?</p>
-<p><strong>2.</strong> En un laboratorio con entorno controlado, 10 hombres y 10 mujeres fueron evaluados para determinar la temperatura ambiente que encontraron más cómoda. los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\textbf{Hombres} &amp; \textbf{Mujeres} \\  
- \hline
-74&amp;75\\
- \hline
-72&amp;77\\
- \hline
-77&amp;78\\
- \hline
-76&amp;79\\
- \hline
-76&amp;77\\
- \hline
-73&amp;73\\
- \hline
-75&amp;78\\
- \hline
-73&amp;79\\
- \hline
-74&amp;78\\
- \hline
-75&amp;80\\
-  \hline
-\hline
-\end{array}
-\]</span></p>
-<p>Suponiendo que estas temperaturas son una muestra aleatoria de la población, ¿la temperatura promedio es la misma para hombres y mujeres?.</p>
-<p><strong>3.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las marcas? De haber diferencia, que marcas parecen ser las diferentes? Use <span class="math inline">\(\alpha=10\%\)</span></p>
-<p><strong>4.</strong> Tres maestros desean comparar las claificaciones que pusieron en el semestre pasado para ver si alguno tiende a dar calificaciones diferentes que los otros.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||} 
-\hline 
-\mbox{Calificación} &amp; A &amp; B&amp;C \\  
- \hline
-10&amp;4&amp;10&amp;6\\
- \hline
-9&amp;14&amp;6&amp;7\\
- \hline
-8&amp;17&amp;9&amp;8\\
- \hline
-7&amp;6&amp;7&amp;6\\
- \hline
-6&amp;2&amp;6&amp;1\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Con los datos observados se puede corroborar la sospecha de que alguno de los maestros da calificaciones diferentes a los otros? Use <span class="math inline">\(\alpha=5\%\)</span></p>
-<p><strong>5.</strong> El Hospital “Los Ángeles” realizó un estudio en 4 Dietas a un grupo de 20 individuos; cada Dieta se aplicó aleatoriamente a cada individio. Se registró la pérdida de peso en <span class="math inline">\(kg\)</span>.
-Realiza la prueba correspondiente para poder concluir si, ¿Hay diferencia significativa entre la efectividad de las Dietas?</p>
-<p><span class="math display">\[
-\begin{array}{c c c c} 
-\textbf{Dieta 1} &amp; \textbf{Dieta 2} &amp; \textbf{Dieta 3} &amp; \textbf{Dieta 4}\\
-6.1&amp;5&amp;7.6&amp;6.2\\
-4.3&amp;5.6&amp;6.8&amp;8\\
-4.5&amp;7.3&amp;3.9&amp;7.4\\
-2.4&amp;5.7&amp;7.9&amp;4.6\\
-9.1&amp;2.1&amp;5.9&amp;7\\
-\end{array}
-\]</span></p>
-<p><strong>6.</strong> Un banco de sangre mantuvo un registro de la frecuencia cardíaca de varios donadores de sangre.</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Hombres}&amp; \mbox{Mujeres} \\  
- \hline
-58&amp;66\\
- \hline
-76&amp;74\\
- \hline
-82&amp;69\\
- \hline
-74&amp;76\\
- \hline
-79&amp;72\\
- \hline
-65&amp;73\\
- \hline
-74&amp;75\\
- \hline
-86&amp;67\\
- \hline
-&amp;68\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p>¿Es la variación entre los hombres significativamente mayor que la variación entre las mujeres? nivel de significancia <span class="math inline">\(5\%\)</span></p>
-<p><strong>7.</strong> Se desea probar que las variaciones de las temperaturas altas en Des Moines son mayores que las variaciones de las temperaturas altas en Spokane, para ello se tomó una muestra de las temperaturas altas diarias durante el verano. Use nivel de significancia <span class="math inline">\(10\%\)</span></p>
-<p><span class="math display">\[
-\begin{array}{||c| |c||} 
-\hline 
-\mbox{Des Moines}&amp; \mbox{Spokane} \\ 
- \hline
-83&amp;78\\
- \hline
-91&amp;82\\
- \hline
-94&amp;81\\
- \hline
-89&amp;77\\
- \hline
-89&amp;79\\
- \hline
-96&amp;81\\
- \hline
-91&amp;80\\
- \hline
-92&amp;81\\
- \hline
-82&amp;79\\
- \hline
-93&amp;80\\
- \hline
-90&amp;\\
- \hline
-93&amp;\\
- \hline
-\hline
-\end{array}
-\]</span></p>
-<p><strong>8.</strong> Una muestra aleatoria de 5 diferentes marcas de focos son probados para medir la duración del foco, y los resultados fueron los siguientes:</p>
-<p><span class="math display">\[
-\begin{array}{||c| |c| |c| |c||c||} 
-\hline 
-A &amp; B&amp;C&amp;D&amp;E \\ 
- \hline
-73&amp;84&amp;82&amp;80&amp;85\\
- \hline
-64&amp;80&amp;79&amp;85&amp;82\\
- \hline
-67&amp;81&amp;71&amp;82&amp;80\\
- \hline
-62&amp;77&amp;75&amp;86&amp;\\
- \hline
-70&amp;&amp;80&amp;&amp;\\
-\hline
-\hline
-\end{array}
-\]</span></p>
-<p>Los datos observados indican una diferencia significativa entre las varianzas de las duraciones por marca? Use <span class="math inline">\(\alpha=10\%\)</span></p>
+<div id="prueba-lilliefors-para-normalidad" class="section level1" number="22">
+<h1><span class="header-section-number">Capítulo 22</span> Prueba Lilliefors para Normalidad</h1>
+<p>La prueba de bondad de ajuste de Kolmogorov presentada anteriormente es una buena prueba para ver si una muestra aleatoria tiene alguna función de distribución especificada. La prueba de Kolmogorov está diseñada para usarse solo cuando la función de distribución hipotética está completamente especificada, es decir, cuando no hay parámetros desconocidos que deben estimarse a partir de la muestra.
+La prueba de bondad de ajuste Ji-cuadrada es lo suficientemente flexible como para permitir que algunos parámetros se estimen a partir de los datos.Simplemente se resta un grado de libertad para cada parámetro estimado descrita anteriormente.</p>
+<p>Sin embargo, la prueba de Ji-cuadrada requiere que los datos se agrupen, y dicha agrupación de datos suele ser arbitraria. Además, la distribución del estadístico de prueba se conoce solo aproximadamente, y a veces el poder de la prueba de Ji-cuadrada no es muy bueno. Por estas razones, se buscan otras pruebas de bondad de ajuste, especialmente para distribuciones probadas con frecuencia.</p>
+<p>La prueba de Kolmogorov se ha modificado para permitir su uso en varias situaciones en las que los parámetros se estiman a partir de los datos. En realidad, el estadístico de prueba permanece sin cambios, pero se utilizan diferentes tablas de valores críticos. Estas tablas ya no son las mismas para todas las distribuciones; cambian de una distribución hipotética a otra. La prueba sigue siendo una prueba no paramétrica porque la validez de la prueba (el nivel de <span class="math inline">\(\alpha\)</span>) no depende de supuestos no probados con respecto a la distribución de la población; en cambio, la forma de distribución de la población es la hipótesis que se está probando.</p>
+<p>La primera modificación a la prueba de Kolmogorov es para probar la hipótesis compuesta de la normalidad. Es decir, la hipótesis nula establece que la población es una de la familia de distribuciones normales sin especificar la media o la varianza de la distribución normal. Ésta prueba fue presentada por primera vez por Hubert Lilliefors (1967). Una característica interesante de esta prueba es que este es uno de los primeros casos en que el compilador se utilizó para generar números aleatorios con el fin de obtener estimaciones precisas de los verdaderos cuantiles de la distribución exacta del estadístico de la prueba y además, aproximar a los parámetros a través del uso de los estimadores puntuales.</p>
+<div id="datos-16" class="section level2" number="22.1">
+<h2><span class="header-section-number">22.1</span> Datos</h2>
+<p>Los datos consisten en una muestra aleatoria <span class="math inline">\(X_{1},X_{2},\ldots,X_{n}\)</span> de tamaño <span class="math inline">\(n\)</span> asociada con alguna función de distribución desconocida, denotada por <span class="math inline">\(F(x)\)</span>.</p>
+<p>Calculando la media muestral</p>
+<p><span class="math display">\[\overline{X}=\frac{1}{n}\sum_{i=1}^{n}X_{i}\]</span></p>
+<p>para usarla como una estimación puntual de <span class="math inline">\(\mu\)</span></p>
+<p>y calculando como una estimación de <span class="math inline">\(\sigma\)</span></p>
+<p><span class="math display">\[s=\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\overline{X})^2}\]</span></p>
+<p>Después calcularemos los valores de muestra “normalizados” <span class="math inline">\(Z_{i}\)</span> definidos por:</p>
+<p><span class="math display">\[Z_{i}=\frac{X_{i}-\overline{X}}{s} \ \ \ \ i=1,2,\ldots,n\]</span></p>
+<p>El estadístico de prueba se calcula a partir de <span class="math inline">\(Z_{i}s\)</span> en lugar de a partir de la muestra aleatoria. original</p>
+</div>
+<div id="supuestos-14" class="section level2" number="22.2">
+<h2><span class="header-section-number">22.2</span> Supuestos</h2>
+<ol style="list-style-type: decimal">
+<li>La muestra es una muestra aleatoria.</li>
+</ol>
+</div>
+<div id="hipótesis-16" class="section level2" number="22.3">
+<h2><span class="header-section-number">22.3</span> Hipótesis</h2>
+<p><span class="math display">\[\textbf{H}_0: \ \mbox{La muestra aleatoria proviene de una población con distribución normal,}\]</span>
+<span class="math display">\[\mbox{con media y desviación estándar desconocidas.}\]</span>
+<span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: \ \mbox{La función de distribución de las} \ \ X_{i}s \ \  \mbox{no es normal.}\]</span></p>
+</div>
+<div id="estadístico-de-prueba-15" class="section level2" number="22.4">
+<h2><span class="header-section-number">22.4</span> Estadístico de Prueba</h2>
+<p>Normalmente, el estadístico de prueba es el mismo para la prueba de Kolmogorov de dos colas, definida como la distancia vertical máxima entre la función de distribución empírica de <span class="math inline">\(X_{i}s\)</span> y la función de distribución normal con media <span class="math inline">\(\mu=\overline{X}\)</span> y desviación estándar <span class="math inline">\(\sigma=s\)</span>.
+Sin embargo, el siguiente método para calcular el estadístico de prueba es un poco más fácil, ya que es equivalente al método indicado. Es decir, el cálculo del estadístico <span class="math inline">\(T_{1}\)</span> será en función de la <span class="math inline">\(Z_{i}s\)</span>.</p>
+<p><span class="math display">\[T_{1}=\underset{x}{sup}|F^*(x)-S(x)|\]</span></p>
+<div id="regla-de-decisión-32" class="section level4 unnumbered">
+<h4>Regla de Decisión</h4>
+<p>Rechazo <span class="math inline">\(H_0\)</span> a un nivel de significancia <span class="math inline">\(\alpha\)</span> si <span class="math inline">\(T_{1}&gt; W_{1-\alpha}\)</span> donde <span class="math inline">\(W_{1-\alpha}\)</span> es el cuantil obtenido en las tablas correspondientes a nuestra prueba.</p>
+</div>
+</div>
+<div id="ejemplo-15" class="section level2" number="22.5">
+<h2><span class="header-section-number">22.5</span> Ejemplo</h2>
+<p>Los siguientes datos, corresponden a una muestra aleatoria en la que mide la pérdida y ganancia de peso en <span class="math inline">\(KG\)</span> de un grupo después de vacaciones.</p>
+<p><span class="math display">\[0.6822,\ 3.994,\ -0.9705,\ -0.5575,\ -2.1532,\ 0.0829,\ 2.9224,\ 0.2425\]</span>
+<span class="math display">\[-0.4962,\ -0.1621,\ 0.449,\ -0.8827,\ -0.8368,\ -1.5805,\ 0.386.\]</span></p>
+<p>Se desea probar si los datos provienen de una distribución normal con <span class="math inline">\(\mu\)</span> y <span class="math inline">\(\sigma\)</span> desconocidas.
+Realizar la prueba a un nivel de significancia del <span class="math inline">\(95\%.\)</span></p>
+<p><strong>Paso 1</strong> Prueba a utilizar <strong>Prueba de Bondad de Ajuste Lilliefors para Normalidad</strong></p>
+<p><strong>Paso 2</strong> Planteamiento de Hipótesis</p>
+<p><span class="math display">\[\textbf{H}_0: \ \mbox{La muestra} \ \ \sim \ \  N(\mu,\sigma^2).\]</span>
+<span class="math display">\[vs\]</span></p>
+<p><span class="math display">\[\textbf{H}_a: \ \mbox{La muestra}  \ \nsim \  N(\mu,\sigma^2).\]</span></p>
+<p><strong>Paso 3</strong> Estadístico de Prueba</p>
+<p><span class="math display">\[T_{1}=\underset{z}{sup} \ | \ F^*(z)-S(z) \ |\]</span></p>
+<p><strong>Paso 4</strong> Procedimiento completo para el cálculo del Estadístico de Prueba:</p>
+<ol style="list-style-type: decimal">
+<li><p>Se procede a ordenar nuestras observaciones de menor a mayor.</p></li>
+<li><p>Se obtienen los estimadores puntuales de distribución normal con los datos de la muestra,</p></li>
+</ol>
+<p><span class="math inline">\(\overline{X}=\frac{1}{n}\sum_{i=1}^{n}X_{i}= 0.07463333\)</span> y <span class="math inline">\(s=\sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(X_{i}-\overline{X})^2}=1.590808\)</span></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Después calcularemos los valores de muestra “normalizados” <span class="math inline">\(Z_{i}\)</span> definidos por:</li>
+</ol>
+<p><span class="math display">\[Z_{i}=\frac{X_{i}-\overline{X}}{s} \ \ \ \ i=1,2,\ldots,15\]</span>
+4) Se calcula la función empírica, como no tenemos ningún valor repetido:</p>
+<p><span class="math display">\[S_{n}= \frac{i}{n}=\frac{1}{15},\frac{2}{15}, \ldots, 1. \]</span></p>
+<ol start="5" style="list-style-type: decimal">
+<li><p>Se calcula la función empírica menos un valor, es decir,
+<span class="math display">\[S_{n}= \frac{i-1}{n}=\frac{0}{15},\frac{1}{15}, \ldots, \frac{14}{15}.\]</span></p></li>
+<li><p>Se calcula <span class="math inline">\(D^+\)</span> que es el resultado de la resta de la distribución conocida menos la distribución empírica, es decir:</p></li>
+</ol>
+<p><span class="math display">\[D^+= max\ \{ \ S_{n}(Z_{i})-F^*(Z_{i}) \ \}\]</span></p>
+<ol start="7" style="list-style-type: decimal">
+<li>Se calcula <span class="math inline">\(D^-\)</span> que es el resultado de la resta de la distribución empírica menos uno menos la distribución conocida, es decir:</li>
+</ol>
+<p><span class="math display">\[D^-= max\ \{\ S_{n}(Z_{i-1})-F^*(Z_{i}) \ \}\]</span></p>
+<ol start="8" style="list-style-type: decimal">
+<li>Finalmente realizada la tabla, se calcula el máximo de las columnas <span class="math inline">\(D^+\)</span> y <span class="math inline">\(D^-\)</span> de ésta manera, se tiene la siguiente tabla:</li>
+</ol>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:center;">
+<span class="math inline">\(i\)</span>
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(X\)</span>
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(X_i\)</span>
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(Z_i=\frac{x_i-\bar{x}}{s}\)</span>
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(S_n(Z_i)\)</span>
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(S_n(Z_{i-1})\)</span>
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(F^*(Z_i)\)</span>
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(D^+=S_n(Z_i)-F^*(Z_i)\)</span>
+</th>
+<th style="text-align:center;">
+<span class="math inline">\(D^-=S_n(Z_{i-1})-F^*(Z_i)\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center;">
+1
+</td>
+<td style="text-align:center;">
+0.6822
+</td>
+<td style="text-align:center;">
+-2.1532
+</td>
+<td style="text-align:center;">
+-1.4004
+</td>
+<td style="text-align:center;">
+0.0666667
+</td>
+<td style="text-align:center;">
+0.0000000
+</td>
+<td style="text-align:center;">
+0.0806
+</td>
+<td style="text-align:center;">
+-0.0139
+</td>
+<td style="text-align:center;">
+-0.0806
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+2
+</td>
+<td style="text-align:center;">
+3.9940
+</td>
+<td style="text-align:center;">
+-1.5805
+</td>
+<td style="text-align:center;">
+-1.0404
+</td>
+<td style="text-align:center;">
+0.1333333
+</td>
+<td style="text-align:center;">
+0.0666667
+</td>
+<td style="text-align:center;">
+0.1490
+</td>
+<td style="text-align:center;">
+-0.0156
+</td>
+<td style="text-align:center;">
+-0.0823
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+3
+</td>
+<td style="text-align:center;">
+-0.9705
+</td>
+<td style="text-align:center;">
+-0.9705
+</td>
+<td style="text-align:center;">
+-0.6569
+</td>
+<td style="text-align:center;">
+0.2000000
+</td>
+<td style="text-align:center;">
+0.1333333
+</td>
+<td style="text-align:center;">
+0.2555
+</td>
+<td style="text-align:center;">
+-0.0555
+</td>
+<td style="text-align:center;">
+-0.1221
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+4
+</td>
+<td style="text-align:center;">
+-0.5575
+</td>
+<td style="text-align:center;">
+-0.8827
+</td>
+<td style="text-align:center;">
+-0.6017
+</td>
+<td style="text-align:center;">
+0.2666667
+</td>
+<td style="text-align:center;">
+0.2000000
+</td>
+<td style="text-align:center;">
+0.2736
+</td>
+<td style="text-align:center;">
+-0.0069
+</td>
+<td style="text-align:center;">
+-0.0736
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+5
+</td>
+<td style="text-align:center;">
+-2.1532
+</td>
+<td style="text-align:center;">
+-0.8368
+</td>
+<td style="text-align:center;">
+-0.5729
+</td>
+<td style="text-align:center;">
+0.3333333
+</td>
+<td style="text-align:center;">
+0.2666667
+</td>
+<td style="text-align:center;">
+0.2833
+</td>
+<td style="text-align:center;">
+0.0500
+</td>
+<td style="text-align:center;">
+-0.0166
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+6
+</td>
+<td style="text-align:center;">
+0.0829
+</td>
+<td style="text-align:center;">
+-0.5575
+</td>
+<td style="text-align:center;">
+-0.3973
+</td>
+<td style="text-align:center;">
+0.4000000
+</td>
+<td style="text-align:center;">
+0.3333333
+</td>
+<td style="text-align:center;">
+0.3455
+</td>
+<td style="text-align:center;">
+0.0545
+</td>
+<td style="text-align:center;">
+-0.0121
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+7
+</td>
+<td style="text-align:center;">
+2.9224
+</td>
+<td style="text-align:center;">
+-0.4962
+</td>
+<td style="text-align:center;">
+-0.3588
+</td>
+<td style="text-align:center;">
+0.4666667
+</td>
+<td style="text-align:center;">
+0.4000000
+</td>
+<td style="text-align:center;">
+0.3598
+</td>
+<td style="text-align:center;">
+0.1068
+</td>
+<td style="text-align:center;">
+0.0402
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+8
+</td>
+<td style="text-align:center;">
+0.2425
+</td>
+<td style="text-align:center;">
+-0.1621
+</td>
+<td style="text-align:center;">
+-0.1488
+</td>
+<td style="text-align:center;">
+0.5333333
+</td>
+<td style="text-align:center;">
+0.4666667
+</td>
+<td style="text-align:center;">
+0.4408
+</td>
+<td style="text-align:center;">
+0.0925
+</td>
+<td style="text-align:center;">
+0.0258
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+9
+</td>
+<td style="text-align:center;">
+-0.4962
+</td>
+<td style="text-align:center;">
+0.0829
+</td>
+<td style="text-align:center;">
+0.0051
+</td>
+<td style="text-align:center;">
+0.6000000
+</td>
+<td style="text-align:center;">
+0.5333333
+</td>
+<td style="text-align:center;">
+0.5020
+</td>
+<td style="text-align:center;">
+0.0980
+</td>
+<td style="text-align:center;">
+0.0313
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+10
+</td>
+<td style="text-align:center;">
+-0.1621
+</td>
+<td style="text-align:center;">
+0.2425
+</td>
+<td style="text-align:center;">
+0.1055
+</td>
+<td style="text-align:center;">
+0.6666667
+</td>
+<td style="text-align:center;">
+0.6000000
+</td>
+<td style="text-align:center;">
+0.5420
+</td>
+<td style="text-align:center;">
+0.1246
+</td>
+<td style="text-align:center;">
+0.0580
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+11
+</td>
+<td style="text-align:center;">
+0.4490
+</td>
+<td style="text-align:center;">
+0.3860
+</td>
+<td style="text-align:center;">
+0.1957
+</td>
+<td style="text-align:center;">
+0.7333333
+</td>
+<td style="text-align:center;">
+0.6666667
+</td>
+<td style="text-align:center;">
+0.5775
+</td>
+<td style="text-align:center;">
+0.1558
+</td>
+<td style="text-align:center;">
+0.0891
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+12
+</td>
+<td style="text-align:center;">
+-0.8827
+</td>
+<td style="text-align:center;">
+0.4490
+</td>
+<td style="text-align:center;">
+0.2353
+</td>
+<td style="text-align:center;">
+0.8000000
+</td>
+<td style="text-align:center;">
+0.7333333
+</td>
+<td style="text-align:center;">
+0.5930
+</td>
+<td style="text-align:center;">
+0.2070
+</td>
+<td style="text-align:center;">
+0.1403
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+13
+</td>
+<td style="text-align:center;">
+-0.8368
+</td>
+<td style="text-align:center;">
+0.6822
+</td>
+<td style="text-align:center;">
+0.3819
+</td>
+<td style="text-align:center;">
+0.8666667
+</td>
+<td style="text-align:center;">
+0.8000000
+</td>
+<td style="text-align:center;">
+0.6487
+</td>
+<td style="text-align:center;">
+0.2179
+</td>
+<td style="text-align:center;">
+0.1513
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+14
+</td>
+<td style="text-align:center;">
+-1.5805
+</td>
+<td style="text-align:center;">
+2.9224
+</td>
+<td style="text-align:center;">
+1.7901
+</td>
+<td style="text-align:center;">
+0.9333333
+</td>
+<td style="text-align:center;">
+0.8666667
+</td>
+<td style="text-align:center;">
+0.9632
+</td>
+<td style="text-align:center;">
+-0.0298
+</td>
+<td style="text-align:center;">
+-0.0965
+</td>
+</tr>
+<tr>
+<td style="text-align:center;">
+15
+</td>
+<td style="text-align:center;">
+0.3860
+</td>
+<td style="text-align:center;">
+3.9940
+</td>
+<td style="text-align:center;">
+2.4637
+</td>
+<td style="text-align:center;">
+1.0000000
+</td>
+<td style="text-align:center;">
+0.9333333
+</td>
+<td style="text-align:center;">
+0.9931
+</td>
+<td style="text-align:center;">
+0.0069
+</td>
+<td style="text-align:center;">
+-0.0597
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol start="9" style="list-style-type: decimal">
+<li>Entonces</li>
+</ol>
+<p><span class="math display">\[ D^+= max\ \{\ S_{n}(Z_{i})-F^*(Z_{i}) \ \}= 0.2179 \ \ \ \ y\ \ \ \ D^-= max\ \{ \ S_{n}(Z_{i-1})-F^*(Z_{i}) \ \}=0.1513 \]</span>
+Por lo tanto:</p>
+<p><span class="math display">\[T_{1}=\underset{x}{sup}\ | \ S_{n}(z)-F^*(z) \ |=max \ \{\ D^+,D^- \ \}=max \ \{ \  0.2179,0.1513 \ \}=0.2179 \]</span></p>
+<p><strong>Paso 5</strong> Regla de Decisión</p>
+<p>Este último resultado se compara con la tabla de valores críticos de la Tabla Lilliefors para Normalidad, para un nivel de significancia <span class="math inline">\(\alpha\)</span> = 0.05 <span class="math inline">\(W_{0.05}\)</span>=0.2190, de esta manera se tiene que 0.2190 = <span class="math inline">\(W_{0.05} &gt; T_{1}\)</span> = 0.2179, como el cuantil <span class="math inline">\(W_{0.05}\)</span> es mayor a comparación de <span class="math inline">\(T_{1}\)</span>=0.2179.</p>
+<p>No Rechazamos <span class="math inline">\(H_0\)</span>.</p>
+<p><strong>Paso 6</strong> Conclusión</p>
+<p>Podemos concluir que a un nivel de significancia <span class="math inline">\(\alpha\)</span> =0.05, no existe evidencia estadística suficiente para decir que la muestra no tiene distribución normal.</p>
+</div>
+<div id="ejemplo-en-r-studio-15" class="section level2" number="22.6">
+<h2><span class="header-section-number">22.6</span> Ejemplo en R-Studio</h2>
+<p>Ahora haremos la réplica en R.</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="prueba-lilliefors-para-normalidad.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Datos</span></span>
+<span id="cb184-2"><a href="prueba-lilliefors-para-normalidad.html#cb184-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb184-3"><a href="prueba-lilliefors-para-normalidad.html#cb184-3" aria-hidden="true" tabindex="-1"></a>i<span class="ot">=</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">15</span></span>
+<span id="cb184-4"><a href="prueba-lilliefors-para-normalidad.html#cb184-4" aria-hidden="true" tabindex="-1"></a>X<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.6822</span>, <span class="fl">3.994</span>, <span class="sc">-</span><span class="fl">0.9705</span>, <span class="sc">-</span><span class="fl">0.5575</span>, <span class="sc">-</span><span class="fl">2.1532</span>, <span class="fl">0.0829</span>, <span class="fl">2.9224</span>,</span>
+<span id="cb184-5"><a href="prueba-lilliefors-para-normalidad.html#cb184-5" aria-hidden="true" tabindex="-1"></a>    <span class="fl">0.2425</span>,<span class="sc">-</span><span class="fl">0.4962</span>, <span class="sc">-</span><span class="fl">0.1621</span>, <span class="fl">0.449</span>, <span class="sc">-</span><span class="fl">0.8827</span>, <span class="sc">-</span><span class="fl">0.8368</span>, <span class="sc">-</span><span class="fl">1.5805</span>, <span class="fl">0.386</span>)</span>
+<span id="cb184-6"><a href="prueba-lilliefors-para-normalidad.html#cb184-6" aria-hidden="true" tabindex="-1"></a>X_i<span class="ot">=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">2.1532</span>,<span class="sc">-</span><span class="fl">1.5805</span>,<span class="sc">-</span><span class="fl">0.9705</span>,<span class="sc">-</span><span class="fl">0.8827</span>,<span class="sc">-</span><span class="fl">0.8368</span>,<span class="sc">-</span><span class="fl">0.5575</span>,<span class="sc">-</span><span class="fl">0.4962</span>, <span class="sc">-</span><span class="fl">0.1621</span>,  <span class="fl">0.0829</span>,  <span class="fl">0.2425</span>,</span>
+<span id="cb184-7"><a href="prueba-lilliefors-para-normalidad.html#cb184-7" aria-hidden="true" tabindex="-1"></a>      <span class="fl">0.3860</span>, <span class="fl">0.4490</span>,  <span class="fl">0.6822</span>,<span class="fl">2.9224</span>,<span class="fl">3.9940</span>)</span>
+<span id="cb184-8"><a href="prueba-lilliefors-para-normalidad.html#cb184-8" aria-hidden="true" tabindex="-1"></a>Z_i<span class="ot">=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">1.4004</span>, <span class="sc">-</span><span class="fl">1.0404</span>,<span class="sc">-</span><span class="fl">0.6569</span>,<span class="sc">-</span><span class="fl">0.6017</span>,<span class="sc">-</span><span class="fl">0.5729</span>,<span class="sc">-</span><span class="fl">0.3973</span>,<span class="sc">-</span><span class="fl">0.3588</span>,<span class="sc">-</span><span class="fl">0.1488</span>,<span class="fl">0.0051</span>,</span>
+<span id="cb184-9"><a href="prueba-lilliefors-para-normalidad.html#cb184-9" aria-hidden="true" tabindex="-1"></a><span class="fl">0.1055</span>,<span class="fl">0.1957</span>,<span class="fl">0.2353</span>,<span class="fl">0.3819</span>,<span class="fl">1.7901</span>,  <span class="fl">2.4637</span>) <span class="co">#Calculado xi-xbarra/s</span></span>
+<span id="cb184-10"><a href="prueba-lilliefors-para-normalidad.html#cb184-10" aria-hidden="true" tabindex="-1"></a>Sn_Zi<span class="ot">=</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">2</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">3</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">4</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">5</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">6</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">7</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">8</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">9</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">10</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">11</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">12</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">13</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">14</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">1</span>)</span>
+<span id="cb184-11"><a href="prueba-lilliefors-para-normalidad.html#cb184-11" aria-hidden="true" tabindex="-1"></a>Sn_Zi_1<span class="ot">=</span><span class="fu">c</span>(<span class="dv">0</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">1</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">2</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">3</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">4</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">5</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">6</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">7</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">8</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">9</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">10</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">11</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">12</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">13</span><span class="sc">/</span><span class="dv">15</span>,<span class="dv">14</span><span class="sc">/</span><span class="dv">15</span>)</span>
+<span id="cb184-12"><a href="prueba-lilliefors-para-normalidad.html#cb184-12" aria-hidden="true" tabindex="-1"></a>F_Zi<span class="ot">=</span><span class="fu">c</span>(<span class="fl">0.0806</span>, <span class="fl">0.1490</span>,<span class="fl">0.2555</span>,<span class="fl">0.2736</span>,<span class="fl">0.2833</span>,<span class="fl">0.3455</span>,<span class="fl">0.3598</span>,<span class="fl">0.4408</span>,<span class="fl">0.5020</span>,<span class="fl">0.5420</span>,<span class="fl">0.5775</span>,<span class="fl">0.5930</span>,</span>
+<span id="cb184-13"><a href="prueba-lilliefors-para-normalidad.html#cb184-13" aria-hidden="true" tabindex="-1"></a>       <span class="fl">0.6487</span>,<span class="fl">0.9632</span>, <span class="fl">0.9931</span>)</span>
+<span id="cb184-14"><a href="prueba-lilliefors-para-normalidad.html#cb184-14" aria-hidden="true" tabindex="-1"></a>D_mas<span class="ot">=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.0139</span>,<span class="sc">-</span><span class="fl">0.0156</span>,<span class="sc">-</span><span class="fl">0.0555</span>,<span class="sc">-</span><span class="fl">0.0069</span>,<span class="fl">0.0500</span>,<span class="fl">0.0545</span>,<span class="fl">0.1068</span>,<span class="fl">0.0925</span>,<span class="fl">0.0980</span>,<span class="fl">0.1246</span>, <span class="fl">0.1558</span>,</span>
+<span id="cb184-15"><a href="prueba-lilliefors-para-normalidad.html#cb184-15" aria-hidden="true" tabindex="-1"></a>        <span class="fl">0.2070</span>,<span class="fl">0.2179</span>,<span class="sc">-</span><span class="fl">0.0298</span>,<span class="fl">0.0069</span>)    <span class="co">#Sn(Zi)-F*(Zi)</span></span>
+<span id="cb184-16"><a href="prueba-lilliefors-para-normalidad.html#cb184-16" aria-hidden="true" tabindex="-1"></a>D_menos<span class="ot">=</span><span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.0806</span>,<span class="sc">-</span><span class="fl">0.0823</span>,<span class="sc">-</span><span class="fl">0.1221</span>,<span class="sc">-</span><span class="fl">0.0736</span>,<span class="sc">-</span><span class="fl">0.0166</span>,<span class="sc">-</span><span class="fl">0.0121</span>,<span class="fl">0.0402</span>,<span class="fl">0.0258</span>,<span class="fl">0.0313</span>, </span>
+<span id="cb184-17"><a href="prueba-lilliefors-para-normalidad.html#cb184-17" aria-hidden="true" tabindex="-1"></a>          <span class="fl">0.0580</span>,<span class="fl">0.0891</span>,<span class="fl">0.1403</span>,<span class="fl">0.1513</span>,<span class="sc">-</span><span class="fl">0.0965</span>,<span class="sc">-</span><span class="fl">0.0597</span>)   <span class="co">#Sn(Zi-1)-F*(Zi)</span></span>
+<span id="cb184-18"><a href="prueba-lilliefors-para-normalidad.html#cb184-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb184-19"><a href="prueba-lilliefors-para-normalidad.html#cb184-19" aria-hidden="true" tabindex="-1"></a>Tabla<span class="ot">=</span><span class="fu">cbind</span>(i,X_i,Z_i,Sn_Zi,Sn_Zi_1,F_Zi,D_mas,D_menos)</span>
+<span id="cb184-20"><a href="prueba-lilliefors-para-normalidad.html#cb184-20" aria-hidden="true" tabindex="-1"></a>Tabla</span></code></pre></div>
+<pre><code>       i     X_i     Z_i      Sn_Zi    Sn_Zi_1   F_Zi   D_mas D_menos
+ [1,]  1 -2.1532 -1.4004 0.06666667 0.00000000 0.0806 -0.0139 -0.0806
+ [2,]  2 -1.5805 -1.0404 0.13333333 0.06666667 0.1490 -0.0156 -0.0823
+ [3,]  3 -0.9705 -0.6569 0.20000000 0.13333333 0.2555 -0.0555 -0.1221
+ [4,]  4 -0.8827 -0.6017 0.26666667 0.20000000 0.2736 -0.0069 -0.0736
+ [5,]  5 -0.8368 -0.5729 0.33333333 0.26666667 0.2833  0.0500 -0.0166
+ [6,]  6 -0.5575 -0.3973 0.40000000 0.33333333 0.3455  0.0545 -0.0121
+ [7,]  7 -0.4962 -0.3588 0.46666667 0.40000000 0.3598  0.1068  0.0402
+ [8,]  8 -0.1621 -0.1488 0.53333333 0.46666667 0.4408  0.0925  0.0258
+ [9,]  9  0.0829  0.0051 0.60000000 0.53333333 0.5020  0.0980  0.0313
+[10,] 10  0.2425  0.1055 0.66666667 0.60000000 0.5420  0.1246  0.0580
+[11,] 11  0.3860  0.1957 0.73333333 0.66666667 0.5775  0.1558  0.0891
+[12,] 12  0.4490  0.2353 0.80000000 0.73333333 0.5930  0.2070  0.1403
+[13,] 13  0.6822  0.3819 0.86666667 0.80000000 0.6487  0.2179  0.1513
+[14,] 14  2.9224  1.7901 0.93333333 0.86666667 0.9632 -0.0298 -0.0965
+[15,] 15  3.9940  2.4637 1.00000000 0.93333333 0.9931  0.0069 -0.0597</code></pre>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="prueba-lilliefors-para-normalidad.html#cb186-1" aria-hidden="true" tabindex="-1"></a>EstdPrueba<span class="ot">=</span><span class="fu">max</span>(D_mas,D_menos)</span>
+<span id="cb186-2"><a href="prueba-lilliefors-para-normalidad.html#cb186-2" aria-hidden="true" tabindex="-1"></a>EstdPrueba</span></code></pre></div>
+<pre><code>[1] 0.2179</code></pre>
+<p>Por lo tanto:</p>
+<p><span class="math display">\[T_{1}=\underset{x}{sup} \ | \ S_{n}(z)-F^*(z)\ |=max \ \{\ D^+,D^- \ \}=max \ \{ \  0.2179,0.1513 \ \}=0.2179 \]</span></p>
+<p>Lo vamos a comparar con la tabla de valores críticos de la Tabla Lilliefors para Normalidad, para un nivel de significancia <span class="math inline">\(\alpha\)</span> = 0.05 <span class="math inline">\(W_{0.05}\)</span>=0.2190, de esta manera se tiene que 0.2190 = <span class="math inline">\(W_{0.05} &gt; T_{1}\)</span> = 0.2179, como el cuantil <span class="math inline">\(W_{0.05}\)</span> es mayor a comparación de <span class="math inline">\(T_{1}\)</span>=0.2179.
+Entonces no Rechazamos <span class="math inline">\(H_0\)</span> y podemos concluir que a un nivel de significancia <span class="math inline">\(\alpha\)</span> =0.05, no existe evidencia estadística suficiente para decir que la muestra no tiene distribución normal.</p>
+<p>Ahora podemos utilizar la prueba en R</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="prueba-lilliefors-para-normalidad.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nortest) <span class="co">#prueba lilliefors</span></span>
+<span id="cb188-2"><a href="prueba-lilliefors-para-normalidad.html#cb188-2" aria-hidden="true" tabindex="-1"></a><span class="fu">lillie.test</span>(X)</span></code></pre></div>
+<pre><code>
+    Lilliefors (Kolmogorov-Smirnov) normality test
+
+data:  X
+D = 0.21793, p-value = 0.05356</code></pre>
+##Otro ejemplo en R
+En R fije la semilla 2020, y genere 250 observaciones distribuidas como una <span class="math inline">\(N(0, 1)\)</span> y con ella realice:
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="prueba-lilliefors-para-normalidad.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Semilla y simulación</span></span>
+<span id="cb190-2"><a href="prueba-lilliefors-para-normalidad.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2020</span>)</span>
+<span id="cb190-3"><a href="prueba-lilliefors-para-normalidad.html#cb190-3" aria-hidden="true" tabindex="-1"></a>x<span class="ot">=</span><span class="fu">rnorm</span>(<span class="dv">50</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb190-4"><a href="prueba-lilliefors-para-normalidad.html#cb190-4" aria-hidden="true" tabindex="-1"></a><span class="co">#Gráfico de la función de distribución empírica</span></span>
+<span id="cb190-5"><a href="prueba-lilliefors-para-normalidad.html#cb190-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot.ecdf</span>(x,<span class="at">col=</span><span class="st">&quot;blue&quot;</span>,<span class="at">verticals =</span> <span class="cn">TRUE</span>, <span class="at">do.points =</span> <span class="cn">FALSE</span>, <span class="at">lwd=</span><span class="dv">2</span>, <span class="at">main=</span><span class="st">&quot;&quot;</span>)</span>
+<span id="cb190-6"><a href="prueba-lilliefors-para-normalidad.html#cb190-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Gráfico de la distribución verdadera $N(0,1)$</span></span>
+<span id="cb190-7"><a href="prueba-lilliefors-para-normalidad.html#cb190-7" aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(pnorm,<span class="at">add=</span><span class="cn">TRUE</span>, <span class="at">col=</span><span class="st">&quot;red&quot;</span>, <span class="at">lty=</span><span class="st">&quot;dashed&quot;</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span>
+<span id="cb190-8"><a href="prueba-lilliefors-para-normalidad.html#cb190-8" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">&quot;topleft&quot;</span>, <span class="fu">c</span>(<span class="st">&quot;Normal(0,1)&quot;</span>,<span class="st">&quot;S(x)&quot;</span>), <span class="at">cex=</span><span class="fl">0.8</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="st">&quot;red&quot;</span>,<span class="st">&quot;blue&quot;</span>), <span class="at">pch=</span><span class="fu">c</span>(<span class="dv">16</span>,<span class="dv">16</span>))</span></code></pre></div>
+<p><img src="_main_files/figure-html/unnamed-chunk-64-1.png" width="672" style="display: block; margin: auto;" /></p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="prueba-lilliefors-para-normalidad.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Prueba</span></span>
+<span id="cb191-2"><a href="prueba-lilliefors-para-normalidad.html#cb191-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nortest) </span>
+<span id="cb191-3"><a href="prueba-lilliefors-para-normalidad.html#cb191-3" aria-hidden="true" tabindex="-1"></a>T1<span class="ot">&lt;-</span><span class="fu">lillie.test</span>(x)</span>
+<span id="cb191-4"><a href="prueba-lilliefors-para-normalidad.html#cb191-4" aria-hidden="true" tabindex="-1"></a>T1</span></code></pre></div>
+<pre><code>
+    Lilliefors (Kolmogorov-Smirnov) normality test
+
+data:  x
+D = 0.08739, p-value = 0.4436</code></pre>
+<p>Observamos que la estadística de prueba tiene un valor de 0.08739 y su correspondiente p-value es <span class="math inline">\(44.36\%\)</span>, por lo tanto no rechazaremos <span class="math inline">\(H_0\)</span> y concluimos no existe evidencia suficiente para suponer que la distribución de la muestra no es <span class="math inline">\(N(0,1)\)</span>. Esperabamos que la prueba diera ese resultado ya que por construcción la muestra proviene de una distribucion <span class="math inline">\(N(0,1)\)</span>.</p>
 
 </div>
-
-
-
+</div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="prueba-para-más-de-dos-muestras.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="introducción-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="prueba-kolmogorov-smirnov.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="pueba-de-lilliefors-exponencial.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
