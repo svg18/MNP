@@ -13,8 +13,8 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 css: styles.css
-github-repo: Dul-Reyes/MNPyR
-url: 'https://github.com/Dul-Reyes/MNPyR'
+github-repo: svg18/MNP
+url: 'https\://github.com/svg18/Libro-ModelosNoParametricos'
 description: "Material para el curso modelos no paramétricos y de regresión en la Facultad de Ciencias, Universidad Nacional Autónoma de México"
 always_allow_html: true
 ---
