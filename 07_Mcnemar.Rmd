@@ -164,7 +164,7 @@ $$T_{2}\sim Bin(16,1/2)$$
 
 * Tomaremos $\alpha$= 5% =0.05 el nivel de significancia.
 
-* $n=6$ tamaño de la muestra
+* $n=16$ tamaño de la muestra
 
 * $p$=1/2
 
@@ -176,8 +176,8 @@ Debemos encontrar $t$ tal que
 
 $$\mathbf{P}[Y \leq t]=\alpha/2=0.025$$
 
-$$T_{2}=4 \leq 5=t  \ \ \ \ \   o  \ \ \ \ \      5>16-4  $$
-$$T_{2}=4 \nleq 5=t   \ \ \ \ \   y   \ \ \ \ \      5\ngtr12$$
+$$T_{2}=4 \leq 5=t  \ \ \ \ \   o  \ \ \ \ \      4>16-5  $$
+$$T_{2}=4 \nleq 5=t   \ \ \ \ \   y   \ \ \ \ \      4\ngtr11$$
  
 $\therefore$ Rechazamos $H_0$
 
